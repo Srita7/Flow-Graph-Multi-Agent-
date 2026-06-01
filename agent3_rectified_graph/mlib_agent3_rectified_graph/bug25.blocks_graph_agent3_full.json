@@ -1,0 +1,18 @@
+{
+  "file_name": "bug25.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added contains b1\u2192b4 and control_flow b2\u2192b4 to connect the disconnected return statement to its function and preceding control flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: if\", type=if];\nb3 [label=\"6-6: elif\", type=elif];\nb4 [label=\"7-7: return\", type=return];\nb1 -> b2 [label=contains];\nb2 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb2 -> b4 [label=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

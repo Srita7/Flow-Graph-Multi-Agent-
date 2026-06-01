@@ -1,0 +1,25 @@
+digraph G {
+b1 [label="1-3: docstring", type=docstring];
+b2 [label="4-12: function", type=function];
+b3 [label="5-5: call", type=call];
+b4 [label="6-6: call", type=call];
+b5 [label="7-7: call", type=call];
+b6 [label="8-8: call", type=call];
+b7 [label="9-10: text_block", type="text_block"];
+b8 [label="11-11: control", type=control];
+b9 [label="12-12: return", type=return];
+b2 -> b1 [label=contains];
+b2 -> b3 [label=contains];
+b2 -> b4 [label=contains];
+b2 -> b5 [label=contains];
+b2 -> b6 [label=contains];
+b2 -> b7 [label=contains];
+b2 -> b8 [label=contains];
+b2 -> b9 [label=contains];
+b3 -> b4 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b5 -> b6 [label="control_flow"];
+b6 -> b7 [label="control_flow"];
+b7 -> b8 [label="control_flow"];
+b8 -> b9 [label="control_flow"];
+}

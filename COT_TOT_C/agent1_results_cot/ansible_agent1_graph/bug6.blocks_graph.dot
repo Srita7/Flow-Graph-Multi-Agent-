@@ -1,0 +1,17 @@
+strict digraph {
+b1 [label="3-18: function", type=function];
+b2 [label="7-11: if_statement", type="if_statement"];
+b3 [label="10-10: return_statement", type="return_statement"];
+b4 [label="12-16: else_if_statement", type="else_if_statement"];
+b5 [label="15-15: call_expression", type="call_expression"];
+b6 [label="17-17: return_statement", type="return_statement"];
+b1 -> b2 [label="data_flow"];
+b1 -> b4 [label="data_flow"];
+b1 -> b6 [label="data_flow"];
+b1 -> b3 [label="data_flow"];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b4 -> b6 [label="control_flow"];
+b5 -> b6 [label="control_flow"];
+}

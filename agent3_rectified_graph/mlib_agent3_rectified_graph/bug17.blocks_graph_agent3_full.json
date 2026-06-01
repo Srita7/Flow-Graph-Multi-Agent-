@@ -1,0 +1,18 @@
+{
+  "file_name": "bug17.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "broken_dependency",
+      "fix_description": "Changed edge label b1->b2 from data_flow to contains to establish correct structural dependency between function and return.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb2 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

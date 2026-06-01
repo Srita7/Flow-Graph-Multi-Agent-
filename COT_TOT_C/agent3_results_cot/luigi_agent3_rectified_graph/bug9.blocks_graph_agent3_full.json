@@ -1,0 +1,18 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b2. Node b2 (control_flow) now receives necessary data input from its enclosing function b1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-19: function\", type=function];\nb2 [label=\"8-17: control_flow\", type=\"control_flow\"];\nb3 [label=\"13-16: control_flow\", type=\"control_flow\"];\nb1 -> b2 [label=contains];\nb2 -> b3 [label=contains];\nb1 -> b2 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

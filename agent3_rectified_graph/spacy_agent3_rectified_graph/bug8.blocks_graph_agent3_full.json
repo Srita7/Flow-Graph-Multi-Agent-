@@ -1,0 +1,18 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added control_flow edge from the function entry (b1) to the return node (b2) to ensure reachability.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G { b1 [label=\"5-6: function\", type=function]; b2 [label=\"6-6: return\", type=return]; b1 -> b2 [label=contains]; b1 -> b2 [label=control_flow]; }",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

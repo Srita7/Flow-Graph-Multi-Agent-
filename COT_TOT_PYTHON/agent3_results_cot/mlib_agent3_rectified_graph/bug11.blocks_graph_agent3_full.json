@@ -1,0 +1,30 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "CIRCULAR_DEPENDENCY",
+      "fix_description": "Removed control_flow b3->b1 to break the cycle. Added control_flow b3->b5 to converge with other branches from b2, which is a common pattern for conditional flows.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "CIRCULAR_DEPENDENCY",
+      "fix_description": "Removed incorrect control_flow b7->b1. A return_statement should terminate the function's execution path and not initiate control flow back to the function root.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b5->b8 to connect the orphaned return_statement to the main control flow, making it reachable.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-16: function\", type=function];\nb2 [label=\"5-9: control_flow\", type=\"control_flow\"];\nb3 [label=\"6-9: statement_block\", type=\"statement_block\"];\nb4 [label=\"10-13: statement_block\", type=\"statement_block\"];\nb5 [label=\"14-15: control_flow\", type=\"control_flow\"];\nb6 [label=\"15-15: statement_block\", type=\"statement_block\"];\nb7 [label=\"16-16: return_statement\", type=\"return_statement\"];\nb8 [label=\"17-17: return_statement\", type=\"return_statement\"];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb3 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb5 -> b8 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

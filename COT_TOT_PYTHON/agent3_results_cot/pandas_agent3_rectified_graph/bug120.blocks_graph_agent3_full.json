@@ -1,0 +1,11 @@
+{
+  "file_name": "bug120.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-12: function\", type=function];\nb2 [label=\"8-11: function\", type=function];\nb1 -> b2 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

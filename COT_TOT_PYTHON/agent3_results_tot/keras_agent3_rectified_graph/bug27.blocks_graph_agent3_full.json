@@ -1,0 +1,24 @@
+{
+  "file_name": "bug27.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected b1's output to b2 via data_flow, resolving orphaned computation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow b1->b2 with data_flow to match b2's control type.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb2 [label=\"6-6: control\", type=control];\nb1 -> b2 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

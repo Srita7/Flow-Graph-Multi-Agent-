@@ -1,0 +1,110 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "total_nodes": 26,
+  "avg_degree": 3.8,
+  "faulty_nodes": [
+    {
+      "node_id": "b5",
+      "type": "assignment",
+      "relations_in": [
+        "b4(data_flow)",
+        "b1(contains)",
+        "b4(control_flow)"
+      ],
+      "relations_out": [
+        "data_flow\u2192b6",
+        "control_flow\u2192b6"
+      ],
+      "fault_score": 7,
+      "fault_type": "flow_mismatch"
+    },
+    {
+      "node_id": "b7",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b8(data_flow)",
+        "b8(control_flow)"
+      ],
+      "relations_out": [
+        "data_flow\u2192b8",
+        "control_flow\u2192b8"
+      ],
+      "fault_score": 9,
+      "fault_type": "circular_dependency"
+    },
+    {
+      "node_id": "b8",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b7(data_flow)",
+        "b7(control_flow)"
+      ],
+      "relations_out": [
+        "data_flow\u2192b7",
+        "control_flow\u2192b7"
+      ],
+      "fault_score": 9,
+      "fault_type": "circular_dependency"
+    },
+    {
+      "node_id": "b_orphaned_assign",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b10(control_flow)"
+      ],
+      "relations_out": [
+        "control_flow\u2192b_broken_assign"
+      ],
+      "fault_score": 8,
+      "fault_type": "orphaned_computation"
+    },
+    {
+      "node_id": "b_broken_assign",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b_orphaned_assign(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 9,
+      "fault_type": "broken_dependency"
+    },
+    {
+      "node_id": "b_return",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)",
+        "b6(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "disconnected_return"
+    },
+    {
+      "node_id": "b_unreachable_call",
+      "type": "call",
+      "relations_in": [],
+      "relations_out": [
+        "call\u2192func_C"
+      ],
+      "fault_score": 10,
+      "fault_type": "unreachable_call"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 7,
+    "common_patterns": [
+      "flow_mismatch",
+      "circular_dependency",
+      "orphaned_computation",
+      "broken_dependency",
+      "disconnected_return",
+      "unreachable_call"
+    ],
+    "clean_nodes": 19,
+    "notes": "Disconnected return implies incomplete convergence as all data flow paths to the return are missing."
+  }
+}

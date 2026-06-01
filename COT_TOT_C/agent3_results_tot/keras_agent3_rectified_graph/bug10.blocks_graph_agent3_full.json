@@ -1,0 +1,72 @@
+{
+  "file_name": "bug10.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b1->b4 to connect declaration to its usage in the conditional block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b2->b4 to connect declaration to its usage in the conditional block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow inputs from b1 and b2 to b4's condition, resolving the flow mismatch by providing necessary data dependencies.",
+      "confidence": 7
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b9->b12 to connect the assignment to its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b11->b12 to connect the assignment to its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b12",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b12->b13, b12->b14, b12->b16, b12->b18 to connect the assignment to its various downstream usages and return points.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b13",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b12->b13 to provide condition input for the control_if block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b14",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b12->b14 to connect the return statement to its nearest assignment.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b16",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b12->b16 to connect the return statement to its nearest assignment.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b18",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b12->b18 to connect the return statement to its nearest assignment.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: declaration\", type=declaration];\nb2 [label=\"2-2: declaration\", type=declaration];\nb3 [label=\"3-27: function\", type=function];\nb4 [label=\"5-8: control_if\", type=\"control_if\"];\nb5 [label=\"6-6: call\", type=call];\nb6 [label=\"7-7: return\", type=return];\nb7 [label=\"9-20: control_else_if\", type=\"control_else_if\"];\nb8 [label=\"10-11: control_if\", type=\"control_if\"];\nb9 [label=\"11-11: assignment\", type=assignment];\nb10 [label=\"12-14: control_else_if\", type=\"control_else_if\"];\nb11 [label=\"13-13: assignment\", type=assignment];\nb12 [label=\"15-15: assignment\", type=assignment];\nb13 [label=\"16-18: control_if\", type=\"control_if\"];\nb14 [label=\"19-19: return\", type=return];\nb15 [label=\"21-23: control_if\", type=\"control_if\"];\nb16 [label=\"22-22: return\", type=return];\nb17 [label=\"23-25: control_else\", type=control_else];\nb18 [label=\"24-24: return\", type=return];\nb19 [label=\"26-26: return\", type=return];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b7 [label=contains];\nb3 -> b15 [label=contains];\nb3 -> b17 [label=contains];\nb3 -> b19 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=contains];\nb4 -> b7 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> b10 [label=contains];\nb7 -> b12 [label=contains];\nb7 -> b13 [label=contains];\nb7 -> b14 [label=contains];\nb7 -> b15 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb8 -> b10 [label=\"control_flow\"];\nb8 -> b12 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb10 -> b12 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb15 -> b16 [label=\"control_flow\"];\nb15 -> b17 [label=\"control_flow\"];\nb15 -> b19 [label=\"control_flow\"];\nb17 -> b18 [label=\"control_flow\"];\nb17 -> b19 [label=\"control_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb9 -> b12 [label=\"data_flow\"];\nb11 -> b12 [label=\"data_flow\"];\nb12 -> b13 [label=\"data_flow\"];\nb12 -> b14 [label=\"data_flow\"];\nb12 -> b16 [label=\"data_flow\"];\nb12 -> b18 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 10,
+    "edge_additions": 8,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

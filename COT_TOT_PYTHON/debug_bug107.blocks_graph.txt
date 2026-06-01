@@ -1,0 +1,184 @@
+PROMPT (5024 chars):
+
+GRAPH SURGICAL REPAIR AGENT - TREE OF THOUGHT MODE
+
+You are Agent-3.
+
+Agent-1 built the graph.
+Agent-2 diagnosed the faults.
+
+Your mission:
+repair structural dependency errors with the SMALLEST legal modification
+and output the COMPLETE corrected graph.
+
+You NEVER generate source code.
+
+You MUST use multi-branch reasoning internally.
+DO NOT output reasoning.
+OUTPUT JSON ONLY.
+
+--------------------------------------------------
+INPUT
+
+File: bug107.blocks_graph
+Fault Count: 9
+
+Faulty Nodes:
+- b2 (control_if): BROKEN_DEPENDENCY | in: [b1(control_flow)] | out: [b3(control_flow), b4(control_flow)]
+- b3 (assignment): BROKEN_DEPENDENCY | in: [b2(control_flow)] | out: [b7(control_flow)]
+- b4 (control_else): FLOW_MISMATCH | in: [b2(control_flow)] | out: []
+- b5 (assignment): ORPHANED_COMPUTATION | in: [] | out: []
+- b6 (call): UNREACHABLE_CALL | in: [] | out: []
+- b7 (unknown): FLOW_MISMATCH | in: [b1(contains), b3(control_flow)] | out: []
+- b9 (unknown): ORPHANED_COMPUTATION | in: [b1(contains)] | out: []
+- b11 (unknown): ORPHANED_COMPUTATION | in: [b1(contains)] | out: []
+- b13 (unknown): ORPHANED_COMPUTATION | in: [b1(contains)] | out: []
+
+Graph Info:
+Total Nodes: 13
+Root Node: b1
+
+Original Graph:
+digraph G {
+b1 [label="4-17: function", type=function];
+b2 [label="5-10: control_if", type="control_if"];
+b3 [label="6-6: assignment", type=assignment];
+b4 [label="7-10: control_else", type="control_else"];
+b5 [label="10-10: assignment", type=assignment];
+b6 [label="10-10: call", type=call];
+b7 [label="11-11: assignment", type=assignment];
+b8 [label="11-11: call", type=call];
+b9 [label="12-15: assignment", type=assignment];
+b10 [label="12-15: call", type=call];
+b11 [label="16-16: assignment", type=assignment];
+b12 [label="16-16: call", type=call];
+b13 [label="17-17: return", type=return];
+b1 -> b2 [label="control_flow"];
+b1 -> b7 [label=contains];
+b1 -> b9 [label=contains];
+b1 -> b11 [label=contains];
+b1 -> b13 [label=contains];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b3 -> b7 [label="control_flow"];
+b4 -> b5 [label=contains];
+b5 -> b6 [label=contains];
+b5 -> b7 [label="control_flow"];
+b7 -> b8 [label=contains];
+b7 -> b9 [label="control_flow"];
+b9 -> b10 [label=contains];
+b9 -> b11 [label="control_flow"];
+b11 -> b12 [label=contains];
+b11 -> b13 [label="control_flow"];
+}
+
+--------------------------------------------------
+TREE OF THOUGHT REPAIR PROCESS (INTERNAL ONLY)
+
+For EACH faulty node:
+
+PHASE 1 — STRUCTURAL ANALYSIS
+• Extract all incoming relations
+• Extract all outgoing relations
+• Identify structural violation
+• Confirm fault_type consistency
+
+PHASE 2 — GENERATE MULTIPLE PATCH CANDIDATES
+Generate at least 2–3 possible minimal repair strategies:
+
+Possible actions:
+1. Add one edge
+2. Replace edge label
+3. Redirect edge
+4. Insert one minimal intermediate node (cycles only)
+
+Each candidate must:
+- Fix the local violation
+- Preserve original graph structure
+- Respect repair rules
+
+PHASE 3 — SCORE EACH CANDIDATE
+For each candidate evaluate:
+
+✓ Minimality (fewest modifications)
+✓ Structural validity
+✓ No unintended new cycles
+✓ No new disconnections
+✓ Graph connectivity preserved
+
+Reject any candidate that:
+✗ introduces new faults
+✗ modifies unrelated nodes
+✗ deletes original edges
+✗ renames nodes
+
+PHASE 4 — SELECT BEST PATCH
+Choose the single patch with:
+• Lowest structural impact
+• Highest correctness
+• Strict rule compliance
+
+PHASE 5 — GLOBAL VALIDATION
+After applying ALL selected patches:
+
+Verify:
+✓ All original nodes preserved
+✓ Only required edges modified/added
+✓ Graph remains connected
+✓ No duplicate edges
+✓ DOT remains syntactically valid
+
+--------------------------------------------------
+REPAIR RULES (STRICT)
+
+BROKEN_DEPENDENCY  
+→ add data_flow producer → consumer.
+
+FLOW_MISMATCH  
+→ replace control_flow with data_flow.
+
+INCOMPLETE_CONVERGENCE  
+→ add missing data_flow into return.
+
+ORPHANED_COMPUTATION  
+→ connect to nearest downstream usage.
+
+CIRCULAR_DEPENDENCY  
+→ break cycle via ONE intermediate n
+
+RESPONSE:
+{
+  "file_name": "bug107.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b1 to b2 to provide condition for control_if.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Changed control_flow edge from b3 to b7 to data_flow, making b3 a producer for b7.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed contains edge from b4 to b5 to control_flow, establishing proper control flow for else branch.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Changed control_flow edge from b5 to b7 to data_flow, making b5 a producer for b7. (Consequential fix for b7's FLOW_MISMATCH)",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed control_flow edges from b3 and b5 to b7 to data_flow, as b7 consumes their results. Added control_flow from b2 to b7 to ensure execution after if/else.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-17: function\", type=function];\nb2 [label=\"5-10: control_if\", type=\"control_if\"];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-10: control_else\", type=\"control_else\"];\nb5 [label=\"10-10: assignment\", type=assignment];\nb6 [label=\"10-10: call\", type=call];\nb7 [label=\"11-11: assignment\", type=assignment];\nb8 [label=\"11-11: call\", type=call];\nb9 [label=\"12-15: assignment\", type=assignment];\nb10 [label=\"12-15: call\", type=call];\nb11 [label=\"16-16: assignment\", type=assignment];\nb12 [label=\"16-16: call\", type=call];\nb13 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b7 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b13 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb2 -> b7 [label=\"control_flow\"];\nb3 ->

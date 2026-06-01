@@ -1,0 +1,24 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Corrected structural dependency of b1 by changing b1->b2 edge from 'control_flow' to 'contains', making b1 a valid containing function.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Made b2 reachable by changing b1->b2 edge from 'control_flow' to 'contains', establishing proper containment within function b1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb2 [label=\"6-6: call\", type=call];\nb1 -> b2 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

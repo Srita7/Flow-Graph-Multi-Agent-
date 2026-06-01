@@ -1,0 +1,11 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-4: function\", type=function];\nb2 [label=\"5-8: function\", type=function];\nb2 -> b1 [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

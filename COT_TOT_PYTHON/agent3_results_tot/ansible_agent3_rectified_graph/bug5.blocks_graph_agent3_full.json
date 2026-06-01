@@ -1,0 +1,36 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b2 to b3 to connect the orphaned computation to its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b3 to b6 to connect the orphaned computation to the return node, which is its nearest assignment consumer.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed the edge label from b4 to b5 from 'control_flow' to 'data_flow' to correct the flow mismatch, implying b5 consumes data from b4.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow edge from b3 to b6 to connect the disconnected return node to the nearest assignment (b3).",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-7: call\", type=call];\nb5 [label=\"8-8: call\", type=call];\nb6 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b6 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 2,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

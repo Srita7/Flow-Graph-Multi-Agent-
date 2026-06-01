@@ -1,0 +1,24 @@
+{
+  "file_name": "current_graph_analysis",
+  "total_nodes": 2,
+  "avg_degree": 1.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "return",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 9,
+      "fault_type": "DISCONNECTED RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "DISCONNECTED RETURN"
+    ],
+    "clean_nodes": 1
+  }
+}

@@ -1,0 +1,13 @@
+digraph G {
+b1 [label="3-16: function", type=function];
+b2 [label="10-14: if", type=if];
+b3 [label="12-13: block", type=block];
+b4 [label="?-?: function_call", type="function_call"];
+b5 [label="?-?: function_call", type="function_call"];
+b1 -> b2 [label="data_flow"];
+b1 -> b4 [label=call];
+b1 -> b3 [label="data_flow"];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label=call];
+b3 -> b5 [label=call];
+}

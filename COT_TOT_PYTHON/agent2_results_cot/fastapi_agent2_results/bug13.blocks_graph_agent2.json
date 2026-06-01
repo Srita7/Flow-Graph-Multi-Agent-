@@ -1,0 +1,74 @@
+{
+  "file_name": "bug13.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 3.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "function",
+      "relations_in": [],
+      "relations_out": [
+        "b2(control_flow)",
+        "b4(contains)",
+        "b5(contains)",
+        "b6(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b3",
+      "type": "statement",
+      "relations_in": [
+        "b2(control_flow)"
+      ],
+      "relations_out": [
+        "b4(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b4",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)",
+        "b3(data_flow)"
+      ],
+      "relations_out": [
+        "b5(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b5",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b4(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b6",
+      "type": "statement",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 1
+  }
+}

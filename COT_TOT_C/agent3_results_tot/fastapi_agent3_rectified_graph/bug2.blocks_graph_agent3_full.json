@@ -1,0 +1,24 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Resolved ORPHANED_COMPUTATION by adding data_flow edge to b4.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Resolved BROKEN_DEPENDENCY by adding data_flow edge from b2.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-7: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: control\", type=control];\nb1 -> b2 [label=contains];\nb1 -> b4 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

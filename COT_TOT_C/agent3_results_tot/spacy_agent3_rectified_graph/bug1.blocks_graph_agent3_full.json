@@ -1,0 +1,30 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "a1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected a1 to downstream usages r1 and c2 via data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "r1",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced incoming control_flow from a1 with data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "c2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added incoming data_flow from a1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nf1 [label=\"3-7: function\", type=function];\na1 [label=\"4-4: assignment\", type=assignment];\nc1 [label=\"4-4: call\", type=call];\nr1 [label=\"5-5: return\", type=return];\nc2 [label=\"5-5: call\", type=call];\nr2 [label=\"6-6: return\", type=return];\nf1 -> a1 [label=contains];\nf1 -> r1 [label=contains];\nf1 -> r2 [label=contains];\na1 -> c1 [label=contains];\na1 -> r1 [label=\"data_flow\"];\na1 -> c2 [label=\"data_flow\"];\nr1 -> c2 [label=contains];\nr1 -> r2 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 1,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

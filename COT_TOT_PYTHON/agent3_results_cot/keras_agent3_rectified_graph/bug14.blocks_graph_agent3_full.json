@@ -1,0 +1,24 @@
+{
+  "file_name": "bug14.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "FLOW_MISMATCH on outgoing edge to b3 resolved by changing 'control_flow' to 'data_flow'.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "FLOW_MISMATCH on incoming edge from b2 resolved by changing 'control_flow' to 'data_flow'.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: return\", type=return];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

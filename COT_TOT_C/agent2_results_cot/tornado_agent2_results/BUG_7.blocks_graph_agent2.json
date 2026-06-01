@@ -1,0 +1,73 @@
+{
+  "file_name": "BUG_7.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 2.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "function",
+      "relations_in": [],
+      "relations_out": [
+        "b2(contains)",
+        "b4(contains)",
+        "b5(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b2",
+      "type": "import",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "b4(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b3",
+      "type": "call",
+      "relations_in": [
+        "b4(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b4",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [
+        "b3(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "b5",
+      "type": "return",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "UNREACHABLE_CALL",
+      "BROKEN_DEPENDENCY"
+    ],
+    "clean_nodes": 0
+  }
+}

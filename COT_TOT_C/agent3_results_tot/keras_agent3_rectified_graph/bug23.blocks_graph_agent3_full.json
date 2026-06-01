@@ -1,0 +1,30 @@
+{
+  "file_name": "bug23.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b2->b3 to connect computation to its nearest downstream usage.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b3->b4 to connect computation to its nearest downstream usage (the return statement).",
+      "confidence": 10
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b3->b4 to connect the nearest assignment to the return statement.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-7: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"6-6: control\", type=control];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

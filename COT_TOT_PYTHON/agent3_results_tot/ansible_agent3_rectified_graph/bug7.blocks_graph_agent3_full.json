@@ -1,0 +1,30 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Modified outgoing edge b2->b3 label from 'call' to 'control_flow'",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Modified outgoing edge b3->b4 label from 'call' to 'data_flow'",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Modified incoming edge b3->b4 label from 'call' to 'data_flow' to satisfy broken dependency",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-7: function\", type=function];\nb2 [label=\"5-6: for\", type=for];\nb3 [label=\"6-6: call\", type=call];\nb4 [label=\"6-6: call\", type=call];\nb5 [label=\"7-7: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 0,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

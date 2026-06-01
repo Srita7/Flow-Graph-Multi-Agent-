@@ -1,0 +1,30 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3_1",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from call (b3_1_1) to return (b3_1) as its value producer.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3_1_1",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from call (b3_1_1) to return (b3_1) as its value consumer.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4_3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected return (b4_3) to its data producer (b4_2_3) via data_flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-4: function\", type=function];\nb1_1 [label=\"3-3: return\", type=return];\nb2 [label=\"5-7: function\", type=function];\nb2_1 [label=\"6-6: return\", type=return];\nb3 [label=\"8-10: function\", type=function];\nb3_1 [label=\"9-9: return\", type=return];\nb3_1_1 [label=\"9-9: call\", type=call];\nb4 [label=\"11-16: function\", type=function];\nb4_1 [label=\"12-12: assignment\", type=assignment];\nb4_2 [label=\"13-15: control_if\", type=\"control_if\"];\nb4_2_1 [label=\"13-13: call\", type=call];\nb4_2_2 [label=\"13-13: call\", type=call];\nb4_2_3 [label=\"14-14: call\", type=call];\nb4_3 [label=\"16-16: return\", type=return];\nb1 -> b1_1 [label=\"control_flow\"];\nb2 -> b2_1 [label=\"control_flow\"];\nb3 -> b3_1 [label=\"control_flow\"];\nb3_1 -> b3_1_1 [label=contains];\nb3_1_1 -> b3_1 [label=\"data_flow\"];\nb4 -> b4_1 [label=\"control_flow\"];\nb4 -> b4_2 [label=contains];\nb4 -> b4_3 [label=contains];\nb4_1 -> b4_2 [label=\"control_flow\"];\nb4_2 -> b4_2_1 [label=contains];\nb4_2 -> b4_2_2 [label=contains];\nb4_2 -> b4_2_3 [label=\"control_flow\"];\nb4_2 -> b4_3 [label=\"control_flow\"];\nb4_2_3 -> b4_3 [label=\"control_flow\"];\nb4_2_3 -> b4_3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

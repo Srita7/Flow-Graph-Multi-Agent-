@@ -1,0 +1,36 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Removed the data_flow edge b3->b2 to break the circular dependency and ensure b2's computation flows unidirectionally downstream to b3, which then contributes to the function's return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added a data_flow edge b3->b1 to connect the return value of b3 to the function b1, resolving the disconnected return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a data_flow edge b4->b5 to connect b4's computation to its nearest downstream usage, b5.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a data_flow edge b5->b1 to connect b5's final computation to the function's return, as it is the last statement.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-8: function\", type=function];\nb2 [label=\"5-5: statement\", type=statement];\nb3 [label=\"6-6: statement\", type=statement];\nb4 [label=\"7-7: statement\", type=statement];\nb5 [label=\"8-8: statement\", type=statement];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb3 -> b1 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 3,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

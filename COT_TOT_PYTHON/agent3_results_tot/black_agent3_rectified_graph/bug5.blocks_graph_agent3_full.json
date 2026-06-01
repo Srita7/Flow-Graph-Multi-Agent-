@@ -1,0 +1,30 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow with data_flow for edge b2->b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow with data_flow for edge b3->b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Resolved by b3 providing data_flow to b4, connecting the return to its nearest data source",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-8: function\", type=function];\nb2 [label=\"5-8: control_if\", type=\"control_if\"];\nb3 [label=\"7-8: control_if\", type=\"control_if\"];\nb4 [label=\"8-8: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 0,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,9 @@
+strict digraph {
+b1 [label="1-1: global_statement", type="global_statement"];
+b2 [label="2-2: global_statement", type="global_statement"];
+b3 [label="3-6: function", type=function];
+b4 [label="4-4: call_statement", type="call_statement"];
+b5 [label="5-5: return_statement", type="return_statement"];
+b3 -> b4 [label=contains];
+b3 -> b5 [label=contains];
+}

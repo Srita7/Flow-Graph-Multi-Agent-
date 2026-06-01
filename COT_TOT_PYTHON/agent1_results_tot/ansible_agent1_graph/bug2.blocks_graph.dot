@@ -1,0 +1,21 @@
+strict digraph {
+b1 [label="4-11: function", type=function];
+b2 [label="5-7: function", type=function];
+b3 [label="6-6: return_statement", type="return_statement"];
+b4 [label="7-7: return_statement", type="return_statement"];
+b5 [label="8-10: function", type=function];
+b6 [label="9-9: return_statement", type="return_statement"];
+b7 [label="10-10: return_statement", type="return_statement"];
+b8 [label="11-11: return_statement", type="return_statement"];
+b1 -> b2 [label=contains];
+b1 -> b5 [label=contains];
+b1 -> b8 [label=contains];
+b2 -> b3 [label=contains];
+b2 -> b4 [label=contains];
+b2 -> b5 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b5 -> b6 [label=contains];
+b5 -> b7 [label=contains];
+b5 -> b8 [label="control_flow"];
+b6 -> b7 [label="control_flow"];
+}

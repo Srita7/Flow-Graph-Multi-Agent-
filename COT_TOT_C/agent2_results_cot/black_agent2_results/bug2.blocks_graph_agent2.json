@@ -1,0 +1,126 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "total_nodes": 16,
+  "avg_degree": 4.1,
+  "faulty_nodes": [
+    {
+      "node_id": "b7",
+      "type": "assignment",
+      "relations_in": [
+        "b6(control_flow)",
+        "b3(contains)"
+      ],
+      "relations_out": [
+        "b8(control_flow)",
+        "b12(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b8",
+      "type": "assignment",
+      "relations_in": [
+        "b7(control_flow)"
+      ],
+      "relations_out": [
+        "b9(control_flow)",
+        "b13(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b9",
+      "type": "assignment",
+      "relations_in": [
+        "b4(data_flow)",
+        "b8(control_flow)"
+      ],
+      "relations_out": [
+        "b10(control_flow)",
+        "b14(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b10",
+      "type": "assignment",
+      "relations_in": [
+        "b5(data_flow)",
+        "b9(control_flow)"
+      ],
+      "relations_out": [
+        "b11(control_flow)",
+        "b15(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b13",
+      "type": "return",
+      "relations_in": [
+        "b8(data_flow)",
+        "b12(control_flow)"
+      ],
+      "relations_out": [
+        "b14(control_flow)",
+        "b3(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b14",
+      "type": "return",
+      "relations_in": [
+        "b3(data_flow)",
+        "b9(data_flow)",
+        "b13(control_flow)"
+      ],
+      "relations_out": [
+        "b15(control_flow)",
+        "b3(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b15",
+      "type": "return",
+      "relations_in": [
+        "b10(data_flow)",
+        "b14(control_flow)"
+      ],
+      "relations_out": [
+        "b16(control_flow)",
+        "b3(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b16",
+      "type": "return",
+      "relations_in": [
+        "b11(data_flow)",
+        "b15(control_flow)"
+      ],
+      "relations_out": [
+        "b3(control_flow)",
+        "b3(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 8,
+    "common_patterns": [
+      "FLOW_MISMATCH"
+    ],
+    "clean_nodes": 8
+  }
+}

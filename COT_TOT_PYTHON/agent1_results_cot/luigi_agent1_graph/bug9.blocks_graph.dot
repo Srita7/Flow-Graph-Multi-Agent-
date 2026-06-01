@@ -1,0 +1,8 @@
+strict digraph {
+b1 [label="4-7: function", type=function];
+b2 [label="8-8: control_flow", type="control_flow"];
+b3 [label="9-13: control_flow", type="control_flow"];
+b4 [label="12-13: control_flow", type="control_flow"];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+}

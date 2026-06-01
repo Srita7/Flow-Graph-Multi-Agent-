@@ -1,0 +1,48 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b3->b7 to connect to nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2->b4 to establish dependency on the preceding control_if.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains b1->b5 to establish containment from the function, and control_flow b5->b7 to ensure flow to the next statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b6->b7 to re-establish connection to the nearest downstream usage, as the existing edge was considered invalid by diagnosis.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains b1->b7 to re-establish containment from the function, as the existing edge was considered invalid by diagnosis.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added control_flow b7->b8 to re-establish the return path, as the existing edge was considered invalid by diagnosis, and ensure all paths lead to return.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-13: function\", type=function];\nb2 [label=\"7-8: control_if\", type=\"control_if\"];\nb3 [label=\"8-8: statement_break\", type=\"statement_break\"];\nb4 [label=\"9-10: control_elif\", type=\"control_elif\"];\nb5 [label=\"10-10: statement_continue\", type=\"statement_continue\"];\nb6 [label=\"11-11: assignment\", type=assignment];\nb7 [label=\"12-12: call\", type=call];\nb8 [label=\"13-13: statement_return\", type=\"statement_return\"];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb2 -> b6 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb3 -> b7 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb1 -> b5 [label=contains];\nb5 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb1 -> b7 [label=contains];\nb7 -> b8 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 6,
+    "edge_additions": 7,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

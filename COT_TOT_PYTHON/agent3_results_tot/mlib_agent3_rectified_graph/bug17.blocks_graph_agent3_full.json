@@ -1,0 +1,18 @@
+{
+  "file_name": "bug17.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b1\u2192b1 to connect the orphaned function to itself as the only available usage.",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb1 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

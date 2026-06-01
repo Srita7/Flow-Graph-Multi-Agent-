@@ -1,0 +1,18 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'call' edge from b2 to b3, assuming b3 should be called by b2 as a helper function, and the original b3->b2 edge was an error in direction. The original b3->b2 edge is removed to prevent a cycle.",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-6: function\", type=function];\nb2 [label=\"7-11: function\", type=function];\nb3 [label=\"12-17: function\", type=function];\nb2 -> b1 [label=call];\nb3 -> b1 [label=call];\nb2 -> b3 [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

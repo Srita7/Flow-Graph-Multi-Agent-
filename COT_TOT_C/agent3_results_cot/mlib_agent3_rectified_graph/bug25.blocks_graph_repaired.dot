@@ -1,0 +1,12 @@
+digraph G {
+b1 [label="3-10: function", type=function];
+b2 [label="4-6: conditional", type=conditional];
+b3 [label="6-8: conditional", type=conditional];
+b4 [label="9-9: return", type=return];
+b1 -> b2 [label="control_flow"];
+b1 -> b3 [label=contains];
+b1 -> b4 [label=contains];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+}

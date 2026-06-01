@@ -1,0 +1,54 @@
+{
+  "file_name": "bug3.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected to b3 via data_flow, resolving orphaned computation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced incoming control_flow from b2 with data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b3\u2192b4.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b4\u2192b5.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b5\u2192b6.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b6\u2192b7.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b7\u2192b8.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-11: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-7: assignment\", type=assignment];\nb6 [label=\"8-8: assignment\", type=assignment];\nb7 [label=\"9-9: call\", type=call];\nb8 [label=\"10-10: control_flow\", type=\"control_flow\"];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b6 [label=\"data_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> b8 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 7,
+    "edge_additions": 5,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

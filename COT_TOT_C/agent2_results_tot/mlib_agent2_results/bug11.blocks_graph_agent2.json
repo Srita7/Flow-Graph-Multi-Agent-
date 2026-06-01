@@ -1,0 +1,75 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "total_nodes": 14,
+  "avg_degree": 3.4,
+  "faulty_nodes": [
+    {
+      "node_id": "cl1",
+      "type": "call",
+      "relations_in": [
+        "a1(control_flow)"
+      ],
+      "relations_out": [
+        "cl2(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "cl2",
+      "type": "call",
+      "relations_in": [
+        "cl1(control_flow)"
+      ],
+      "relations_out": [
+        "ret_if1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "ret_if1",
+      "type": "return",
+      "relations_in": [
+        "cl2(control_flow)"
+      ],
+      "relations_out": [
+        "m1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "a2",
+      "type": "assignment",
+      "relations_in": [
+        "f1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "m1",
+      "type": "control",
+      "relations_in": [
+        "f1(contains)",
+        "ret_if1(control_flow)",
+        "ret1(control_flow)",
+        "ret2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "DISCONNECTED_RETURN",
+      "INCOMPLETE_CONVERGENCE"
+    ],
+    "clean_nodes": 9
+  }
+}

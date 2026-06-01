@@ -1,0 +1,24 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "broken_dependency",
+      "fix_description": "Added data_flow b2\u2192b3 to resolve broken dependency for assignment.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "disconnected_return",
+      "fix_description": "Connected return node b3 to nearest assignment b2 via data_flow.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b1 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

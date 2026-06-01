@@ -1,0 +1,24 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected b2 to b3 with data_flow, as b2's assignment likely provides the condition for b3 (control_if).",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected b5 to b6 with data_flow, as b5 (a call) is the nearest computational node before the return.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-11: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-9: control_if\", type=\"control_if\"];\nb4 [label=\"7-7: call\", type=call];\nb5 [label=\"8-8: call\", type=call];\nb6 [label=\"10-10: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b3 [label=data_flow];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

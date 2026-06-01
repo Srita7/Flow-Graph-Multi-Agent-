@@ -1,0 +1,77 @@
+{
+  "file_name": "bug20.blocks_graph",
+  "total_nodes": 8,
+  "avg_degree": 3.2,
+  "faulty_nodes": [
+    {
+      "node_id": "b3",
+      "type": "control_if",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b4",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "b5",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b6",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b7",
+      "type": "unknown",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "b8",
+      "type": "unknown",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "BROKEN_DEPENDENCY"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 6,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "BROKEN_DEPENDENCY",
+      "UNREACHABLE_CALL"
+    ],
+    "clean_nodes": 2
+  }
+}

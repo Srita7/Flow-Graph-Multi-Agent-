@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a data_flow edge from statement b6 to function b3, indicating that the computation of b6 is consumed by b3 (e.g., as a return value or final state update). This resolves the orphaned computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: global_declaration\", type=\"global_declaration\"];\nb2 [label=\"2-2: global_declaration\", type=\"global_declaration\"];\nb3 [label=\"3-7: function\", type=function];\nb4 [label=\"4-4: statement\", type=statement];\nb5 [label=\"5-5: statement\", type=statement];\nb6 [label=\"6-6: statement\", type=statement];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

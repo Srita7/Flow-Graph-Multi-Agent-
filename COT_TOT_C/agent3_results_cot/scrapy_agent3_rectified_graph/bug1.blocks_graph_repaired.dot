@@ -1,0 +1,30 @@
+digraph G {
+b_buggy_function [label="3-16: function", type=function];
+b_decl_allowed_domains_5 [label="5-5: statement", type=statement];
+b_decl_i_6 [label="6-6: statement", type=statement];
+b_decl_domain_7 [label="7-7: statement", type=statement];
+b_for_loop_8 [label="8-14: loop", type=loop];
+b_if_10 [label="10-13: conditional", type=conditional];
+b_printf_12 [label="12-12: statement", type=statement];
+b_return_15 [label="15-15: statement", type=statement];
+strcmp;
+printf;
+b_call_another_func_16 [type=call];
+b_buggy_function -> b_decl_allowed_domains_5 [label=contains];
+b_buggy_function -> b_decl_i_6 [label=contains];
+b_buggy_function -> b_decl_domain_7 [label=contains];
+b_buggy_function -> b_for_loop_8 [label=contains];
+b_buggy_function -> b_return_15 [label=contains];
+b_buggy_function -> b_call_another_func_16 [label=contains];
+b_decl_allowed_domains_5 -> b_decl_i_6 [label="control_flow"];
+b_decl_i_6 -> b_decl_domain_7 [label="control_flow"];
+b_decl_domain_7 -> b_for_loop_8 [label="control_flow"];
+b_for_loop_8 -> b_if_10 [label=contains];
+b_for_loop_8 -> b_call_another_func_16 [label="control_flow"];
+b_if_10 -> b_printf_12 [label="control_flow"];
+b_if_10 -> b_for_loop_8 [label="control_flow"];
+b_if_10 -> strcmp [label=call];
+b_printf_12 -> b_for_loop_8 [label="control_flow"];
+b_printf_12 -> printf [label=call];
+b_call_another_func_16 -> b_return_15 [label="control_flow"];
+}

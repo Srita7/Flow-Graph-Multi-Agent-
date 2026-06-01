@@ -1,0 +1,24 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b10",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Control flow path established to b12 via contained node b11.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge to b12.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-19: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-7: assignment\", type=assignment];\nb6 [label=\"8-17: control\", type=control];\nb7 [label=\"10-10: assignment\", type=assignment];\nb8 [label=\"11-11: assignment\", type=assignment];\nb9 [label=\"12-12: call\", type=call];\nb10 [label=\"13-16: control\", type=control];\nb11 [label=\"15-15: call\", type=call];\nb12 [label=\"18-18: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b12 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=contains];\nb6 -> b8 [label=contains];\nb6 -> b9 [label=contains];\nb6 -> b10 [label=contains];\nb6 -> b12 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb10 -> b11 [label=contains];\nb11 -> b12 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

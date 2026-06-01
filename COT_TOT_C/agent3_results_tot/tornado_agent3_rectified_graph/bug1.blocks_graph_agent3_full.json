@@ -1,0 +1,18 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned assignment 'b3' to its containing function 'b1' with a data_flow edge, indicating its value contributes to the function's output or state.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"8-11: function\", type=function];\nb2 [label=\"9-9: call\", type=call];\nb3 [label=\"10-10: assignment\", type=assignment];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

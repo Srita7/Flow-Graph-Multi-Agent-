@@ -1,0 +1,26 @@
+{
+  "file_name": "bug14.blocks_graph",
+  "total_nodes": 7,
+  "avg_degree": 2.9,
+  "faulty_nodes": [
+    {
+      "node_id": "b6",
+      "type": "call",
+      "relations_in": [
+        "b5(contains)\u2190"
+      ],
+      "relations_out": [
+        "contains\u2192b7"
+      ],
+      "fault_score": 9,
+      "fault_type": "orphaned_computation"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "orphaned_computation"
+    ],
+    "clean_nodes": 6
+  }
+}

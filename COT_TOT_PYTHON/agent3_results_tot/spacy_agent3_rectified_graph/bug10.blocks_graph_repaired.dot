@@ -1,0 +1,6 @@
+digraph G {
+b1 [label="5-6: function", type=function];
+b2 [label="6-6: return", type=return];
+b1 -> b2 [label=contains];
+b1 -> b2 [label=control_flow];
+}

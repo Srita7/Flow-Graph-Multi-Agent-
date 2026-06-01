@@ -1,0 +1,7 @@
+digraph G {
+  b1 [label="4-10: function", type=function];
+  b2 [label="7-9: if", type=if];
+  b_temp_1 [label="temp_node_1", type=temp_node];
+  b1 -> b2 [label="control_flow"];
+  b2 -> b_temp_1 [label="control_flow"];
+}

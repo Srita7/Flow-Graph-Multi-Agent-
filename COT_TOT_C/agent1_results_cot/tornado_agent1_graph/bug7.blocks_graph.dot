@@ -1,0 +1,5 @@
+strict digraph {
+b1 [label="2-4: function", type=function];
+b2 [label="5-8: function", type=function];
+b2 -> b1 [label=call];
+}

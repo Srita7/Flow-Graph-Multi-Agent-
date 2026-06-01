@@ -1,0 +1,24 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow b2\u2192b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow b2\u2192b6",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-7: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: return\", type=return];\nb5 [label=\"6-6: call\", type=call];\nb6 [label=\"7-7: return\", type=return];\ncode;\nerr_cls;\nrs;\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=\"control_flow\"];\nb2 -> b5 [label=\"data_flow\"];\nb3 -> b2 [label=\"data_flow\"];\nb4 -> b5 [label=contains];\nb4 -> b1 [label=\"control_flow\"];\nb5 -> b4 [label=\"data_flow\"];\nb6 -> b1 [label=\"control_flow\"];\ncode -> b3 [label=\"data_flow\"];\ncode -> b5 [label=\"data_flow\"];\nerr_cls -> b3 [label=\"data_flow\"];\nrs -> b6 [label=\"data_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb2 -> b6 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

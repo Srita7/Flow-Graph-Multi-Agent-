@@ -1,0 +1,62 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "total_nodes": 11,
+  "avg_degree": 2.9,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "if",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [
+        "b1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b3",
+      "type": "if",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    },
+    {
+      "node_id": "figure_dpi",
+      "type": "?",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "set_figure_dpi",
+      "type": "?",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "get_xy_display",
+      "type": "?",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "INCOMPLETE_CONVERGENCE",
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 5
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b5",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2\u2192b5 as per BROKEN_DEPENDENCY rule.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2\u2192b6 as per BROKEN_DEPENDENCY rule.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-11: function\", type=function];\nb2 [label=\"4-4: declaration\", type=declaration];\nb3 [label=\"5-9: if\", type=if];\nb4 [label=\"6-9: scope\", type=scope];\nb5 [label=\"7-7: call\", type=call];\nb6 [label=\"8-8: call\", type=call];\nb7 [label=\"10-10: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b5 [label=\"data_flow\"];\nb2 -> b6 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b7 [label=\"control_flow\"];\nb4 -> b5 [label=contains];\nb4 -> b6 [label=contains];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

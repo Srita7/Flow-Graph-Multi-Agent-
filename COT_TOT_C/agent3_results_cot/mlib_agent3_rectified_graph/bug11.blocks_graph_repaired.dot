@@ -1,0 +1,33 @@
+digraph G {
+b1 [label="3-19: function", type=function];
+b2 [label="4-9: if", type=if];
+b3 [label="14-16: if", type=if];
+figure_dpi;
+set_figure_dpi;
+get_xy_display;
+bbox_from_bounds;
+get_layout;
+get_unitless_position;
+transform_position;
+bbox_translate;
+b1 -> b2 [label="control_flow"];
+b1 -> b3 [label="control_flow"];
+b1 -> get_layout [label=call];
+b1 -> get_unitless_position [label=call];
+b1 -> transform_position [label=call];
+b1 -> bbox_translate [label=call];
+b1 -> b1 [label="data_flow"];
+b2 -> b1 [label="data_flow"];
+b2 -> figure_dpi [label=call];
+b2 -> set_figure_dpi [label=call];
+b2 -> get_xy_display [label=call];
+b2 -> bbox_from_bounds [label=call];
+b2 -> b3 [label="data_flow"];
+b2 -> b2 [label="data_flow"];
+b3 -> b1 [label="control_flow"];
+b3 -> set_figure_dpi [label=call];
+b3 -> b1 [label="data_flow"];
+figure_dpi -> set_figure_dpi [label="data_flow"];
+set_figure_dpi -> b1 [label="data_flow"];
+get_xy_display -> bbox_from_bounds [label="data_flow"];
+}

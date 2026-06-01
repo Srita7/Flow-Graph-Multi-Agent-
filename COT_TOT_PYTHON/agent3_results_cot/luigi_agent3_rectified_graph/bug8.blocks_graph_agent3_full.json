@@ -1,0 +1,18 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Changed type attribute of b1 from 'function' to 'entry_point' to designate it as the program's root, resolving the orphaned computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-7: function\", type=entry_point];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

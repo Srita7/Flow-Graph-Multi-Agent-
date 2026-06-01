@@ -1,0 +1,30 @@
+{
+  "file_name": "bug20.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added contains edge from b3 to b1 to integrate b1 into b3's scope.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added contains edge from b1 to b2 to integrate b2 into b1's scope.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added call edge from b3 to b1 to initiate b3's computation flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  b1 [label=\"4-22: function\", type=function];\n  b2 [label=\"7-9: function\", type=function];\n  b3 [label=\"23-23: function\", type=function];\n  b1 -> b2 [label=call];\n  b3 -> b1 [label=contains];\n  b1 -> b2 [label=contains];\n  b3 -> b1 [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

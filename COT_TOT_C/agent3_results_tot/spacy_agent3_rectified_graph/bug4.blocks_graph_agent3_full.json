@@ -1,0 +1,30 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow b5->b8 to ensure data convergence from branch.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow b4->b5 as call node output was missing.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow b7->b8 with data_flow as b7 is an assignment.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-8: function\", type=function];\nb2 [label=\"4-7: control\", type=control];\nb3 [label=\"4-4: control\", type=control];\nb4 [label=\"4-4: call\", type=call];\nb5 [label=\"5-5: assignment\", type=assignment];\nb6 [label=\"5-5: call\", type=call];\nb7 [label=\"7-7: assignment\", type=assignment];\nb8 [label=\"8-8: control\", type=control];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b5 [label=\"control_flow\"];\nb2 -> b7 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=contains];\nb5 -> b8 [label=\"control_flow\"];\nb5 -> b8 [label=\"data_flow\"];\nb7 -> b8 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 2,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

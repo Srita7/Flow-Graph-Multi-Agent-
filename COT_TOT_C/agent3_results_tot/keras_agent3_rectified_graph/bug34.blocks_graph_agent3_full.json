@@ -1,0 +1,42 @@
+{
+  "file_name": "bug34.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b2 to b3 to connect computation to its usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b3 to b4 to connect computation to its usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b4 to b5 to connect computation to its usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b5 to b6 to connect computation to its usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected return node b6 to nearest assignment b5 via data_flow edge.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb0 [label=\"1-1: statement\", type=statement];\nb0_1 [label=\"2-2: statement\", type=statement];\nb1 [label=\"3-9: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-7: assignment\", type=assignment];\nb6 [label=\"8-8: control\", type=control];\nb0 -> b0_1 [label=\"control_flow\"];\nb0_1 -> b1 [label=\"control_flow\"];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

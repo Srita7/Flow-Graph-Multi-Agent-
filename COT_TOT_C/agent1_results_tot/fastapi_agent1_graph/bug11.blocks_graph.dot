@@ -1,0 +1,12 @@
+strict digraph {
+b1 [label="1-1: declaration", type=declaration];
+b2 [label="2-2: declaration", type=declaration];
+b3 [label="3-6: function", type=function];
+b4 [label="4-4: control", type=control];
+b5 [label="5-5: control", type=control];
+b1 -> b2 [label="control_flow"];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b3 -> b5 [label=contains];
+b4 -> b5 [label="control_flow"];
+}

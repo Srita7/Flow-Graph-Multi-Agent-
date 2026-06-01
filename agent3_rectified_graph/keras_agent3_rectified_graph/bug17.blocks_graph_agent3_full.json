@@ -1,0 +1,24 @@
+{
+  "file_name": "bug17.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow from function b1 to return b2, as no explicit assignment was present.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow from function b1 to return b3, as no explicit assignment was present.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: return\", type=return];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b2 [label=data_flow];\nb1 -> b3 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

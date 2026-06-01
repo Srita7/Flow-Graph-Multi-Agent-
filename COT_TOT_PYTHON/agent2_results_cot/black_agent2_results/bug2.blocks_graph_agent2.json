@@ -1,0 +1,37 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 4.4,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "elif_statement",
+      "relations_in": [
+        "b2(contains)",
+        "b3(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    },
+    {
+      "node_id": "b5",
+      "type": "if_statement",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)",
+        "b3(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "INCOMPLETE_CONVERGENCE"
+    ],
+    "clean_nodes": 3
+  }
+}

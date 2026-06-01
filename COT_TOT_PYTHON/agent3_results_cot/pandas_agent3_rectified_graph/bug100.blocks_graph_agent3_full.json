@@ -1,0 +1,24 @@
+{
+  "file_name": "bug100.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "CIRCULAR_DEPENDENCY",
+      "fix_description": "Cycle with b2 broken by introducing temp_node_1 and redirecting b2's control_flow away from b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "CIRCULAR_DEPENDENCY",
+      "fix_description": "Cycle with b1 broken by redirecting control_flow from b1 to temp_node_1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  b1 [label=\"4-10: function\", type=function];\n  b2 [label=\"7-9: if\", type=if];\n  b_temp_1 [label=\"temp_node_1\", type=temp_node];\n  b1 -> b2 [label=\"control_flow\"];\n  b2 -> b_temp_1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 1
+  }
+}

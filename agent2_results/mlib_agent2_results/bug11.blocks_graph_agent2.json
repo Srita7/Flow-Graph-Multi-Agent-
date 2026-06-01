@@ -1,0 +1,47 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "total_nodes": 21,
+  "avg_degree": 4.6,
+  "faulty_nodes": [
+    {
+      "node_id": "b3",
+      "type": "assignment",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "orphaned_computation"
+    },
+    {
+      "node_id": "b4",
+      "type": "assignment",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "orphaned_computation"
+    },
+    {
+      "node_id": "b5",
+      "type": "assignment",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "orphaned_computation"
+    },
+    {
+      "node_id": "b6",
+      "type": "call",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "unreachable_call"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 4,
+    "common_patterns": [
+      "orphaned_computation",
+      "unreachable_call"
+    ],
+    "clean_nodes": 17
+  }
+}

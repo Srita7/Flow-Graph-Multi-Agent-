@@ -1,0 +1,11 @@
+{
+  "file_name": "bug30.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-14: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: assignment\", type=assignment];\nb3_c1 [label=\"6-6: call\", type=call];\nb4 [label=\"7-7: assignment\", type=assignment];\nb4_c1 [label=\"7-7: call\", type=call];\nb5 [label=\"8-8: assignment\", type=assignment];\nb6 [label=\"9-13: assignment\", type=assignment];\nb6_c1 [label=\"9-13: call\", type=call];\nb7 [label=\"14-14: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b3_c1 [label=contains];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b4_c1 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b6_c1 [label=contains];\nb6 -> b7 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

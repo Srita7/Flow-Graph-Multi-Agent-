@@ -1,0 +1,18 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains edge b1->b1 to satisfy 'add contains from function' rule for an unreachable function in a single-node graph.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb1 -> b1 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

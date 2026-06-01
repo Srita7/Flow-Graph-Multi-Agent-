@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b2 to provide an iterable source for the for_loop.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-10: function\", type=function];\nb2 [label=\"5-8: for_loop\", type=\"for_loop\"];\nb3 [label=\"7-7: call\", type=call];\nb1 -> b2 [label=contains];\nb2 -> b3 [label=contains];\nb1 -> b2 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

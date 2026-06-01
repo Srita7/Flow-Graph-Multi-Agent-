@@ -1,0 +1,24 @@
+{
+  "file_name": "bug115.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b4 to b5 to connect the call_statement to the function's return path.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow edge from b4 to b5 to connect the return_statement to the value produced by the call_statement.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: global_statement\", type=\"global_statement\"];\nb2 [label=\"2-2: global_statement\", type=\"global_statement\"];\nb3 [label=\"3-6: function\", type=function];\nb4 [label=\"4-4: call_statement\", type=\"call_statement\"];\nb5 [label=\"5-5: return_statement\", type=\"return_statement\"];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb4 -> b5 [label=control_flow];\nb4 -> b5 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

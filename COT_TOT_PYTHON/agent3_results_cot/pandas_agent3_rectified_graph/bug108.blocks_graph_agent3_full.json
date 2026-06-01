@@ -1,0 +1,18 @@
+{
+  "file_name": "bug108.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2\u2192b3 to satisfy the broken dependency on b3, assuming b2 (import) can provide data to b3 (return).",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: import\", type=import];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

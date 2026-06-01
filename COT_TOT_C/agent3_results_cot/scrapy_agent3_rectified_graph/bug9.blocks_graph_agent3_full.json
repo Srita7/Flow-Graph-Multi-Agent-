@@ -1,0 +1,18 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b1 -> b2 to connect the global_statement to the root function, integrating it into the program's execution flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: global_statement\", type=\"global_statement\"];\nb2 [label=\"2-5: function\", type=function];\nb3 [label=\"4-4: statement\", type=statement];\nb2 -> b3 [label=contains];\nb1 -> b2 [label=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

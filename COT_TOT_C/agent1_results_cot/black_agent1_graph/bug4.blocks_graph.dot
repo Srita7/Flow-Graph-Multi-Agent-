@@ -1,0 +1,19 @@
+strict digraph {
+b1 [label="1-1: global_statement", type="global_statement"];
+b2 [label="2-9: function", type=function];
+b3 [label="4-4: statement", type=statement];
+b4 [label="5-5: statement", type=statement];
+b5 [label="6-6: statement", type=statement];
+b6 [label="7-7: statement", type=statement];
+b7 [label="8-8: statement", type=statement];
+b8 [label="7-7: call_target", type="call_target"];
+b2 -> b3 [label=contains];
+b2 -> b4 [label=contains];
+b2 -> b5 [label=contains];
+b2 -> b6 [label=contains];
+b2 -> b7 [label="data_flow"];
+b3 -> b5 [label="data_flow"];
+b4 -> b5 [label="data_flow"];
+b5 -> b6 [label="data_flow"];
+b6 -> b8 [label=call];
+}

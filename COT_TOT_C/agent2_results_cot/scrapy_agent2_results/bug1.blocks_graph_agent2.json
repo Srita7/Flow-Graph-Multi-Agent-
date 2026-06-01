@@ -1,0 +1,39 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "total_nodes": 10,
+  "avg_degree": 3.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b_return_15",
+      "type": "return",
+      "relations_in": [
+        "b_buggy_function(contains)",
+        "b_for_loop_8(control_flow)"
+      ],
+      "relations_out": [
+        "b_call_another_func_16(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b_call_another_func_16",
+      "type": "call",
+      "relations_in": [
+        "b_return_15(control_flow)",
+        "b_buggy_function(call)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "DISCONNECTED_RETURN",
+      "UNREACHABLE_CALL"
+    ],
+    "clean_nodes": 8
+  }
+}

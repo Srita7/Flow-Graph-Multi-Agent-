@@ -1,0 +1,30 @@
+{
+  "file_name": "bug14.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b4\u2192b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b5\u2192b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2\u2192b5",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-6: function\", type=function];\nb2 [label=\"4-4: call\", type=call];\nb3 [label=\"4-4: call\", type=call];\nb4 [label=\"4-4: call\", type=call];\nb5 [label=\"4-4: call\", type=call];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=contains];\nb3 -> b4 [label=contains];\nb4 -> b5 [label=contains];\nb2 -> b5 [label=data_flow];\nb5 -> b4 [label=data_flow];\nb4 -> b3 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

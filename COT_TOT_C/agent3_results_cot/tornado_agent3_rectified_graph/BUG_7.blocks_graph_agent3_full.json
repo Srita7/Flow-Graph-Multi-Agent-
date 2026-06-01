@@ -1,0 +1,42 @@
+{
+  "file_name": "BUG_7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b3 to b4 to establish data dependency for the return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains edge from b1 (function) to b3 (call) to make the call reachable within the function's scope.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed edge b2->b4 from control_flow to data_flow, as an import typically provides data rather than controlling flow to a return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b1",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed edge b1->b5 from data_flow to contains, as a function should contain its return statements hierarchically.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed edge b1->b5 from data_flow to contains, as a return statement should be contained by its parent function.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"7-14: function\", type=function];\nb2 [label=\"9-9: import\", type=import];\nb3 [label=\"11-11: call\", type=call];\nb4 [label=\"11-11: return\", type=return];\nb5 [label=\"13-13: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=\"contains\"];\nb2 -> b4 [label=\"data_flow\"];\nb4 -> b3 [label=contains];\nb3 -> b4 [label=\"data_flow\"];\nb1 -> b3 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 2,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

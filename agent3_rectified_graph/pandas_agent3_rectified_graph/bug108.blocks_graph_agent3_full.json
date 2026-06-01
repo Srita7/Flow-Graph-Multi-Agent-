@@ -1,0 +1,24 @@
+{
+  "file_name": "bug108.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "flow_mismatch",
+      "fix_description": "Changed edge b2->b3 from 'control_flow' to 'data_flow' to resolve flow_mismatch.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "broken_dependency",
+      "fix_description": "Resolved broken_dependency by changing the incoming b2->b3 edge from 'control_flow' to 'data_flow', making b2 a data producer for b3.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: import\", type=import];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

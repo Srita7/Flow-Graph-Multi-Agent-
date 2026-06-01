@@ -1,0 +1,18 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "orphaned_computation",
+      "fix_description": "Added a control_flow edge from b2 to b3 to connect the assignment to the sequential execution flow of the function, as b3 is the next statement and a downstream consumer of a variable defined by b2.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-21: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: expression\", type=expression];\nb4 [label=\"7-7: expression\", type=expression];\nb5 [label=\"8-8: expression\", type=expression];\nb6 [label=\"9-9: expression\", type=expression];\nb7 [label=\"10-10: expression\", type=expression];\nb8 [label=\"11-11: expression\", type=expression];\nb9 [label=\"12-12: expression\", type=expression];\nb10 [label=\"13-13: return\", type=return];\nb11 [label=\"13-13: call\", type=call];\nb12 [label=\"13-13: call\", type=call];\nb13 [label=\"14-14: expression\", type=expression];\nb14 [label=\"15-15: return\", type=return];\nb15 [label=\"15-15: call\", type=call];\nb16 [label=\"16-16: expression\", type=expression];\nb17 [label=\"17-17: expression\", type=expression];\nb18 [label=\"17-17: call\", type=call];\nb19 [label=\"18-18: expression\", type=expression];\nb20 [label=\"18-18: call\", type=call];\nb21 [label=\"19-19: expression\", type=expression];\nb22 [label=\"20-20: return\", type=return];\nb23 [label=\"20-20: call\", type=call];\nb24 [label=\"21-21: return\", type=return];\ninclude_none;\nvalue;\noutput;\nres;\nby_alias;\nexclude_unset;\nitem;\nk;\nv;\nresponse_content;\nrs;\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b13 [label=contains];\nb1 -> b14 [label=contains];\nb1 -> b16 [label=contains];\nb1 -> b17 [label=contains];\nb1 -> b19 [label=contains];\nb1 -> b21 [label=contains];\nb1 -> b22 [label=contains];\nb1 -> b24 [label=contains];\nb2 -> include_none [label=\"data_flow\"];\nb2 -> b3 [label=control_flow];\nb9 -> include_none [label=\"data_flow\"];\nb10 -> b11 [label=call];\nb11 -> b12 [label=call];\nb11 -> b10 [label=\"data_flow\"];\nb11 -> b11 [label=\"data_flow\"];\nb12 -> b11 [label=\"data_flow\"];\nb14 -> b15 [label=call];\nb15 -> b14 [label=\"data_flow\"];\nb17 -> b18 [label=call];\nb19 -> b20 [label=call];\nb22 -> b23 [label=call];\nb23 -> b22 [label=\"data_flow\"];\nb23 -> b23 [label=\"data_flow\"];\ninclude_none -> b3 [label=\"data_flow\"];\ninclude_none -> b4 [label=\"data_flow\"];\ninclude_none -> b5 [label=\"data_flow\"];\ninclude_none -> b6 [label=\"data_flow\"];\ninclude_none -> b7 [label=\"data_flow\"];\ninclude_none -> b8 [label=\"data_flow\"];\nvalue -> b4 [label=\"data_flow\"];\noutput -> b12 [label=\"data_flow\"];\nres -> b15 [label=\"data_flow\"];\nres -> b17 [label=\"data_flow\"];\nby_alias -> b15 [label=\"data_flow\"];\nby_alias -> b16 [label=\"data_flow\"];\nby_alias -> b21 [label=\"data_flow\"];\nexclude_unset -> b15 [label=\"data_flow\"];\nexclude_unset -> b16 [label=\"data_flow\"];\nexclude_unset -> b18 [label=\"data_flow\"];\nexclude_unset -> b20 [label=\"data_flow\"];\nexclude_unset -> b21 [label=\"data_flow\"];\nitem -> b18 [label=\"data_flow\"];\nk -> b19 [label=\"data_flow\"];\nv -> b20 [label=\"data_flow\"];\nresponse_content -> b21 [label=\"data_flow\"];\nrs -> b24 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

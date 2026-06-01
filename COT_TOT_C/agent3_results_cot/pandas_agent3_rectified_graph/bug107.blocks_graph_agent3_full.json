@@ -1,0 +1,48 @@
+{
+  "file_name": "bug107.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b3 to b4, as b3 is an assignment statement within b2 and b4 is the subsequent statement in that block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b4 to b5, as b4 is an assignment statement within b2 and b5 is the next statement in the overall function b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b5 to b6, as b5 is an assignment statement within b1 and b6 is the subsequent statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b6 to b7, as b6 is an assignment statement within b1 and b7 is the subsequent statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b7 to b8, as b7 is an assignment statement within b1 and b8 is the subsequent statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b8 to b1, as b8 is the final assignment statement in the function b1 and its value likely contributes to the function's return.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-13: function\", type=function];\nb2 [label=\"4-8: control_flow\", type=\"control_flow\"];\nb3 [label=\"5-5: statement\", type=statement];\nb4 [label=\"7-7: statement\", type=statement];\nb5 [label=\"9-9: statement\", type=statement];\nb6 [label=\"10-10: statement\", type=statement];\nb7 [label=\"11-11: statement\", type=statement];\nb8 [label=\"12-12: statement\", type=statement];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=contains];\nb3 -> b4 [label=data_flow];\nb4 -> b5 [label=data_flow];\nb5 -> b6 [label=data_flow];\nb6 -> b7 [label=data_flow];\nb7 -> b8 [label=data_flow];\nb8 -> b1 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 6,
+    "edge_additions": 6,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

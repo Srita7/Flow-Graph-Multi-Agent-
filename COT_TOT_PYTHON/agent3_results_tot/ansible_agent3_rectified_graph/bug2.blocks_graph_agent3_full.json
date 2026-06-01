@@ -1,0 +1,30 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow edge b2->b5 with data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow edge b3->b4 with data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added control_flow edge from b1 to b8 to ensure reachability of the return statement.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-11: function\", type=function];\nb2 [label=\"5-7: function\", type=function];\nb3 [label=\"6-6: return_statement\", type=\"return_statement\"];\nb4 [label=\"7-7: return_statement\", type=\"return_statement\"];\nb5 [label=\"8-10: function\", type=function];\nb6 [label=\"9-9: return_statement\", type=\"return_statement\"];\nb7 [label=\"10-10: return_statement\", type=\"return_statement\"];\nb8 [label=\"11-11: return_statement\", type=\"return_statement\"];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b8 [label=\"control_flow\"];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb5 -> b6 [label=contains];\nb5 -> b7 [label=contains];\nb5 -> b8 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 1,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

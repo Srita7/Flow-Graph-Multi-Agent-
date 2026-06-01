@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b6\u2192b7 to connect the return statement to its nearest preceding computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: declaration\", type=declaration];\nb2 [label=\"2-2: typedef\", type=typedef];\nb3 [label=\"3-8: function\", type=function];\nb4 [label=\"5-5: assignment\", type=assignment];\nb5 [label=\"6-6: call\", type=call];\nb6 [label=\"7-7: assignment\", type=assignment];\nb7 [label=\"8-8: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=contains];\nb3 -> b7 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

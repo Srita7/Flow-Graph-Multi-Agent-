@@ -1,0 +1,18 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected the disconnected return node b3 to its containing function b1 with a 'contains' edge.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"6-6: return\", type=return];\nb3 [label=\"7-7: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

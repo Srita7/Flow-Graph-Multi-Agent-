@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains b1\u2192b4",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-16: function\", type=function];\nb2 [label=\"10-11: if\", type=if];\nb3 [label=\"12-14: block\", type=block];\nb4 [label=\"13-13: call\", type=call];\nb5 [label=\"15-15: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b5 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=\"control_flow\"];\nb1 -> b4 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

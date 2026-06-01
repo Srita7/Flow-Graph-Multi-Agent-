@@ -1,0 +1,48 @@
+{
+  "file_name": "bug120.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Redirected incorrect incoming control_flow from b2 to b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Redirected incorrect outgoing control_flow to b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added control_flow to next statement b4",
+      "confidence": 8
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow to next statement b5",
+      "confidence": 8
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added control_flow to next statement b6",
+      "confidence": 8
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected final assignment to function b1 via data_flow",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-9: function\", type=function];\nb2 [label=\"4-4: call\", type=call];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-7: call\", type=call];\nb6 [label=\"8-8: assignment\", type=assignment];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 6,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

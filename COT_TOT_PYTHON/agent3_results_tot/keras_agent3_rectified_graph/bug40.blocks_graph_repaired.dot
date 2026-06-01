@@ -1,0 +1,19 @@
+digraph G {
+b_func_buggy_function [label="4-8: function", type=function];
+b_assign_output_dim_1 [label="5-5: assignment", type=assignment];
+b_assign_output_dim_2 [label="6-6: assignment", type=assignment];
+b_assign_state_shape [label="7-7: assignment", type=assignment];
+b_list_comp_for [label="7-7: control", type=control];
+b_list_comp_expr [label="7-7: expression", type=expression];
+b_return_rs [label="8-8: return", type=return];
+b_func_buggy_function -> b_assign_output_dim_1 [label="control_flow"];
+b_func_buggy_function -> b_assign_output_dim_2 [label=contains];
+b_func_buggy_function -> b_assign_state_shape [label=contains];
+b_func_buggy_function -> b_return_rs [label=contains];
+b_assign_output_dim_1 -> b_assign_output_dim_2 [label="control_flow"];
+b_assign_output_dim_1 -> b_assign_output_dim_2 [label="data_flow"];
+b_assign_output_dim_2 -> b_assign_state_shape [label="control_flow"];
+b_assign_state_shape -> b_list_comp_for [label=contains];
+b_assign_state_shape -> b_return_rs [label="control_flow"];
+b_list_comp_for -> b_list_comp_expr [label=contains];
+}

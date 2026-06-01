@@ -1,0 +1,11 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 2.0,
+  "faulty_nodes": [],
+  "fault_summary": {
+    "total_faults": 0,
+    "common_patterns": [],
+    "clean_nodes": 3
+  }
+}

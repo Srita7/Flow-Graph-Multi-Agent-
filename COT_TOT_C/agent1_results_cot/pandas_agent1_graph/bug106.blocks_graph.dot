@@ -1,0 +1,5 @@
+strict digraph {
+b1 [label="3-8: function", type=function];
+b2 [label="4-6: if", type=if];
+b1 -> b2 [label=contains];
+}

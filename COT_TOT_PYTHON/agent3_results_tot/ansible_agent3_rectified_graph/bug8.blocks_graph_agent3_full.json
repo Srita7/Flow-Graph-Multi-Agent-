@@ -1,0 +1,42 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b2 (assignment) to b5 (call) as b5 is a likely consumer of b2's value.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow edge from b3 (control) to b6 (assignment) with a data_flow edge, indicating b6's value depends on b3's outcome.",
+      "confidence": 7
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b4 (assignment) to b5 (call) as b5 is a likely consumer of b4's value.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b8 (assignment) to b9 (statement) as b9 is a likely consumer of b8's value.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b9 (assignment) to b10 (statement) as b10 is a likely consumer of b9's value.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-13: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-8: control\", type=control];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"8-8: call\", type=call];\nb6 [label=\"9-9: assignment\", type=assignment];\nb7 [label=\"10-12: control\", type=control];\nb8 [label=\"11-11: statement\", type=statement];\nb9 [label=\"12-12: statement\", type=statement];\nb10 [label=\"13-13: statement\", type=statement];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b10 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b5 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b3 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> b9 [label=\"control_flow\"];\nb7 -> b10 [label=\"control_flow\"];\nb8 -> b1 [label=\"control_flow\"];\nb8 -> b9 [label=\"data_flow\"];\nb9 -> b1 [label=\"control_flow\"];\nb9 -> b10 [label=\"data_flow\"];\nb10 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

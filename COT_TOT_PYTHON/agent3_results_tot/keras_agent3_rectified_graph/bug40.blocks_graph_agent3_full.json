@@ -1,0 +1,18 @@
+{
+  "file_name": "bug40.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b_assign_output_dim_1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b_assign_output_dim_1 -> b_assign_output_dim_2",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb_func_buggy_function [label=\"4-8: function\", type=function];\nb_assign_output_dim_1 [label=\"5-5: assignment\", type=assignment];\nb_assign_output_dim_2 [label=\"6-6: assignment\", type=assignment];\nb_assign_state_shape [label=\"7-7: assignment\", type=assignment];\nb_list_comp_for [label=\"7-7: control\", type=control];\nb_list_comp_expr [label=\"7-7: expression\", type=expression];\nb_return_rs [label=\"8-8: return\", type=return];\nb_func_buggy_function -> b_assign_output_dim_1 [label=\"control_flow\"];\nb_func_buggy_function -> b_assign_output_dim_2 [label=contains];\nb_func_buggy_function -> b_assign_state_shape [label=contains];\nb_func_buggy_function -> b_return_rs [label=contains];\nb_assign_output_dim_1 -> b_assign_output_dim_2 [label=\"control_flow\"];\nb_assign_output_dim_1 -> b_assign_output_dim_2 [label=\"data_flow\"];\nb_assign_output_dim_2 -> b_assign_state_shape [label=\"control_flow\"];\nb_assign_state_shape -> b_list_comp_for [label=contains];\nb_assign_state_shape -> b_return_rs [label=\"control_flow\"];\nb_list_comp_for -> b_list_comp_expr [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

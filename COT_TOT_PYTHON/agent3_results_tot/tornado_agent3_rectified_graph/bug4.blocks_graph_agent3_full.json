@@ -1,0 +1,30 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b2 for control_if condition",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b3 for control_if condition",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b4 for assignment value",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-8: control_if\", type=\"control_if\"];\nb3 [label=\"7-8: control_if\", type=\"control_if\"];\nb4 [label=\"8-8: assignment\", type=assignment];\nb5 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b5 [label=contains];\nb2 -> b3 [label=\"control_flow_true\"];\nb2 -> b5 [label=\"control_flow_false\"];\nb3 -> b4 [label=\"control_flow_true\"];\nb3 -> b5 [label=\"control_flow_false\"];\nb4 -> b5 [label=\"control_flow\"];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb1 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

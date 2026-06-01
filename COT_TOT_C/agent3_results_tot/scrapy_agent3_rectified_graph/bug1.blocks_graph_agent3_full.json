@@ -1,0 +1,18 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow b2->b3 with data_flow",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-16: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: declaration\", type=declaration];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"8-14: for_loop\", type=\"for_loop\"];\nb6 [label=\"10-13: if_statement\", type=\"if_statement\"];\nb7 [label=\"12-12: call\", type=call];\nb8 [label=\"15-15: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b8 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b5 [label=\"control_flow\"];\nb7 -> b5 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

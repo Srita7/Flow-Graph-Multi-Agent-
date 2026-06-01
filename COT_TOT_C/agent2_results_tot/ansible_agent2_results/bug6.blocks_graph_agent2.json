@@ -1,0 +1,47 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "total_nodes": 9,
+  "avg_degree": 3.1,
+  "faulty_nodes": [
+    {
+      "node_id": "b_return_if",
+      "type": "return",
+      "relations_in": [
+        "b_if_cond1(control_flow_true)",
+        "b_if_cond1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b_return_else",
+      "type": "return",
+      "relations_in": [
+        "b_else_if_cond2(control_flow_true)",
+        "b_else_if_cond2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b_return_final",
+      "type": "return",
+      "relations_in": [
+        "b_else_if_cond2(control_flow_false)",
+        "b_func_buggy_function(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 6
+  }
+}

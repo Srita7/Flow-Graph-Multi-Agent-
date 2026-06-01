@@ -1,0 +1,18 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added 'contains' edge from b1 (struct_definition) to b4 (variable_declaration) to establish hierarchical dependency and resolve the missing incoming flow for b4. This makes b4 a member of b1, consistent with other variable declarations (b2, b3) within the struct.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-4: struct_definition\", type=\"struct_definition\"];\nb2 [label=\"2-2: variable_declaration\", type=\"variable_declaration\"];\nb3 [label=\"3-3: variable_declaration\", type=\"variable_declaration\"];\nb4 [label=\"5-5: variable_declaration\", type=\"variable_declaration\"];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb4 -> b1 [label=\"data_flow\"];\nb1 -> b4 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

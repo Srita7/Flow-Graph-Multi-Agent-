@@ -1,0 +1,25 @@
+{
+  "file_name": "bug23.blocks_graph",
+  "total_nodes": 4,
+  "avg_degree": 2.5,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)",
+        "b3(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 3
+  }
+}

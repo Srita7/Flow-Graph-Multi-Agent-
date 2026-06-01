@@ -1,0 +1,18 @@
+{
+  "file_name": "bug23.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Changed label to '3-7: main_function' to designate it as the program's entry point, resolving its orphaned status as the sole computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-7: main_function\", type=function];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

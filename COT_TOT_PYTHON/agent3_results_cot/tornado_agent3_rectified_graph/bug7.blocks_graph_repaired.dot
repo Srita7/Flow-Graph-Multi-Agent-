@@ -1,0 +1,5 @@
+digraph G {
+  p0 [label="program", type=program];
+  b1 [label="4-7: function", type=function];
+  p0 -> b1 [label="contains"];
+}

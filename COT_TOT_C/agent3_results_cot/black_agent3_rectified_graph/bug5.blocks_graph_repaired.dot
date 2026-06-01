@@ -1,0 +1,27 @@
+digraph G {
+b1 [label="2-13: function", type=function];
+b2 [label="4-4: declaration", type=declaration];
+b3 [label="5-5: declaration", type=declaration];
+b4 [label="6-6: declaration", type=declaration];
+b5 [label="7-11: if", type=if];
+b6 [label="9-10: if", type=if];
+b7 [label="10-10: call", type=call];
+b8 [label="12-12: return", type=return];
+printf;
+b1 -> b2 [label=contains];
+b1 -> b3 [label=contains];
+b1 -> b4 [label=contains];
+b1 -> b5 [label=contains];
+b1 -> b8 [label=contains];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b5 -> b6 [label="control_flow"];
+b5 -> b8 [label="control_flow"];
+b6 -> b7 [label="control_flow"];
+b6 -> b8 [label="control_flow"];
+b7 -> b8 [label="control_flow"];
+b7 -> printf [label=call];
+b7 -> b8 [label="data_flow"];
+b4 -> b7 [label="data_flow"];
+}

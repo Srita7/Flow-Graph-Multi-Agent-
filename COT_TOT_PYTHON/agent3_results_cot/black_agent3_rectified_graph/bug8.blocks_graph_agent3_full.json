@@ -1,0 +1,18 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b4\u2192b1 to connect the orphaned computation to the function's return.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-8: function\", type=function];\nb2 [label=\"6-7: control_flow\", type=\"control_flow\"];\nb3 [label=\"7-7: statement\", type=statement];\nb4 [label=\"8-8: statement\", type=statement];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

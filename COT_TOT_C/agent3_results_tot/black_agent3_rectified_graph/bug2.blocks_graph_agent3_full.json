@@ -1,0 +1,24 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b2 to b3, connecting the orphaned computation to its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b10 to b11, connecting the orphaned computation (call result) to the return statement.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-18: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-7: declaration\", type=declaration];\nb5 [label=\"8-14: for_loop\", type=\"for_loop\"];\nb6 [label=\"10-13: if_else_if\", type=\"if_else_if\"];\nb7 [label=\"11-11: assignment\", type=assignment];\nb8 [label=\"13-13: assignment\", type=assignment];\nb9 [label=\"15-16: if_statement\", type=\"if_statement\"];\nb10 [label=\"16-16: call\", type=call];\nb11 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b11 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b9 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b8 [label=\"control_flow\"];\nb6 -> b5 [label=\"control_flow\"];\nb7 -> b5 [label=\"control_flow\"];\nb8 -> b5 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb9 -> b11 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb10 -> b11 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

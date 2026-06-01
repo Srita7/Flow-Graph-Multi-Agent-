@@ -1,0 +1,181 @@
+PROMPT (5260 chars):
+
+GRAPH SURGICAL REPAIR AGENT - DETERMINISTIC MODE
+
+You are Agent-3.
+
+Agent-1 built the graph.
+Agent-2 diagnosed the faults.
+
+Your mission:
+repair structural dependency errors with the SMALLEST legal modification
+and then output the COMPLETE corrected graph.
+
+You NEVER generate source code.
+
+Think internally step-by-step, but OUTPUT JSON ONLY.
+
+--------------------------------------------------
+
+INPUT
+File: bug2.blocks_graph
+Fault Count: 8
+
+Faulty Nodes:
+- b7 (assignment): FLOW_MISMATCH | in: [b6(control_flow), b3(contains)] | out: [b8(control_flow), b12(data_flow)]
+- b8 (assignment): FLOW_MISMATCH | in: [b7(control_flow)] | out: [b9(control_flow), b13(data_flow)]
+- b9 (assignment): FLOW_MISMATCH | in: [b4(data_flow), b8(control_flow)] | out: [b10(control_flow), b14(data_flow)]
+- b10 (assignment): FLOW_MISMATCH | in: [b5(data_flow), b9(control_flow)] | out: [b11(control_flow), b15(data_flow)]
+- b13 (return): FLOW_MISMATCH | in: [b8(data_flow), b12(control_flow)] | out: [b14(control_flow), b3(data_flow)]
+- b14 (return): FLOW_MISMATCH | in: [b3(data_flow), b9(data_flow), b13(control_flow)] | out: [b15(control_flow), b3(data_flow)]
+- b15 (return): FLOW_MISMATCH | in: [b10(data_flow), b14(control_flow)] | out: [b16(control_flow), b3(data_flow)]
+- b16 (return): FLOW_MISMATCH | in: [b11(data_flow), b15(control_flow)] | out: [b3(control_flow), b3(data_flow)]
+
+Graph Info:
+Total Nodes: 16
+Root Node: b3
+
+Original Graph:
+digraph G {
+b1 [label="1-1: include", type=include];
+b2 [label="2-2: include", type=include];
+b3 [label="3-18: function", type=function];
+b4 [label="5-5: declaration", type=declaration];
+b5 [label="6-6: declaration", type=declaration];
+b6 [label="7-7: declaration", type=declaration];
+b7 [label="8-14: for_loop", type="for_loop"];
+b8 [label="10-11: if_statement", type="if_statement"];
+b9 [label="11-11: assignment", type=assignment];
+b10 [label="12-13: else_if_statement", type="else_if_statement"];
+b11 [label="13-13: assignment", type=assignment];
+b12 [label="15-16: if_statement", type="if_statement"];
+b13 [label="16-16: call", type=call];
+b14 [label="17-17: return_statement", type="return_statement"];
+strcmp;
+printf;
+b3 -> b4 [label="control_flow"];
+b3 -> b5 [label=contains];
+b3 -> b6 [label=contains];
+b3 -> b7 [label=contains];
+b3 -> b12 [label=contains];
+b3 -> b14 [label="data_flow"];
+b4 -> b5 [label="control_flow"];
+b4 -> b9 [label="data_flow"];
+b4 -> b11 [label="data_flow"];
+b4 -> b12 [label="data_flow"];
+b5 -> b6 [label="control_flow"];
+b5 -> b8 [label="data_flow"];
+b5 -> b10 [label="data_flow"];
+b6 -> b7 [label="data_flow"];
+b6 -> b8 [label="data_flow"];
+b6 -> b10 [label="data_flow"];
+b7 -> b8 [label="control_flow"];
+b7 -> b10 [label=contains];
+b7 -> b12 [label="control_flow"];
+b8 -> b9 [label="control_flow"];
+b8 -> b10 [label="control_flow"];
+b8 -> strcmp [label=call];
+b9 -> b7 [label="control_flow"];
+b9 -> b12 [label="data_flow"];
+b10 -> b11 [label="control_flow"];
+b10 -> b7 [label="control_flow"];
+b10 -> strcmp [label=call];
+b11 -> b7 [label="control_flow"];
+b11 -> b12 [label="data_flow"];
+b12 -> b13 [label="control_flow"];
+b12 -> b14 [label="control_flow"];
+b13 -> b14 [label="control_flow"];
+b13 -> printf [label=call];
+}
+
+--------------------------------------------------
+
+FOR EACH FAULTY NODE FOLLOW EXACTLY THIS PROCESS
+
+STEP 1 — INSPECT  
+List its incoming and outgoing relations.
+Identify missing producer / consumer / hierarchy.
+
+STEP 2 — DIAGNOSE  
+Explain why the current structure violates the fault_type.
+
+STEP 3 — PROPOSE MINIMAL PATCH  
+Prefer in this order:
+1. add one edge  
+2. change label  
+3. add one tiny temp node (ONLY for cycles)
+
+STEP 4 — VERIFY  
+After patch:
+✓ node becomes valid  
+✓ no new cycles unless required  
+✓ other nodes unaffected  
+✓ graph remains connected  
+
+STEP 5 — APPLY  
+Integrate ONLY this patch into the original graph.
+
+--------------------------------------------------
+
+REPAIR RULES (STRICT)
+
+BROKEN_DEPENDENCY  
+→ add data_flow producer → consumer.
+
+FLOW_MISMATCH  
+→ replace contr
+
+RESPONSE:
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b7",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed incoming control_flow edges from b9, b10, and b11 to data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow edge from b8 to b13, interpreting FLOW_MISMATCH as a missing data_flow dependency.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed outgoing control_flow edge to b7 to data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed outgoing control_flow edge to b7 to data_flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b13",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow edge from b13 to b3, interpreting FLOW_MISMATCH as a missing data_flow dependency for the function's return value.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b14",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed incoming control_flow edge from b12 to data_flow, assuming b12 provides data for the return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b15",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow edge from b15 to b3, interpreting FLOW_MISMATCH as a missing data_flow dependency for the function's return value.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b16",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Added data_flow edge from b16 to b3, interpreting FLOW_MISMATCH as a missing data_flow dependency for the function's return value.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: include\", type=include];\nb2 [label=\"2-2: include\", type=include];\nb3 [label=\"3-18: function\", type=function];\nb4 [label=\"5-5: declaration\", type=declaration];\nb5 [label=\"6-6: declaration\", type=declaration];\nb6 [label=\"7-7: declaration\", type=declaration];\nb7 [label=\"8-14: for_loop\", type=\"for_loop\"];\nb8 [label=\"10-11: if_statement\", type=\"if_statement\"];\nb9 [label=\"11-11: assignment\", type=assignment];\nb10 [label=\"12-13: else_if_statement\", type=\"else_if_statement\"];\nb11 [label=\"13-13: assignment\", type=assignment];\nb12 [label=\"15-16: if_statement\", type=\"if_statement\"];\nb13 [label=\"16-16: call\", type=call];\nb14 [label=\"17-17: return_statement\", type=return_statement];\nstrcmp;\nprintf;\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=contains];\nb3 -> b7 [label=contains];\nb3 -> b12 [label=contains];\nb3 -> b14 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b9 [label=\"data_flow\"];\nb4 -> b11 [label=\"data_flow\"];\nb4 -> b12 [label=\"data_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b8 [label=\"data_flow\"];\nb5 -> b10 [label=\"data_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb6 -> b8 [label=\"data_flow\"];\nb6 -> b10 [label=\"data_flow\

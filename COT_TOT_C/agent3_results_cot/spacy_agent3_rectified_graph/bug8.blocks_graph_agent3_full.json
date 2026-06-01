@@ -1,0 +1,18 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow self-loop b1\u2192b1 to represent self-contained execution.",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  b1 [label=\"3-5: function\", type=function];\n  b1 -> b1 [type=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

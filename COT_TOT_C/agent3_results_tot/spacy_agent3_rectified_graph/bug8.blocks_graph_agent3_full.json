@@ -1,0 +1,24 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Addressed internal structural integrity by ensuring function b1 contains its control block b2.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Made b2 reachable by adding a 'contains' edge from function b1, as per UNREACHABLE_CALL rule.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-5: function\", type=function];\nb2 [label=\"4-4: control\", type=control];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b2 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

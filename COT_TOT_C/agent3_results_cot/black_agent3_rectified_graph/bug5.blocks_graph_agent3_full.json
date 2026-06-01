@@ -1,0 +1,24 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b7",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added a 'data_flow' edge from b7 (call) to b8 (return). This connects the potential return value of the call to the final return statement, addressing the DISCONNECTED_RETURN fault for b7.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'data_flow' edge from b4 (declaration/assignment) to b7 (call). This provides the missing data dependency for b7, effectively resolving the ORPHANED_COMPUTATION fault for the conceptual assignment node b9 (which was described as being between b6 and b7) and consequently resolving b6's ORPHANED_COMPUTATION fault related to its intended output to b9.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-13: function\", type=function];\nb2 [label=\"4-4: declaration\", type=declaration];\nb3 [label=\"5-5: declaration\", type=declaration];\nb4 [label=\"6-6: declaration\", type=declaration];\nb5 [label=\"7-11: if\", type=if];\nb6 [label=\"9-10: if\", type=if];\nb7 [label=\"10-10: call\", type=call];\nb8 [label=\"12-12: return\", type=return];\nprintf;\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b8 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b8 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> printf [label=call];\nb7 -> b8 [label=\"data_flow\"];\nb4 -> b7 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

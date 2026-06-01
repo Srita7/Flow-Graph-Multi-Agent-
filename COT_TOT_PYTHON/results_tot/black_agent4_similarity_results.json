@@ -1,0 +1,47 @@
+{
+  "bug1.py": {
+    "levenshtein_distance": 10,
+    "cosine_similarity": 0.9942,
+    "line_edit_distance": 1
+  },
+  "bug2.py": {
+    "levenshtein_distance": 121,
+    "cosine_similarity": 0.9566,
+    "line_edit_distance": 14
+  },
+  "bug3.py": {
+    "levenshtein_distance": 12,
+    "cosine_similarity": 0.9704,
+    "line_edit_distance": 1
+  },
+  "bug4.py": {
+    "levenshtein_distance": 1,
+    "cosine_similarity": 0.9977,
+    "line_edit_distance": 0
+  },
+  "bug5.py": {
+    "levenshtein_distance": 49,
+    "cosine_similarity": 0.7152,
+    "line_edit_distance": 4
+  },
+  "bug6.py": {
+    "levenshtein_distance": 77,
+    "cosine_similarity": 0.9892,
+    "line_edit_distance": 7
+  },
+  "bug7.py": {
+    "levenshtein_distance": 1,
+    "cosine_similarity": 0.9989,
+    "line_edit_distance": 0
+  },
+  "bug8.py": {
+    "levenshtein_distance": 17,
+    "cosine_similarity": 0.9978,
+    "line_edit_distance": 2
+  },
+  "bug9.py": {
+    "levenshtein_distance": 69,
+    "cosine_similarity": 0.8365,
+    "line_edit_distance": 7
+  }
+}

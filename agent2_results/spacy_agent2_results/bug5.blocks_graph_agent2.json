@@ -1,0 +1,53 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 2.7,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "function",
+      "relations_in": [
+        "b2(data_flow)"
+      ],
+      "relations_out": [
+        "data_flow\u2192b2",
+        "data_flow\u2192b3"
+      ],
+      "fault_score": 9,
+      "fault_type": "circular_dependency"
+    },
+    {
+      "node_id": "b2",
+      "type": "assignment",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [
+        "control_flow\u2192b3",
+        "data_flow\u2192b1"
+      ],
+      "fault_score": 8,
+      "fault_type": "broken_dependency"
+    },
+    {
+      "node_id": "b3",
+      "type": "return",
+      "relations_in": [
+        "b1(data_flow)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "disconnected_return"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "circular_dependency",
+      "broken_dependency",
+      "disconnected_return"
+    ],
+    "clean_nodes": 0
+  }
+}

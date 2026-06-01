@@ -1,0 +1,24 @@
+{
+  "file_name": "bug111.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 2.7,
+  "faulty_nodes": [
+    {
+      "node_id": "b_call_ret_6",
+      "type": "call_return",
+      "relations_in": [
+        "b_call_ret_5(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "UNREACHABLE_CALL"
+    ],
+    "clean_nodes": 5
+  }
+}

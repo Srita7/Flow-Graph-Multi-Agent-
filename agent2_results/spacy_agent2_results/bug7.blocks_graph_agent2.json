@@ -1,0 +1,28 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 3.6,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b2(data_flow)",
+        "b3(control_flow)"
+      ],
+      "relations_out": [
+        "control_flow\u2192b5"
+      ],
+      "fault_score": 9,
+      "fault_type": "orphaned_computation"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "orphaned_computation"
+    ],
+    "clean_nodes": 4
+  }
+}

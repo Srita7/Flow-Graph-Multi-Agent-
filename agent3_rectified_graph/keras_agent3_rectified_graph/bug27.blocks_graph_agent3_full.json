@@ -1,0 +1,18 @@
+{
+  "file_name": "bug27.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow b1\u2192b2 to connect the return statement to its containing function, treating the function as the implicit producer of the return value.",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb2 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b2 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

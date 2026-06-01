@@ -1,0 +1,44 @@
+{
+  "file_name": "bug20.blocks_graph",
+  "total_nodes": 7,
+  "avg_degree": 3.1,
+  "faulty_nodes": [
+    {
+      "node_id": "b5",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b6",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b7",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "UNREACHABLE_CALL"
+    ],
+    "clean_nodes": 4
+  }
+}

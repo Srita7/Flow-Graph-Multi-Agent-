@@ -1,0 +1,24 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b_call_another_func_16",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Changed hierarchy edge label from 'call' to 'contains' and re-routed control flow to make the call reachable before the return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b_return_15",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Re-routed control flow to remove the incorrect outgoing edge and ensure proper function termination after the call.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb_buggy_function [label=\"3-16: function\", type=function];\nb_decl_allowed_domains_5 [label=\"5-5: statement\", type=statement];\nb_decl_i_6 [label=\"6-6: statement\", type=statement];\nb_decl_domain_7 [label=\"7-7: statement\", type=statement];\nb_for_loop_8 [label=\"8-14: loop\", type=loop];\nb_if_10 [label=\"10-13: conditional\", type=conditional];\nb_printf_12 [label=\"12-12: statement\", type=statement];\nb_return_15 [label=\"15-15: statement\", type=statement];\nstrcmp;\nprintf;\nb_call_another_func_16 [type=call];\nb_buggy_function -> b_decl_allowed_domains_5 [label=contains];\nb_buggy_function -> b_decl_i_6 [label=contains];\nb_buggy_function -> b_decl_domain_7 [label=contains];\nb_buggy_function -> b_for_loop_8 [label=contains];\nb_buggy_function -> b_return_15 [label=contains];\nb_buggy_function -> b_call_another_func_16 [label=contains];\nb_decl_allowed_domains_5 -> b_decl_i_6 [label=\"control_flow\"];\nb_decl_i_6 -> b_decl_domain_7 [label=\"control_flow\"];\nb_decl_domain_7 -> b_for_loop_8 [label=\"control_flow\"];\nb_for_loop_8 -> b_if_10 [label=contains];\nb_for_loop_8 -> b_call_another_func_16 [label=\"control_flow\"];\nb_if_10 -> b_printf_12 [label=\"control_flow\"];\nb_if_10 -> b_for_loop_8 [label=\"control_flow\"];\nb_if_10 -> strcmp [label=call];\nb_printf_12 -> b_for_loop_8 [label=\"control_flow\"];\nb_printf_12 -> printf [label=call];\nb_call_another_func_16 -> b_return_15 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 3,
+    "nodes_added": 1
+  }
+}

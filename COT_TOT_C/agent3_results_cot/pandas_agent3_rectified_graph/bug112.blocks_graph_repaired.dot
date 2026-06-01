@@ -1,0 +1,5 @@
+digraph G {
+program [label="program", type=program];
+b1 [label="5-7: function", type=function];
+program -> b1 [label="contains", type=hierarchy];
+}

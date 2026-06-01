@@ -1,0 +1,65 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "total_nodes": 10,
+  "avg_degree": 1.8,
+  "faulty_nodes": [
+    {
+      "node_id": "jsonable_encoder",
+      "type": "data",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "OpenAPI",
+      "type": "data",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "prepare_response_content",
+      "type": "data",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b3",
+      "type": "block",
+      "relations_in": [
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    },
+    {
+      "node_id": "b5",
+      "type": "block",
+      "relations_in": [
+        "b4(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "INCOMPLETE_CONVERGENCE"
+    ],
+    "clean_nodes": 5
+  }
+}

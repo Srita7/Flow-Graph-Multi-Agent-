@@ -1,0 +1,24 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow edge from b4 to its containing loop b2 to ensure proper convergence of output.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow edge from b5 to its containing function b1 to ensure proper convergence of output.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-14: function\", type=function];\nb2 [label=\"6-10: for_loop\", type=\"for_loop\"];\nb3 [label=\"7-8: if_statement\", type=\"if_statement\"];\nb4 [label=\"9-10: elif_statement\", type=\"elif_statement\"];\nb5 [label=\"11-12: if_statement\", type=\"if_statement\"];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b5 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b2 [label=\"control_flow\"];\nb3 -> b5 [label=\"data_flow\"];\nb4 -> b2 [label=\"control_flow\"];\nb4 -> b2 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b1 [label=\"control_flow\"];\nb5 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced incoming control_flow edge from b2 with data_flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-16: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-12: control\", type=control];\nb4 [label=\"5-6: control\", type=control];\nb5 [label=\"6-6: call\", type=call];\nb6 [label=\"7-8: control\", type=control];\nb7 [label=\"8-8: call\", type=call];\nb8 [label=\"9-10: control\", type=control];\nb9 [label=\"10-10: call\", type=call];\nb10 [label=\"11-12: control\", type=control];\nb11 [label=\"12-12: call\", type=call];\nb12 [label=\"14-14: call\", type=call];\nb13 [label=\"15-15: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b13 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b6 [label=contains];\nb3 -> b8 [label=contains];\nb3 -> b10 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=\"control_flow\"];\nb5 -> b12 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b8 [label=\"control_flow\"];\nb7 -> b12 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb8 -> b10 [label=\"control_flow\"];\nb9 -> b12 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb10 -> b12 [label=\"control_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

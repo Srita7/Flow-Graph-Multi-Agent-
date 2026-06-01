@@ -1,0 +1,36 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "cl1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected its control flow path to the main flow via ret_if1 -> a2.",
+      "confidence": 9
+    },
+    {
+      "node_id": "cl2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected its control flow path to the main flow via ret_if1 -> a2.",
+      "confidence": 9
+    },
+    {
+      "node_id": "ret_if1",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added control_flow edge ret_if1 -> a2 to connect to the nearest downstream assignment.",
+      "confidence": 9
+    },
+    {
+      "node_id": "a2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Now receives control_flow from ret_if1, ensuring it is properly integrated into the main flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nf1 [label=\"3-19: function\", type=function];\nc1_if1 [label=\"4-9: control\", type=control];\na1 [label=\"5-5: assignment\", type=assignment];\ncl1 [label=\"6-6: call\", type=call];\ncl2 [label=\"7-7: call\", type=call];\nret_if1 [label=\"8-8: return\", type=return];\na2 [label=\"10-10: assignment\", type=assignment];\ncl3 [label=\"11-11: call\", type=call];\ncl4 [label=\"12-12: call\", type=call];\na3 [label=\"13-13: assignment\", type=assignment];\nc1_if2 [label=\"14-16: control\", type=control];\ncl5 [label=\"15-15: call\", type=call];\nret1 [label=\"17-17: return\", type=return];\nret2 [label=\"18-18: return\", type=return];\nf1 -> c1_if1 [label=\"control_flow\"];\nf1 -> a2 [label=contains];\nf1 -> cl3 [label=contains];\nf1 -> cl4 [label=contains];\nf1 -> a3 [label=contains];\nf1 -> c1_if2 [label=contains];\nf1 -> ret1 [label=contains];\nf1 -> ret2 [label=contains];\nc1_if1 -> a1 [label=\"control_flow\"];\nc1_if1 -> cl1 [label=contains];\nc1_if1 -> cl2 [label=contains];\nc1_if1 -> ret_if1 [label=contains];\nc1_if1 -> a2 [label=\"control_flow\"];\na1 -> cl1 [label=\"control_flow\"];\ncl1 -> cl2 [label=\"control_flow\"];\ncl2 -> ret_if1 [label=\"control_flow\"];\nret_if1 -> a2 [label=\"control_flow\"];\na2 -> cl3 [label=\"control_flow\"];\ncl3 -> cl4 [label=\"control_flow\"];\ncl4 -> a3 [label=\"control_flow\"];\na3 -> c1_if2 [label=\"control_flow\"];\nc1_if2 -> cl5 [label=\"control_flow\"];\nc1_if2 -> ret1 [label=\"control_flow\"];\ncl5 -> ret1 [label=\"control_flow\"];\nret1 -> ret2 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

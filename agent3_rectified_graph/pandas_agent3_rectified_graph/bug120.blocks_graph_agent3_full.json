@@ -1,0 +1,36 @@
+{
+  "file_name": "bug120.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "unreachable_call",
+      "fix_description": "Added contains b1\u2192Series to make the call reachable from the function.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "unreachable_call",
+      "fix_description": "Addressed by adding contains b1\u2192Series, making the call reachable from the function.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow b7\u2192b4 to connect the return to the nearest assignment.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "orphaned_computation",
+      "fix_description": "Added data_flow d\u2192b7 to connect the computation's output to its nearest downstream use.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-12: function\", type=function];\nb2 [label=\"5-5: return\", type=return];\nb3 [label=\"6-6: return\", type=return];\nb4 [label=\"7-7: return\", type=return];\nb5 [label=\"8-11: function\", type=function];\nb6 [label=\"10-10: assignment\", type=assignment];\nb7 [label=\"11-11: assignment\", type=assignment];\nb8 [label=\"12-12: return\", type=return];\nSeries;\n\"self.obj._get_axis_name\";\n\"output.set_index\";\nreindex;\nres;\nri;\n\"self._selection_name\";\nresult;\n\"self.axis\";\nindex;\nd;\noutput;\n\"self.grouper.result_index\";\nrs;\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> Series [label=call];\nb3 -> Series [label=call];\nb5 -> b6 [label=contains];\nb5 -> b7 [label=contains];\nb6 -> \"self.obj._get_axis_name\" [label=call];\nb6 -> d [label=\"data_flow\"];\nb7 -> \"output.set_index\" [label=call];\nb7 -> reindex [label=call];\nb7 -> output [label=\"data_flow\"];\nres -> b2 [label=\"data_flow\"];\nri -> b2 [label=\"data_flow\"];\n\"self._selection_name\" -> b2 [label=\"data_flow\"];\nresult -> b4 [label=\"data_flow\"];\n\"self.axis\" -> b6 [label=\"data_flow\"];\nindex -> b6 [label=\"data_flow\"];\nindex -> b7 [label=\"data_flow\"];\noutput -> b7 [label=\"data_flow\"];\n\"self.grouper.result_index\" -> b7 [label=\"data_flow\"];\nrs -> b8 [label=\"data_flow\"];\nb1 -> Series [label=contains];\nb7 -> b4 [label=\"data_flow\"];\nd -> b7 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

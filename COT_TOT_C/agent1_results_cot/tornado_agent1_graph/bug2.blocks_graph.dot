@@ -1,0 +1,14 @@
+strict digraph {
+b1 [label="2-7: function", type=function];
+b2 [label="3-5: if", type=if];
+b3 [label="4-4: statement", type=statement];
+b4 [label="6-6: statement", type=statement];
+strstr [label="?-?: external_function", type="external_function"];
+b1 -> b2 [label="data_flow"];
+b1 -> b4 [label=contains];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b2 -> strstr [label=call];
+b3 -> b1 [label="control_flow"];
+b4 -> b1 [label="control_flow"];
+}

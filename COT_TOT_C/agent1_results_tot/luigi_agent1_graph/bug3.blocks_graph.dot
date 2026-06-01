@@ -1,0 +1,19 @@
+strict digraph {
+b1 [label="2-12: function", type=function];
+b2 [label="4-4: assignment", type=assignment];
+b3 [label="5-9: control", type=control];
+b4 [label="7-7: call", type=call];
+b5 [label="8-8: return", type=return];
+b6 [label="10-10: call", type=call];
+b7 [label="11-11: return", type=return];
+b1 -> b2 [label=contains];
+b1 -> b3 [label=contains];
+b1 -> b6 [label=contains];
+b1 -> b7 [label=contains];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b3 -> b5 [label=contains];
+b3 -> b6 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b6 -> b7 [label="control_flow"];
+}

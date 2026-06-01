@@ -1,0 +1,30 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b3 to b4 to resolve broken dependency for assignment.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b5 to b6 to connect the assignment's output to the subsequent return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b6 to b1 to connect the return statement to the function exit.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-17: function\", type=function];\nb2 [label=\"5-9: control_if\", type=\"control_if\"];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"8-8: assignment\", type=assignment];\nb6 [label=\"9-9: return\", type=return];\nb7 [label=\"10-10: assignment\", type=assignment];\nb8 [label=\"11-11: assignment\", type=assignment];\nb9 [label=\"12-12: assignment\", type=assignment];\nb10 [label=\"13-13: assignment\", type=assignment];\nb11 [label=\"14-15: control_if\", type=\"control_if\"];\nb12 [label=\"15-15: assignment\", type=assignment];\nb13 [label=\"16-16: return\", type=return];\nb14 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b13 [label=contains];\nb1 -> b14 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=contains];\nb2 -> b6 [label=contains];\nb2 -> b7 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b6 [label=\"data_flow\"];\nb6 -> b1 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb11 -> b13 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

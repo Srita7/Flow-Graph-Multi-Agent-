@@ -1,0 +1,48 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected function's final computation (b15) to its definition (b1) via data_flow, implying b1 uses b15's result as its return.",
+      "confidence": 6
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from function definition b1 to its control flow entry b2, providing necessary context/data.",
+      "confidence": 7
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow with data_flow for edge b4 -> b5.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from call b8 to assignment b9.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from assignment b9 to assignment b10.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b15",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned assignment b15 to function b1 as its return value via data_flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-27: function\", type=function];\nb2 [label=\"5-17: control_flow\", type=\"control_flow\"];\nb3 [label=\"6-13: class\", type=class];\nb4 [label=\"10-13: function\", type=function];\nb5 [label=\"11-12: control_flow\", type=\"control_flow\"];\nb6 [label=\"12-12: call\", type=call];\nb7 [label=\"13-13: call\", type=call];\nb8 [label=\"14-14: call\", type=call];\nb9 [label=\"16-16: call\", type=call];\nb10 [label=\"17-17: call\", type=call];\nb11 [label=\"18-26: class\", type=class];\nb12 [label=\"19-19: call\", type=call];\nb13 [label=\"20-26: function\", type=function];\nb14 [label=\"26-26: call\", type=call];\nb15 [label=\"27-27: assignment\", type=assignment];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b11 [label=\"control_flow\"];\nb1 -> b15 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b8 [label=\"control_flow\"];\nb2 -> b9 [label=contains];\nb2 -> b10 [label=contains];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb4 -> b7 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b7 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb8 -> b9 [label=\"data_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb9 -> b10 [label=\"data_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb11 -> b13 [label=contains];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb15 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 6,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

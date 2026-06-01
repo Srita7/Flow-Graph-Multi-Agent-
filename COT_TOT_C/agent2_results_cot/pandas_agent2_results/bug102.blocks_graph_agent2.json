@@ -1,0 +1,34 @@
+{
+  "file_name": "bug102.blocks_graph",
+  "total_nodes": 4,
+  "avg_degree": 1.5,
+  "faulty_nodes": [
+    {
+      "node_id": "b3",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b4",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 2
+  }
+}

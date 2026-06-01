@@ -1,0 +1,42 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "jsonable_encoder",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned computation 'jsonable_encoder' to downstream usage 'prepare_response_content' via a data_flow edge.",
+      "confidence": 9
+    },
+    {
+      "node_id": "OpenAPI",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned computation 'OpenAPI' to downstream usage 'prepare_response_content' via a data_flow edge.",
+      "confidence": 9
+    },
+    {
+      "node_id": "prepare_response_content",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned computation 'prepare_response_content' to block 'b5' via a data_flow edge, providing an input for 'b5'.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Provided data input from 'ModelSubclass_create' to block 'b3' and connected 'b3''s output to function 'b1' via a data_flow edge for convergence.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Ensured block 'b5''s output 'res_dict' converges to function 'b1' via a data_flow edge.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"8-31: function\", type=function];\nb2 [label=\"13-16: control_flow\", type=\"control_flow\"];\nb3 [label=\"14-16: block\", type=block];\nb4 [label=\"24-26: control_flow\", type=\"control_flow\"];\nb5 [label=\"25-26: block\", type=block];\njsonable_encoder;\nOpenAPI;\nres_dict;\nprepare_response_content;\nModelSubclass_create;\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=\"control_flow\"];\nb1 -> jsonable_encoder [label=\"data_flow\"];\nb1 -> OpenAPI [label=\"data_flow\"];\nb1 -> prepare_response_content [label=\"data_flow\"];\nb1 -> ModelSubclass_create [label=call];\nb2 -> b3 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> res_dict [label=\"data_flow\"];\njsonable_encoder -> prepare_response_content [label=\"data_flow\"];\nOpenAPI -> prepare_response_content [label=\"data_flow\"];\nprepare_response_content -> b5 [label=\"data_flow\"];\nModelSubclass_create -> b3 [label=\"data_flow\"];\nb3 -> b1 [label=\"data_flow\"];\nres_dict -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 6,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

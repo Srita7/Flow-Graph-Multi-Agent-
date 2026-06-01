@@ -1,0 +1,35 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 1.6,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b5",
+      "type": "data_flow",
+      "relations_in": [
+        "b3(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "DISCONNECTED_RETURN",
+      "INCOMPLETE_CONVERGENCE"
+    ],
+    "clean_nodes": 3
+  }
+}

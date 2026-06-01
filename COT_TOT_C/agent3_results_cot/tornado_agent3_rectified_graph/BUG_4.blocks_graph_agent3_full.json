@@ -1,0 +1,24 @@
+{
+  "file_name": "BUG_4.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b4 to b5, connecting the orphaned computation to the next statement in the function's control flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b5 to b1, signifying the completion of the function's execution path.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"7-18: function\", type=function];\nb2 [label=\"9-15: control_flow\", type=\"control_flow\"];\nb3 [label=\"12-14: control_flow\", type=control_flow];\nb4 [label=\"13-13: statement\", type=statement];\nb5 [label=\"17-17: statement\", type=statement];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

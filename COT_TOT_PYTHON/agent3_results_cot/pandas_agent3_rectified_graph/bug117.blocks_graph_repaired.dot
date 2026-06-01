@@ -1,0 +1,11 @@
+digraph G {
+b1 [label="4-6: function", type=function];
+b2 [label="5-5: conditional", type=conditional];
+b3 [label="6-6: statement", type=statement];
+b4 [label="temp_node_for_data_flow_break", type=temp_node];
+b1 -> b2 [label="control_flow"];
+b1 -> b3 [label="data_flow"];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="data_flow"];
+b4 -> b1 [label="data_flow"];
+}

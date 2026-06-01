@@ -1,0 +1,24 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "orphaned_computation",
+      "fix_description": "Changed edge b2->b4 label from control_flow to data_flow to connect the assignment's result to the return statement, resolving the orphaned computation.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "unreachable_call",
+      "fix_description": "Added a 'contains' edge from the function node b1 to the call node b3 to ensure its reachability, as per the repair rule.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=\"data_flow\"];\nb1 -> b3 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

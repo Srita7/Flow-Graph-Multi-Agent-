@@ -1,0 +1,46 @@
+{
+  "file_name": "bug17.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 1.3,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "function",
+      "relations_in": [],
+      "relations_out": [
+        "b2(contains)",
+        "b3(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b2",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b3",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 0
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "total_nodes": 8,
+  "avg_degree": 2.2,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "control",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [
+        "b3(contains)",
+        "b5(control_flow)",
+        "b7(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    },
+    {
+      "node_id": "b4",
+      "type": "call",
+      "relations_in": [
+        "b3(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b7",
+      "type": "control",
+      "relations_in": [
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "INCOMPLETE_CONVERGENCE",
+      "FLOW_MISMATCH"
+    ],
+    "clean_nodes": 5
+  }
+}

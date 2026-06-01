@@ -1,0 +1,48 @@
+{
+  "file_name": "bug30.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b2 to b3 to connect the computation to the next statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b3 to b4 to connect the computation to the next statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b4 to b5 to connect the computation to the next statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b5 to b6 to connect the computation to the next statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b6 to b7 to connect the computation to the return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added control_flow edge from b7 (return) to b1 (function) to complete the function's execution flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-10: function\", type=function];\nb2 [label=\"4-4: statement\", type=statement];\nb3 [label=\"5-5: statement\", type=statement];\nb4 [label=\"6-6: statement\", type=statement];\nb5 [label=\"7-7: statement\", type=statement];\nb6 [label=\"8-8: statement\", type=statement];\nb7 [label=\"9-9: statement\", type=statement];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b3 [label=control_flow];\nb3 -> b4 [label=control_flow];\nb4 -> b5 [label=control_flow];\nb5 -> b6 [label=control_flow];\nb6 -> b7 [label=control_flow];\nb7 -> b1 [label=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 6,
+    "edge_additions": 6,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

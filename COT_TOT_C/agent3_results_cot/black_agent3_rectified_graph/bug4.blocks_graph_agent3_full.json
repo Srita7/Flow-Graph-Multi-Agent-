@@ -1,0 +1,54 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected global_statement b1 to function b2 via data_flow, as b2 is the nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Resolved by connecting the final computation b6 to function b2, making b3's data flow contribute to b2's return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Resolved by connecting the final computation b6 to function b2, making b4's data flow contribute to b2's return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Resolved by connecting the final computation b6 to function b2, making b5's data flow contribute to b2's return.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected the final statement b6 to its containing function b2 via data_flow, signifying b2 returns the result of b6.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected statement b7 to function b2 via data_flow, as b7's computation result was unused and b2 is its data producer.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Resolved by the existing call edge from b6 to b8, which makes b8 a connected computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  b1 [label=\"1-1: global_statement\", type=\"global_statement\"];\n  b2 [label=\"2-9: function\", type=function];\n  b3 [label=\"4-4: statement\", type=statement];\n  b4 [label=\"5-5: statement\", type=statement];\n  b5 [label=\"6-6: statement\", type=statement];\n  b6 [label=\"7-7: statement\", type=statement];\n  b7 [label=\"8-8: statement\", type=statement];\n  b8 [label=\"7-7: call_target\", type=\"call_target\"];\n  b1 -> b2 [label=\"data_flow\"];\n  b2 -> b3 [label=contains];\n  b2 -> b4 [label=contains];\n  b2 -> b5 [label=contains];\n  b2 -> b6 [label=contains];\n  b2 -> b7 [label=\"data_flow\"];\n  b3 -> b5 [label=\"data_flow\"];\n  b4 -> b5 [label=\"data_flow\"];\n  b5 -> b6 [label=\"data_flow\"];\n  b6 -> b8 [label=call];\n  b6 -> b2 [label=\"data_flow\"];\n  b7 -> b2 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 7,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

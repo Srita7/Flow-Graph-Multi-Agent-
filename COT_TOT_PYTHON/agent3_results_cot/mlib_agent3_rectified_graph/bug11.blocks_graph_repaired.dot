@@ -1,0 +1,22 @@
+digraph G {
+b1 [label="4-16: function", type=function];
+b2 [label="5-9: control_flow", type="control_flow"];
+b3 [label="6-9: statement_block", type="statement_block"];
+b4 [label="10-13: statement_block", type="statement_block"];
+b5 [label="14-15: control_flow", type="control_flow"];
+b6 [label="15-15: statement_block", type="statement_block"];
+b7 [label="16-16: return_statement", type="return_statement"];
+b8 [label="17-17: return_statement", type="return_statement"];
+b1 -> b2 [label="control_flow"];
+b1 -> b4 [label=contains];
+b1 -> b5 [label=contains];
+b1 -> b7 [label=contains];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b3 -> b5 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b5 -> b6 [label="control_flow"];
+b5 -> b7 [label="control_flow"];
+b6 -> b7 [label="control_flow"];
+b5 -> b8 [label="control_flow"];
+}

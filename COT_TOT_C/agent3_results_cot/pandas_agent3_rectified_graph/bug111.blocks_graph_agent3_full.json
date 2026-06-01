@@ -1,0 +1,18 @@
+{
+  "file_name": "bug111.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed node b2 type from 'control_flow' to 'data_flow' and updated its label for consistency.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-10: function\", type=function];\nb2 [label=\"6-8: data_flow\", type=\"data_flow\"];\nb1 -> b2 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

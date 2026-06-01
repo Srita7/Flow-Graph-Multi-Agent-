@@ -1,0 +1,11 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-6: function\", type=function];\nb1_1 [label=\"4-4: call\", type=call];\nb1_2 [label=\"5-5: control\", type=control];\nb2 [label=\"7-11: function\", type=function];\nb2_1 [label=\"9-9: call\", type=call];\nb2_2 [label=\"10-10: control\", type=control];\nb3 [label=\"12-17: function\", type=function];\nb3_1 [label=\"14-14: call\", type=call];\nb3_2 [label=\"15-15: call\", type=call];\nb3_3 [label=\"16-16: control\", type=control];\nb1 -> b1_1 [label=contains];\nb1 -> b1_2 [label=contains];\nb1_1 -> b1_2 [label=\"control_flow\"];\nb2 -> b2_1 [label=contains];\nb2 -> b2_2 [label=contains];\nb2_1 -> b2_2 [label=\"control_flow\"];\nb3 -> b3_1 [label=contains];\nb3 -> b3_2 [label=contains];\nb3 -> b3_3 [label=contains];\nb3_1 -> b3_2 [label=\"control_flow\"];\nb3_2 -> b3_3 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

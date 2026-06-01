@@ -1,0 +1,18 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b3 to provide necessary data context from the enclosing function.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-16: function\", type=function];\nb2 [label=\"10-14: if\", type=if];\nb3 [label=\"12-13: block\", type=block];\nb4 [label=\"?-?: function_call\", type=\"function_call\"];\nb5 [label=\"?-?: function_call\", type=\"function_call\"];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b4 [label=call];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=call];\nb3 -> b5 [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

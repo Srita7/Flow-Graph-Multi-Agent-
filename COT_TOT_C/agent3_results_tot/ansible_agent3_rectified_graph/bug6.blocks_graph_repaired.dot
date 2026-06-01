@@ -1,0 +1,27 @@
+digraph G {
+b_func_buggy_function [label="3-18: function", type=function];
+b_assign_version [label="4-4: assignment", type=assignment];
+b_assign_requirement [label="5-5: assignment", type=assignment];
+b_assign_parent [label="6-6: assignment", type=assignment];
+b_if_cond1 [label="7-11: control_if", type="control_if"];
+b_return_if [label="10-10: return", type=return];
+b_else_if_cond2 [label="12-16: control_else_if", type="control_else_if"];
+b_call_printf [label="15-15: call", type=call];
+b_return_final [label="17-17: return", type=return];
+b_func_buggy_function -> b_assign_version [label="control_flow"];
+b_func_buggy_function -> b_assign_requirement [label=contains];
+b_func_buggy_function -> b_assign_parent [label=contains];
+b_func_buggy_function -> b_if_cond1 [label=contains];
+b_func_buggy_function -> b_else_if_cond2 [label=contains];
+b_func_buggy_function -> b_return_final [label=contains];
+b_assign_version -> b_assign_requirement [label="control_flow"];
+b_assign_requirement -> b_assign_parent [label="control_flow"];
+b_assign_parent -> b_if_cond1 [label="control_flow"];
+b_if_cond1 -> b_return_if [label="control_flow_true"];
+b_if_cond1 -> b_else_if_cond2 [label="control_flow_false"];
+b_else_if_cond2 -> b_call_printf [label="control_flow_true"];
+b_else_if_cond2 -> b_return_final [label="control_flow_false"];
+b_call_printf -> b_return_final [label="control_flow"];
+b_assign_parent -> b_return_if [label="data_flow"];
+b_assign_parent -> b_return_final [label="data_flow"];
+}

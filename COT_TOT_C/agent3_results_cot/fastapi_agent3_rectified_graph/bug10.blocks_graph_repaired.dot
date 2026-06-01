@@ -1,0 +1,3 @@
+digraph G {
+b1 [label="3-5: function", type=function];
+}

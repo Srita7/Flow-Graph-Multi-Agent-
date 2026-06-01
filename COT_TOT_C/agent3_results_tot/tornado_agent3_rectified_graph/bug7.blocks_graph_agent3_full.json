@@ -1,0 +1,30 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added call b3\u2192b1",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b4\u2192b2",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b4\u2192b5",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-4: function\", type=function];\nb2 [label=\"3-3: return\", type=return];\nb3 [label=\"5-8: function\", type=function];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-7: call\", type=call];\nb1 -> b2 [label=contains];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb3 -> b1 [label=\"call\"];\nb4 -> b2 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

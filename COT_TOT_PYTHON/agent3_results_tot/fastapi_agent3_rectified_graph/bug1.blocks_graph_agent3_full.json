@@ -1,0 +1,66 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b10",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b10->b11 to ensure computation continuation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected from b10 via control_flow to integrate into main flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b12",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b12->b13 to ensure computation continuation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b13",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected from b12 via control_flow to integrate into main flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b14",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Integrated into control flow via b13.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b15",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Integrated into control flow via b14.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b16",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Integrated into control flow via b15.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b17",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b17->b18 to ensure computation continuation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b18",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected from b17 via control_flow to integrate into main flow.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-21: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: expression\", type=expression];\nb4 [label=\"7-7: expression\", type=expression];\nb5 [label=\"8-8: expression\", type=expression];\nb6 [label=\"9-9: expression\", type=expression];\nb7 [label=\"10-10: expression\", type=expression];\nb8 [label=\"11-11: expression\", type=expression];\nb9 [label=\"12-12: expression\", type=expression];\nb10 [label=\"13-13: return\", type=return];\nb11 [label=\"14-14: variable_declaration\", type=\"variable_declaration\"];\nb12 [label=\"15-15: return\", type=return];\nb13 [label=\"16-16: expression\", type=expression];\nb14 [label=\"17-17: comprehension\", type=comprehension];\nb15 [label=\"18-18: expression\", type=expression];\nb16 [label=\"19-19: expression\", type=expression];\nb17 [label=\"20-20: return\", type=return];\nb18 [label=\"21-21: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b13 [label=contains];\nb1 -> b14 [label=contains];\nb1 -> b15 [label=contains];\nb1 -> b16 [label=contains];\nb1 -> b17 [label=contains];\nb1 -> b18 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb14 -> b15 [label=\"control_flow\"];\nb15 -> b16 [label=\"control_flow\"];\nb16 -> b17 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb17 -> b18 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 9,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

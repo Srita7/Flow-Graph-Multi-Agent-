@@ -1,0 +1,9 @@
+strict digraph {
+b1 [label="1-4: struct_definition", type="struct_definition"];
+b2 [label="2-2: variable_declaration", type="variable_declaration"];
+b3 [label="3-3: variable_declaration", type="variable_declaration"];
+b4 [label="5-5: variable_declaration", type="variable_declaration"];
+b1 -> b2 [label=contains];
+b1 -> b3 [label=contains];
+b4 -> b1 [label="data_flow"];
+}

@@ -1,0 +1,18 @@
+strict digraph {
+b1 [label="4-14: function", type=function];
+b2 [label="6-10: for_loop", type="for_loop"];
+b3 [label="7-8: if_statement", type="if_statement"];
+b4 [label="9-10: elif_statement", type="elif_statement"];
+b5 [label="11-12: if_statement", type="if_statement"];
+b1 -> b2 [label="control_flow"];
+b1 -> b5 [label=contains];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label=contains];
+b2 -> b5 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b3 -> b2 [label="control_flow"];
+b3 -> b5 [label="data_flow"];
+b4 -> b2 [label="control_flow"];
+b4 -> b5 [label="data_flow"];
+b5 -> b1 [label="control_flow"];
+}

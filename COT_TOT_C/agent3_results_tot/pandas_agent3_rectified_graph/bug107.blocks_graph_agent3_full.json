@@ -1,0 +1,18 @@
+{
+  "file_name": "bug107.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b8",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b7\u2192b8",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-13: function\", type=function];\nb2 [label=\"4-8: control_if\", type=\"control_if\"];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"9-9: assignment\", type=assignment];\nb6 [label=\"10-10: assignment\", type=assignment];\nb7 [label=\"11-11: assignment\", type=assignment];\nb8 [label=\"12-12: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=\"control_flow\"];\nb3 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> b8 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

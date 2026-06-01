@@ -1,0 +1,18 @@
+{
+  "file_name": "bug27.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned control node 'b2' to function 'b1' via a control_flow edge to complete the control path.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-5: function\", type=function];\nb2 [label=\"4-4: control\", type=control];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

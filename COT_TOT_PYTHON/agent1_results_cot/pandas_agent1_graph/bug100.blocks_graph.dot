@@ -1,0 +1,6 @@
+strict digraph {
+b1 [label="4-10: function", type=function];
+b2 [label="7-9: if", type=if];
+b1 -> b2 [label="control_flow"];
+b2 -> b1 [label="control_flow"];
+}

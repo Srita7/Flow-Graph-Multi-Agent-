@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "orphaned_computation",
+      "fix_description": "Added data_flow edge from b4 to b5, connecting the assignment's result to the return statement.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"6-6: assignment\", type=assignment];\nb3 [label=\"7-7: call\", type=call];\nb4 [label=\"8-8: assignment\", type=assignment];\nb5 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

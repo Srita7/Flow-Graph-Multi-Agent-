@@ -1,0 +1,60 @@
+{
+  "file_name": "bug105.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed control_flow b2->b3 to data_flow; Added control_flow b2->b2_1",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2_1",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added control_flow b2->b2_1",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed incoming control_flow b2->b3 to data_flow; Added control_flow b3->b3_1; Redirected control_flow from b3 to b3_9->b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3_1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b3->b3_1",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3_2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Ensured reachability via control_flow b3->b3_1",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Redirected control_flow from b3_9 to b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added control_flow b5->b5_1; Removed incorrect control_flow b5->b6",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Ensured reachability via control_flow b5_1->b6; Removed incorrect control_flow b5->b6",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-62: function\", type=function];\nb2 [label=\"5-8: function\", type=function];\nb2_1 [label=\"8-8: return\", type=return];\nb3 [label=\"9-45: function\", type=function];\nb3_1 [label=\"29-31: assignment\", type=assignment];\nb3_2 [label=\"32-32: assignment\", type=assignment];\nb3_3 [label=\"33-33: assignment\", type=assignment];\nb3_4 [label=\"35-36: control\", type=control];\nb3_4_1 [label=\"36-36: call\", type=call];\nb3_5 [label=\"37-39: assignment\", type=assignment];\nb3_6 [label=\"40-40: assignment\", type=assignment];\nb3_7 [label=\"41-42: control\", type=control];\nb3_7_1 [label=\"42-42: call\", type=call];\nb3_8 [label=\"43-43: call\", type=call];\nb3_9 [label=\"44-44: return\", type=return];\nb4 [label=\"46-54: call\", type=call];\nb5 [label=\"55-62: function\", type=function];\nb5_1 [label=\"61-61: return\", type=return];\nb6 [label=\"62-62: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b2_1 [label=contains];\nb2 -> b3 [label=\"data_flow\"];\nb2 -> b2_1 [label=\"control_flow\"];\nb3 -> b3_1 [label=contains];\nb3 -> b3_2 [label=contains];\nb3 -> b3_3 [label=contains];\nb3 -> b3_4 [label=contains];\nb3 -> b3_5 [label=contains];\nb3 -> b3_6 [label=contains];\nb3 -> b3_7 [label=contains];\nb3 -> b3_8 [label=contains];\nb3 -> b3_9 [label=contains];\nb3 -> b3_1 [label=\"control_flow\"];\nb3_1 -> b3_2 [label=\"control_flow\"];\nb3_2 -> b3_3 [label=\"control_flow\"];\nb3_3 -> b3_4 [label=\"control_flow\"];\nb3_4 -> b3_4_1 [label=\"control_flow\"];\nb3_4 -> b3_5 [label=\"control_flow\"];\nb3_4_1 -> b3_5 [label=\"control_flow\"];\nb3_5 -> b3_6 [label=\"control_flow\"];\nb3_6 -> b3_7 [label=\"control_flow\"];\nb3_7 -> b3_7_1 [label=\"control_flow\"];\nb3_7 -> b3_8 [label=\"control_flow\"];\nb3_7_1 -> b3_8 [label=\"control_flow\"];\nb3_8 -> b3_9 [label=\"control_flow\"];\nb3_9 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b5_1 [label=contains];\nb5 -> b5_1 [label=\"control_flow\"];\nb5_1 -> b6 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 8,
+    "edge_additions": 5,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

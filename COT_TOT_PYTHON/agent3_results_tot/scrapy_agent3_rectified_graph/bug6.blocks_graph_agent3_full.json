@@ -1,0 +1,30 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Replaced control_flow edge b1->b2 with data_flow, resolving orphaned computation for literal b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Replaced control_flow edge b1->b2 with data_flow, making function b2 the implicit control flow root and resolving its orphaned status.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Replaced control_flow edge b1->b2 with data_flow, making b2 the control flow root and resolving orphaned status for return b3.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-4: literal\", type=literal];\nb2 [label=\"5-6: function\", type=function];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

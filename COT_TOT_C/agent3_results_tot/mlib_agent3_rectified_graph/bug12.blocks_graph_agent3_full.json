@@ -1,0 +1,18 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b6",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Made b6 reachable by inserting it into the control flow: redirected control_flow edge from b5 to b7 to now point to b6, and added a new control_flow edge from b6 to b7.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: preprocessor_directive\", type=\"preprocessor_directive\"];\nb2 [label=\"2-2: typedef\", type=typedef];\nb3 [label=\"3-15: function\", type=function];\nb4 [label=\"4-4: call\", type=call];\nb5 [label=\"5-5: assignment\", type=assignment];\nb6 [label=\"5-5: call\", type=call];\nb7 [label=\"6-6: assignment\", type=assignment];\nb8 [label=\"6-6: call\", type=call];\nb9 [label=\"7-7: assignment\", type=assignment];\nb10 [label=\"7-7: call\", type=call];\nb11 [label=\"8-8: assignment\", type=assignment];\nb12 [label=\"8-8: call\", type=call];\nb13 [label=\"9-9: call\", type=call];\nb14 [label=\"10-10: assignment\", type=assignment];\nb15 [label=\"10-10: call\", type=call];\nb16 [label=\"11-11: assignment\", type=assignment];\nb17 [label=\"11-11: call\", type=call];\nb18 [label=\"12-12: assignment\", type=assignment];\nb19 [label=\"12-12: call\", type=call];\nb20 [label=\"13-13: assignment\", type=assignment];\nb21 [label=\"13-13: call\", type=call];\nb22 [label=\"14-14: return\", type=return];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b7 [label=contains];\nb3 -> b9 [label=contains];\nb3 -> b11 [label=contains];\nb3 -> b13 [label=contains];\nb3 -> b14 [label=contains];\nb3 -> b16 [label=contains];\nb3 -> b18 [label=contains];\nb3 -> b20 [label=contains];\nb3 -> b22 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=contains];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=contains];\nb7 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=contains];\nb9 -> b11 [label=\"control_flow\"];\nb11 -> b12 [label=contains];\nb11 -> b13 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb14 -> b15 [label=contains];\nb14 -> b16 [label=\"control_flow\"];\nb16 -> b17 [label=contains];\nb16 -> b18 [label=\"control_flow\"];\nb18 -> b19 [label=contains];\nb18 -> b20 [label=\"control_flow\"];\nb20 -> b21 [label=contains];\nb20 -> b22 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

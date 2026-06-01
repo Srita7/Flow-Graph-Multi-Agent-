@@ -1,0 +1,44 @@
+{
+  "file_name": "bug117.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 1.6,
+  "faulty_nodes": [
+    {
+      "node_id": "c1",
+      "type": "call",
+      "relations_in": [
+        "b2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "c2",
+      "type": "call",
+      "relations_in": [
+        "b2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "c3",
+      "type": "call",
+      "relations_in": [
+        "b2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "BROKEN_DEPENDENCY"
+    ],
+    "clean_nodes": 2
+  }
+}

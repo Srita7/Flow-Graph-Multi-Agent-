@@ -1,0 +1,47 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 2.3,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "function",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b5",
+      "type": "function",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "b6(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b6",
+      "type": "condition",
+      "relations_in": [
+        "b5(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "INCOMPLETE_CONVERGENCE"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "INCOMPLETE_CONVERGENCE"
+    ],
+    "clean_nodes": 3
+  }
+}

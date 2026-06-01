@@ -1,0 +1,42 @@
+{
+  "file_name": "bug105.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b1\u2192b2",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b2\u2192b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b3\u2192b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed b4\u2192b5 edge label from control_flow to data_flow",
+      "confidence": 10
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains b1\u2192b6",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-18: function\", type=function];\nb2 [label=\"4-4: assignment\", type=assignment];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"6-6: assignment\", type=assignment];\nb5 [label=\"7-9: control_if\", type=\"control_if\"];\nb6 [label=\"8-8: call\", type=call];\nb7 [label=\"10-10: assignment\", type=assignment];\nb8 [label=\"11-11: assignment\", type=assignment];\nb9 [label=\"12-14: control_if\", type=\"control_if\"];\nb10 [label=\"13-13: assignment\", type=assignment];\nb11 [label=\"15-15: call\", type=call];\nb12 [label=\"16-16: return\", type=return];\nb13 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b13 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb9 -> b11 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b1 [label=\"control_flow\"];\nb1 -> b2 [label=\"data_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb1 -> b6 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

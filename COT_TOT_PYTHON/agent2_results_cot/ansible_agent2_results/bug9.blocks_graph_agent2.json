@@ -1,0 +1,66 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "total_nodes": 5,
+  "avg_degree": 3.2,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b3(data_flow)"
+      ],
+      "relations_out": [
+        "b3(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b3",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [
+        "b4(data_flow)",
+        "b2(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b4",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b3(data_flow)"
+      ],
+      "relations_out": [
+        "b5(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b5",
+      "type": "statement",
+      "relations_in": [
+        "b1(data_flow)",
+        "b4(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 4,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 1
+  }
+}

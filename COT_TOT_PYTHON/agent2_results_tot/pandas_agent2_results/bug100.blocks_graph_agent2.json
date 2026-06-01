@@ -1,0 +1,39 @@
+{
+  "file_name": "bug100.blocks_graph",
+  "total_nodes": 7,
+  "avg_degree": 3.1,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "control",
+      "relations_in": [
+        "b1(contains)",
+        "b3(control_flow)"
+      ],
+      "relations_out": [
+        "b5(contains)",
+        "b6(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b7",
+      "type": "unknown",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 5
+  }
+}

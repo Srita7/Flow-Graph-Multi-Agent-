@@ -1,0 +1,11 @@
+{
+  "file_name": "bug3.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-4: struct_definition\", type=\"struct_definition\"];\nb2 [label=\"5-9: function\", type=function];\nb3 [label=\"6-8: if_statement\", type=\"if_statement\"];\nb4 [label=\"7-7: statement\", type=statement];\nb2 -> b3 [label=contains];\nb3 -> b4 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

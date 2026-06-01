@@ -1,0 +1,42 @@
+{
+  "file_name": "bug13.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Changed edge b1->b6 label from data_flow to contains",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added contains edge b1->b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b3->b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b4->b5",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge b6->b1",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-6: control_flow\", type=\"control_flow\"];\nb3 [label=\"6-6: statement\", type=statement];\nb4 [label=\"7-7: statement\", type=statement];\nb5 [label=\"8-8: statement\", type=statement];\nb6 [label=\"9-9: statement\", type=statement];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

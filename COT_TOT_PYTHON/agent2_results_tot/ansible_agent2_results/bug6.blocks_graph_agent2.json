@@ -1,0 +1,99 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "total_nodes": 8,
+  "avg_degree": 2.8,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "control_if",
+      "relations_in": [
+        "b1(control_flow)",
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "b3(control_flow)",
+        "b4(control_flow)",
+        "b6(control_flow)",
+        "b3(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b3",
+      "type": "statement_break",
+      "relations_in": [
+        "b2(control_flow)",
+        "b2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b4",
+      "type": "control_elif",
+      "relations_in": [
+        "b2(control_flow)",
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "b5(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "b5",
+      "type": "statement_continue",
+      "relations_in": [
+        "b4(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b6",
+      "type": "assignment",
+      "relations_in": [
+        "b2(control_flow)",
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b7",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b8",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 7,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "ORPHANED_COMPUTATION",
+      "BROKEN_DEPENDENCY",
+      "UNREACHABLE_CALL",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 1
+  }
+}

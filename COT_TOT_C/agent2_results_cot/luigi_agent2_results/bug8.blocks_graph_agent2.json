@@ -1,0 +1,48 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 3.7,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)",
+        "b2(data_flow)",
+        "b3(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b5",
+      "type": "call",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b6",
+      "type": "return",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 3,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "UNREACHABLE_CALL",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 3
+  }
+}

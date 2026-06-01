@@ -1,0 +1,24 @@
+{
+  "file_name": "bug17.blocks_graph",
+  "total_nodes": 2,
+  "avg_degree": 1.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "control",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "FLOW_MISMATCH"
+    ],
+    "clean_nodes": 1
+  }
+}

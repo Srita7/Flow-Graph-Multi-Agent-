@@ -1,0 +1,18 @@
+{
+  "file_name": "bug10.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow edge from the enclosing function (b1) to the return node (b2), as it's disconnected and no explicit assignment node exists. This represents the function implicitly providing the return value (e.g., None/void).",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"5-6: function\", type=function];\nb2 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b2 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

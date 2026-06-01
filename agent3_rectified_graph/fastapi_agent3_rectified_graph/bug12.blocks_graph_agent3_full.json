@@ -1,0 +1,18 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "incomplete_convergence",
+      "fix_description": "Added missing data_flow from b2 (call) to b3 (return).",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-8: call\", type=call];\nb3 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

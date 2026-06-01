@@ -1,0 +1,8 @@
+strict digraph {
+b1 [label="2-4: struct", type=struct];
+b2 [label="5-7: struct", type=struct];
+b3 [label="8-11: function", type=function];
+b2 -> b1 [label="data_flow"];
+b3 -> b2 [label="data_flow"];
+b3 -> b1 [label="data_flow"];
+}

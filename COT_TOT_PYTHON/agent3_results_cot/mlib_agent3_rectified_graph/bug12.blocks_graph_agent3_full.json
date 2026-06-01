@@ -1,0 +1,78 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b1\u2192b2",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b2\u2192b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b3\u2192b4",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b4\u2192b5",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b5\u2192b6",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b6\u2192b7",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b7\u2192b8",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b8\u2192b9",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b9\u2192b10",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b10\u2192b11",
+      "confidence": 9
+    },
+    {
+      "node_id": "b12",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b12\u2192b1",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-17: function\", type=function];\nb2 [label=\"5-5: statement\", type=statement];\nb3 [label=\"6-6: statement\", type=statement];\nb4 [label=\"7-7: statement\", type=statement];\nb5 [label=\"8-9: statement\", type=statement];\nb6 [label=\"10-10: statement\", type=statement];\nb7 [label=\"11-11: statement\", type=statement];\nb8 [label=\"12-12: statement\", type=statement];\nb9 [label=\"13-13: statement\", type=statement];\nb10 [label=\"14-15: statement\", type=statement];\nb11 [label=\"16-16: statement\", type=statement];\nb12 [label=\"17-17: statement\", type=statement];\n\"cbook.delete_masked_points\";\n\"np.resize\";\nzip;\n\"mcoll.LineCollection\";\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=\"data_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb2 -> \"cbook.delete_masked_points\" [label=call];\nb2 -> b4 [label=\"data_flow\"];\nb2 -> b5 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> \"np.resize\" [label=call];\nb3 -> b5 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb4 -> \"np.resize\" [label=call];\nb5 -> b6 [label=\"data_flow\"];\nb5 -> zip [label=call];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> \"mcoll.LineCollection\" [label=call];\nb7 -> b8 [label=\"data_flow\"];\nb7 -> \"cbook.delete_masked_points\" [label=call];\nb7 -> b9 [label=\"data_flow\"];\nb7 -> b10 [label=\"data_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb8 -> \"np.resize\" [label=call];\nb8 -> b10 [label=\"data_flow\"];\nb9 -> b10 [label=\"data_flow\"];\nb9 -> \"np.resize\" [label=call];\nb10 -> b11 [label=\"data_flow\"];\nb10 -> zip [label=call];\nb11 -> b12 [label=\"control_flow\"];\nb11 -> \"mcoll.LineCollection\" [label=call];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"data_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb12 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 11,
+    "edge_additions": 11,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

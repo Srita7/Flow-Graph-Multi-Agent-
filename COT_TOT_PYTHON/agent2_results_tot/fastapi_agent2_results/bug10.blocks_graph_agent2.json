@@ -1,0 +1,34 @@
+{
+  "file_name": "bug10.blocks_graph",
+  "total_nodes": 2,
+  "avg_degree": 1.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "function",
+      "relations_in": [],
+      "relations_out": [
+        "b2(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    },
+    {
+      "node_id": "b2",
+      "type": "assignment",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "BROKEN_DEPENDENCY"
+    ],
+    "clean_nodes": 0
+  }
+}

@@ -1,0 +1,174 @@
+PROMPT (5115 chars):
+
+GRAPH SURGICAL REPAIR AGENT - DETERMINISTIC MODE
+
+You are Agent-3.
+
+Agent-1 built the graph.
+Agent-2 diagnosed the faults.
+
+Your mission:
+repair structural dependency errors with the SMALLEST legal modification
+and then output the COMPLETE corrected graph.
+
+You NEVER generate source code.
+
+Think internally step-by-step, but OUTPUT JSON ONLY.
+
+--------------------------------------------------
+
+INPUT
+File: bug10.blocks_graph
+Fault Count: 4
+
+Faulty Nodes:
+- b2 (if): ORPHANED_COMPUTATION | in: [b1(data_flow)] | out: [b2_stmt1(control_flow_true), b2_stmt2(contains), b3(control_flow_false)]
+- b2_stmt1 (call): UNREACHABLE_CALL | in: [b2(control_flow_true)] | out: [b2_stmt2(control_flow_next)]
+- b3 (else if): ORPHANED_COMPUTATION | in: [b1(data_flow), b2(control_flow_false)] | out: []
+- b4 (if): ORPHANED_COMPUTATION | in: [] | out: []
+
+Graph Info:
+Total Nodes: 25
+Root Node: b3
+
+Original Graph:
+digraph G {
+b1 [label="3-27: function", type=function];
+b2 [label="5-8: if", type=if];
+b2_stmt1 [label="6-6: call", type=call];
+b2_stmt2 [label="7-7: return", type=return];
+b3 [label="9-20: else if", type="else if"];
+b4 [label="10-11: if", type=if];
+b4_stmt [label="11-11: statement", type=statement];
+b6 [label="12-14: else if", type="else if"];
+b6_stmt [label="13-13: statement", type=statement];
+b8 [label="15-15: statement", type=statement];
+b9 [label="16-18: if", type=if];
+b10 [label="19-19: return", type=return];
+b11 [label="21-25: if", type=if];
+b12 [label="22-22: return", type=return];
+b13 [label="23-25: else", type=else];
+b14 [label="24-24: return", type=return];
+b15 [label="26-26: return", type=return];
+warn;
+is_dict;
+argmax;
+reshape;
+make_weights;
+len;
+ones_vector;
+ones_matrix;
+b1 -> b2 [label="data_flow"];
+b1 -> b3 [label="data_flow"];
+b1 -> b11 [label=contains];
+b1 -> b15 [label="data_flow"];
+b2 -> b2_stmt1 [label="control_flow_true"];
+b2 -> b2_stmt2 [label=contains];
+b2 -> b3 [label="control_flow_false"];
+b2_stmt1 -> b2_stmt2 [label="control_flow_next"];
+b2_stmt1 -> warn [label=call];
+b2_stmt2 -> b1 [label="data_flow"];
+b3 -> b4 [label="control_flow_true"];
+b3 -> b6 [label=contains];
+b3 -> b8 [label=contains];
+b3 -> b9 [label=contains];
+b3 -> b10 [label=contains];
+b3 -> b11 [label="control_flow_false"];
+b3 -> is_dict [label=call];
+b4 -> b4_stmt [label="control_flow_true"];
+b4 -> b6 [label="control_flow_false"];
+b4_stmt -> b8 [label="data_flow"];
+b4_stmt -> argmax [label=call];
+b6 -> b6_stmt [label="control_flow_true"];
+b6 -> b8 [label="control_flow_next"];
+b6_stmt -> b8 [label="data_flow"];
+b6_stmt -> reshape [label=call];
+b8 -> b9 [label="data_flow"];
+b8 -> make_weights [label=call];
+b8 -> b10 [label="data_flow"];
+b9 -> b10 [label="control_flow_next"];
+b9 -> len [label=call];
+b10 -> b1 [label="data_flow"];
+b11 -> b12 [label="data_flow"];
+b11 -> b13 [label="control_flow_false"];
+b12 -> b1 [label="control_flow_return"];
+b12 -> ones_vector [label=call];
+b13 -> b14 [label="data_flow"];
+b14 -> b1 [label="control_flow_return"];
+b14 -> ones_matrix [label=call];
+b15 -> b1 [label="control_flow_return"];
+}
+
+--------------------------------------------------
+
+FOR EACH FAULTY NODE FOLLOW EXACTLY THIS PROCESS
+
+STEP 1 — INSPECT  
+List its incoming and outgoing relations.
+Identify missing producer / consumer / hierarchy.
+
+STEP 2 — DIAGNOSE  
+Explain why the current structure violates the fault_type.
+
+STEP 3 — PROPOSE MINIMAL PATCH  
+Prefer in this order:
+1. add one edge  
+2. change label  
+3. add one tiny temp node (ONLY for cycles)
+
+STEP 4 — VERIFY  
+After patch:
+✓ node becomes valid  
+✓ no new cycles unless required  
+✓ other nodes unaffected  
+✓ graph remains connected  
+
+STEP 5 — APPLY  
+Integrate ONLY this patch into the original graph.
+
+--------------------------------------------------
+
+REPAIR RULES (STRICT)
+
+BROKEN_DEPENDENCY  
+→ add data_flow producer → consumer.
+
+FLOW_MISMATCH  
+→ replace control_flow with data_flow.
+
+INCOMPLETE_CONVERGENCE  
+→ add missing data_flow into return.
+
+ORPHANED_COMPUTATION  
+→ connect to nearest downstream usa
+
+RESPONSE:
+{
+  "file_name": "bug10.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Changed edge b1->b2 from data_flow to contains to properly integrate the 'if' block into the function's hierarchy.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2_stmt1",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added a 'contains' edge from b2 to b2_stmt1 to establish proper hierarchical containment for the call statement within its 'if' block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Removed the data_flow edge from b1 to b3, as b3 is already correctly reached via control_flow_false from b2 and should not be directly contained by b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'contains' edge from b3 to b4 to properly integrate the nested 'if' block into its parent 'else if' block.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-27: function\", type=function];\nb2 [label=\"5-8: if\", type=if];\nb2_stmt1 [label=\"6-6: call\", type=call];\nb2_stmt2 [label=\"7-7: return\", type=return];\nb3 [label=\"9-20: else if\", type=\"else if\"];\nb4 [label=\"10-11: if\", type=if];\nb4_stmt [label=\"11-11: statement\", type=statement];\nb6 [label=\"12-14: else if\", type=\"else if\"];\nb6_stmt [label=\"13-13: statement\", type=statement];\nb8 [label=\"15-15: statement\", type=statement];\nb9 [label=\"16-18: if\", type=if];\nb10 [label=\"19-19: return\", type=return];\nb11 [label=\"21-25: if\", type=if];\nb12 [label=\"22-22: return\", type=return];\nb13 [label=\"23-25: else\", type=else];\nb14 [label=\"24-24: return\", type=return];\nb15 [label=\"26-26: return\", type=return];\nwarn;\nis_dict;\nargmax;\nreshape;\nmake_weights;\nlen;\nones_vector;\nones_matrix;\nb1 -> b2 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b15 [label=\"data_flow\"];\nb2 -> b2_stmt1 [label=contains];\nb2 -> b2_stmt1 [label=\"control_flow_true\"];\nb2 -> b2_stmt2 [label=contains];\nb2 -> b3 [label=\"control_flow_false\"];\nb2_stmt1 -> b2_stmt2 [label=\"control_flow_next\"];\nb2_stmt1 -> warn [label=call];\nb2_stmt2 -> b1 [label=\"data_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b4 [label=\"control_flow_true\"];\nb3 -> b6 [label=contains];\nb3 -> b8 [label=contains];\nb3 -> b9 [label=contains];\nb3 -> b10 [label=contains];\nb3 -> b11 [label=\"control_flow_false\"];\nb3 -> is_dict [label=call];\nb4 -> b4_stmt [label=\"control_flow_

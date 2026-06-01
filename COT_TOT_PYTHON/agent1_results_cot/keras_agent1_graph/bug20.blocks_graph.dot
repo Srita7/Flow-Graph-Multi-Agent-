@@ -1,0 +1,6 @@
+strict digraph {
+b1 [label="4-22: function", type=function];
+b2 [label="7-9: function", type=function];
+b3 [label="23-23: function", type=function];
+b1 -> b2 [label=call];
+}

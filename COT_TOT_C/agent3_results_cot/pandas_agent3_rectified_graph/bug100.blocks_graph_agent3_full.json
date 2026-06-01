@@ -1,0 +1,24 @@
+{
+  "file_name": "bug100.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b12",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b12->b7 to connect the orphaned computation to its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b13",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow b10->b13 and b11->b13 to complete the convergence of data into b13.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-11: function\", type=function];\nb2 [label=\"4-4: statement\", type=statement];\nb3 [label=\"5-5: statement\", type=statement];\nb4 [label=\"6-9: control_flow\", type=\"control_flow\"];\nb5 [label=\"7-7: statement\", type=statement];\nb6 [label=\"8-8: statement\", type=statement];\nb7 [label=\"10-10: statement\", type=statement];\nb8 [label=\"None-None: function\", type=function];\nb9 [label=\"None-None: function\", type=function];\nb10 [label=\"None-None: function\", type=function];\nb11 [label=\"None-None: function\", type=function];\nb12 [label=\"None-None: function\", type=function];\nb13 [label=\"None-None: function\", type=function];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b8 [label=call];\nb3 -> b9 [label=call];\nb4 -> b5 [label=contains];\nb4 -> b6 [label=contains];\nb5 -> b10 [label=call];\nb5 -> b11 [label=call];\nb6 -> b12 [label=call];\nb6 -> b13 [label=call];\nb12 -> b7 [label=data_flow];\nb10 -> b13 [label=data_flow];\nb11 -> b13 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

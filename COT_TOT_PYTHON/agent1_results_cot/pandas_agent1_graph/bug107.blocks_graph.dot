@@ -1,0 +1,38 @@
+strict digraph {
+b1 [label="4-17: function", type=function];
+b2 [label="5-5: if", type=if];
+b3 [label="6-6: statement", type=statement];
+b4 [label="7-7: else", type=else];
+b5 [label="10-10: statement", type=statement];
+b6 [label="11-11: statement", type=statement];
+b7 [label="12-15: statement", type=statement];
+b8 [label="16-16: statement", type=statement];
+b9 [label="17-17: return", type=return];
+Index;
+reindex;
+DataFrame;
+reshape;
+len;
+_convert;
+b1 -> b2 [label="control_flow"];
+b1 -> b6 [label=contains];
+b1 -> b7 [label=contains];
+b1 -> b8 [label=contains];
+b1 -> b9 [label="data_flow"];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label="control_flow"];
+b3 -> b6 [label="control_flow"];
+b3 -> b7 [label="data_flow"];
+b4 -> b5 [label=contains];
+b5 -> b6 [label="control_flow"];
+b5 -> Index [label=call];
+b5 -> b7 [label="data_flow"];
+b6 -> b7 [label="data_flow"];
+b6 -> reindex [label=call];
+b7 -> b8 [label="data_flow"];
+b7 -> DataFrame [label=call];
+b7 -> reshape [label=call];
+b7 -> len [label=call];
+b8 -> b9 [label="control_flow"];
+b8 -> _convert [label=call];
+}

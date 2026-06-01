@@ -1,0 +1,22 @@
+{
+  "file_name": "bug112.blocks_graph",
+  "total_nodes": 4,
+  "avg_degree": 1.5,
+  "faulty_nodes": [
+    {
+      "node_id": "b0",
+      "type": "docstring",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 3
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b5",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains edge from function b1 to call_expression b5.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-18: function\", type=function];\nb2 [label=\"7-11: if_statement\", type=\"if_statement\"];\nb3 [label=\"10-10: return_statement\", type=\"return_statement\"];\nb4 [label=\"12-16: else_if_statement\", type=\"else_if_statement\"];\nb5 [label=\"15-15: call_expression\", type=\"call_expression\"];\nb6 [label=\"17-17: return_statement\", type=\"return_statement\"];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb1 -> b6 [label=\"data_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb1 -> b5 [label=\"contains\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

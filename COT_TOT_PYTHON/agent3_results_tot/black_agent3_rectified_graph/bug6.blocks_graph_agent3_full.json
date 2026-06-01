@@ -1,0 +1,84 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added structural dependency: b1 -> b2 [label=contains]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added structural dependency: b3 -> b4 [label=contains]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected computation to containing function: b5 -> b3 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected computation to containing function: b6 -> b3 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Merged control flow branch: b8 -> b9 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Merged control flow branch: b11 -> b12 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b12",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Merged control flow branch: b13 -> b14 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b14",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected final statement to containing function: b14 -> b1 [label=control_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added structural dependency: b7 -> b8 [label=contains]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added structural dependency: b9 -> b10 [label=contains]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow dependency: b10 -> b11 [label=data_flow]",
+      "confidence": 9
+    },
+    {
+      "node_id": "b13",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added structural dependency: b12 -> b13 [label=contains]",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-22: function\", type=function];\nb2 [label=\"5-8: statement\", type=statement];\nb3 [label=\"9-14: function\", type=function];\nb4 [label=\"10-12: statement\", type=statement];\nb5 [label=\"13-13: statement\", type=statement];\nb6 [label=\"14-14: statement\", type=statement];\nb7 [label=\"15-16: control\", type=control];\nb8 [label=\"16-16: assignment\", type=assignment];\nb9 [label=\"17-19: function\", type=function];\nb10 [label=\"18-18: assignment\", type=assignment];\nb11 [label=\"19-19: assignment\", type=assignment];\nb12 [label=\"20-21: function\", type=function];\nb13 [label=\"21-21: control\", type=control];\nb14 [label=\"22-22: statement\", type=statement];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b14 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=contains];\nb3 -> b7 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=\"control_flow\"];\nb5 -> b3 [label=\"control_flow\"];\nb6 -> b3 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> b8 [label=contains];\nb7 -> b9 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb9 -> b10 [label=contains];\nb9 -> b11 [label=contains];\nb9 -> b12 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb10 -> b11 [label=\"data_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb12 -> b13 [label=contains];\nb12 -> b14 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb14 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 12,
+    "edge_additions": 12,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

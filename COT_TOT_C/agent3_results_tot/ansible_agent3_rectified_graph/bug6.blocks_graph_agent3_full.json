@@ -1,0 +1,24 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b_return_if",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b_assign_parent -> b_return_if",
+      "confidence": 9
+    },
+    {
+      "node_id": "b_return_final",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b_assign_parent -> b_return_final",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb_func_buggy_function [label=\"3-18: function\", type=function];\nb_assign_version [label=\"4-4: assignment\", type=assignment];\nb_assign_requirement [label=\"5-5: assignment\", type=assignment];\nb_assign_parent [label=\"6-6: assignment\", type=assignment];\nb_if_cond1 [label=\"7-11: control_if\", type=\"control_if\"];\nb_return_if [label=\"10-10: return\", type=return];\nb_else_if_cond2 [label=\"12-16: control_else_if\", type=\"control_else_if\"];\nb_call_printf [label=\"15-15: call\", type=call];\nb_return_final [label=\"17-17: return\", type=return];\nb_func_buggy_function -> b_assign_version [label=\"control_flow\"];\nb_func_buggy_function -> b_assign_requirement [label=contains];\nb_func_buggy_function -> b_assign_parent [label=contains];\nb_func_buggy_function -> b_if_cond1 [label=contains];\nb_func_buggy_function -> b_else_if_cond2 [label=contains];\nb_func_buggy_function -> b_return_final [label=contains];\nb_assign_version -> b_assign_requirement [label=\"control_flow\"];\nb_assign_requirement -> b_assign_parent [label=\"control_flow\"];\nb_assign_parent -> b_if_cond1 [label=\"control_flow\"];\nb_if_cond1 -> b_return_if [label=\"control_flow_true\"];\nb_if_cond1 -> b_else_if_cond2 [label=\"control_flow_false\"];\nb_else_if_cond2 -> b_call_printf [label=\"control_flow_true\"];\nb_else_if_cond2 -> b_return_final [label=\"control_flow_false\"];\nb_call_printf -> b_return_final [label=\"control_flow\"];\nb_assign_parent -> b_return_if [label=\"data_flow\"];\nb_assign_parent -> b_return_final [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "file_name": "bug106.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b2->b1 to complete function execution, resolving orphaned computation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added control_flow b2->b1 to ensure control flow convergence.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-8: function\", type=function];\nb2 [label=\"4-6: if\", type=if];\nb1 -> b2 [label=contains];\nb2 -> b1 [label=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

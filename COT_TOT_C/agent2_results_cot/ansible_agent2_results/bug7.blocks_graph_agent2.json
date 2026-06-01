@@ -1,0 +1,26 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 1.3,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "for_loop",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "b3(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "BROKEN_DEPENDENCY"
+    ],
+    "clean_nodes": 2
+  }
+}

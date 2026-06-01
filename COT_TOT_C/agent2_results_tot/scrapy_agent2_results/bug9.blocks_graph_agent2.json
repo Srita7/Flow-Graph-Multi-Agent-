@@ -1,0 +1,33 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 0.7,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "directive",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b3",
+      "type": "return",
+      "relations_in": [
+        "b2(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 1
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b5",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Redirected 'contains' edge from b3 to b4, and removed 'control_flow' edge to b6.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Removed 'control_flow' edge to b7.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added 'control_flow' edge from b5 to b9 to integrate the function call into the main execution flow.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b10",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Removed 'control_flow' edge to b11.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b11",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Removed 'control_flow' edge to b12.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-17: function\", type=function];\nb2 [label=\"6-6: decorator\", type=decorator];\nb3 [label=\"7-9: class\", type=class];\nb4 [label=\"8-9: function\", type=function];\nb5 [label=\"9-9: return\", type=return];\nb6 [label=\"10-10: return\", type=return];\nb7 [label=\"12-12: decorator\", type=decorator];\nb8 [label=\"13-15: class\", type=class];\nb9 [label=\"14-15: function\", type=function];\nb10 [label=\"15-15: return\", type=return];\nb11 [label=\"16-16: return\", type=return];\nb12 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b6 [label=\"control_flow\"];\nb4 -> b5 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b9 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=contains];\nb8 -> b11 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b6",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b6->b7 to connect orphaned computation to its nearest downstream usage.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: global_statement\", type=\"global_statement\"];\nb2 [label=\"2-2: global_statement\", type=\"global_statement\"];\nb3 [label=\"3-8: function\", type=function];\nb4 [label=\"5-5: statement\", type=statement];\nb5 [label=\"6-6: statement\", type=statement];\nb6 [label=\"7-7: statement\", type=statement];\nb7 [label=\"8-8: statement\", type=statement];\nmake_sort_lambda;\nupdate_seen_tokens;\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb3 -> b6 [label=contains];\nb3 -> b7 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> make_sort_lambda [label=call];\nb4 -> b6 [label=\"data_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb5 -> update_seen_tokens [label=call];\nb6 -> b7 [label=\"control_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb6 -> make_sort_lambda [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

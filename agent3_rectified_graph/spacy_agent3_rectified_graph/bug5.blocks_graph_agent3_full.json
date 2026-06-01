@@ -1,0 +1,30 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "circular_dependency",
+      "fix_description": "Broken circular data_flow dependency with b2 by replacing the direct b2->b1 edge with a path through a new temporary node b4 (b2->b4, b4->b1).",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "broken_dependency",
+      "fix_description": "Rectified problematic output data_flow dependency by routing b2's data_flow to b1 through temporary node b4 to break the cycle. Added data_flow b2->b3 to connect assignment to return.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow edge from nearest assignment b2 to return b3.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: return\", type=return];\nb4 [label=\"temp_cycle_break\", type=temp];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb4 -> b1 [label=\"data_flow\"];\nb2 -> b3 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 1,
+    "nodes_added": 1
+  }
+}

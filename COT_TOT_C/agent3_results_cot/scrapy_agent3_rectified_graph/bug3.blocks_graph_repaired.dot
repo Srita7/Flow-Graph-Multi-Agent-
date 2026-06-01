@@ -1,0 +1,5 @@
+digraph G {
+b1 [label="3-12: function", type=function];
+r1 [label="return", type=return];
+b1 -> r1 [type=data_flow];
+}

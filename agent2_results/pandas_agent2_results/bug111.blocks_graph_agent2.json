@@ -1,0 +1,26 @@
+{
+  "file_name": "bug111.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 3.3,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "if",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [
+        "b5(control_flow)"
+      ],
+      "fault_score": 8,
+      "fault_type": "incomplete_convergence"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "incomplete_convergence"
+    ],
+    "clean_nodes": 5
+  }
+}

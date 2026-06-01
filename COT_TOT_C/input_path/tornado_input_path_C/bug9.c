@@ -1,0 +1,2 @@
+void buggy_function() {
+}

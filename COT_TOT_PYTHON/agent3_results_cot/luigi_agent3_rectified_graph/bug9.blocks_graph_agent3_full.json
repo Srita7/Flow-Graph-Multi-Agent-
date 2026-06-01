@@ -1,0 +1,30 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a control_flow edge from the function node 'b1' to 'b2', connecting the function's entry point to its initial control flow block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'contains' edge from 'b3' to 'b4'. Based on line numbers (b3: 9-13, b4: 12-13), 'b4' is structurally contained within 'b3', resolving a hierarchical dependency error.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "The addition of the 'contains' edge from 'b3' to 'b4' (as part of b3's fix) resolves b4's structural dependency as a contained block. Its control flow entry from 'b3' was already present.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-7: function\", type=function];\nb2 [label=\"8-8: control_flow\", type=\"control_flow\"];\nb3 [label=\"9-13: control_flow\", type=\"control_flow\"];\nb4 [label=\"12-13: control_flow\", type=\"control_flow\"];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

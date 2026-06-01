@@ -1,0 +1,6 @@
+strict digraph {
+b1 [label="1-1: global_statement", type="global_statement"];
+b2 [label="2-5: function", type=function];
+b3 [label="4-4: statement", type=statement];
+b2 -> b3 [label=contains];
+}

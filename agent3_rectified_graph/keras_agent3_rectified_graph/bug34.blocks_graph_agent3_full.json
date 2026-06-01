@@ -1,0 +1,42 @@
+{
+  "file_name": "bug34.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "flow_mismatch",
+      "fix_description": "Changed edge b2->b3 label from control_flow to data_flow.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "flow_mismatch",
+      "fix_description": "Changed edge b3->b4 label from control_flow to data_flow.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "flow_mismatch",
+      "fix_description": "Changed edge b4->b5 label from control_flow to data_flow.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "broken_dependency",
+      "fix_description": "Changed edge b5->b6 label from control_flow to data_flow to establish data dependency for the return node.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "disconnected_return",
+      "fix_description": "Ensured b5->b6 is data_flow, connecting the return node to its nearest assignment.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"8-8: assignment\", type=assignment];\nb6 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=\"data_flow\"];\nb2 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 0,
+    "edge_modifications": 4,
+    "nodes_added": 0
+  }
+}

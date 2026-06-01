@@ -1,0 +1,24 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned computation b4 to the nearest downstream usage b6 (return) via a data_flow edge.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected orphaned computation b5 to the nearest downstream usage b6 (return) via a data_flow edge.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-10: function\", type=function];\nb2 [label=\"4-4: declaration\", type=declaration];\nb3 [label=\"5-6: declaration\", type=declaration];\nb4 [label=\"7-7: call\", type=call];\nb5 [label=\"8-8: call\", type=call];\nb6 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> b5 [label=\"data_flow\"];\nb4 -> b6 [label=\"data_flow\"];\nb5 -> b6 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

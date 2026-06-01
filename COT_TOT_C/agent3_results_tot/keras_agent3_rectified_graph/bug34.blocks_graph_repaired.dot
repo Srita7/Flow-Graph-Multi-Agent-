@@ -1,0 +1,25 @@
+digraph G {
+b0 [label="1-1: statement", type=statement];
+b0_1 [label="2-2: statement", type=statement];
+b1 [label="3-9: function", type=function];
+b2 [label="4-4: assignment", type=assignment];
+b3 [label="5-5: assignment", type=assignment];
+b4 [label="6-6: assignment", type=assignment];
+b5 [label="7-7: assignment", type=assignment];
+b6 [label="8-8: control", type=control];
+b0 -> b0_1 [label="control_flow"];
+b0_1 -> b1 [label="control_flow"];
+b1 -> b2 [label=contains];
+b1 -> b3 [label=contains];
+b1 -> b4 [label=contains];
+b1 -> b5 [label=contains];
+b1 -> b6 [label=contains];
+b2 -> b3 [label="control_flow"];
+b3 -> b4 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b5 -> b6 [label="control_flow"];
+b2 -> b3 [label="data_flow"];
+b3 -> b4 [label="data_flow"];
+b4 -> b5 [label="data_flow"];
+b5 -> b6 [label="data_flow"];
+}

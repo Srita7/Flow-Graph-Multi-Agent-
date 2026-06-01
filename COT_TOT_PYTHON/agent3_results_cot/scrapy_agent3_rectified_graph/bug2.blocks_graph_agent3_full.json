@@ -1,0 +1,18 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "CIRCULAR_DEPENDENCY",
+      "fix_description": "Modified control_flow edge b4->b1 to b4->temp_node_0 to break circular dependency, as a return_statement should exit the function, not feed control back into it.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-7: function\", type=function];\nb2 [label=\"5-6: loop\", type=loop];\nb3 [label=\"6-6: expression_statement\", type=\"expression_statement\"];\nb4 [label=\"7-7: return_statement\", type=return_statement];\ntemp_node_0;\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb3 -> b2 [label=\"control_flow\"];\nb4 -> temp_node_0 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 1
+  }
+}

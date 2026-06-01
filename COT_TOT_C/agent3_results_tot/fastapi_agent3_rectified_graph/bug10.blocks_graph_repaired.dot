@@ -1,0 +1,5 @@
+digraph G {
+b1 [label="3-5: function", type=function];
+b2 [label="4-4: control", type=control];
+b1 -> b2 [label="data_flow"];
+}

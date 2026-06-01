@@ -1,0 +1,24 @@
+{
+  "file_name": "bug8.blocks_graph",
+  "total_nodes": 2,
+  "avg_degree": 1.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "disconnected_return"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "disconnected_return"
+    ],
+    "clean_nodes": 1
+  }
+}

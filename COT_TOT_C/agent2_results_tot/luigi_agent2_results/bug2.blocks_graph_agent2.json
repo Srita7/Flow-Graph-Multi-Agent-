@@ -1,0 +1,26 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "total_nodes": 10,
+  "avg_degree": 3.2,
+  "faulty_nodes": [
+    {
+      "node_id": "b9",
+      "type": "assignment",
+      "relations_in": [
+        "b8(control_flow)"
+      ],
+      "relations_out": [
+        "b10(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 9
+  }
+}

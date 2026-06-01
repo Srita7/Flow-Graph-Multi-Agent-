@@ -1,0 +1,78 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "total_nodes": 12,
+  "avg_degree": 2.8,
+  "faulty_nodes": [
+    {
+      "node_id": "b5",
+      "type": "return",
+      "relations_in": [
+        "b3(contains)",
+        "b4(control_flow)"
+      ],
+      "relations_out": [
+        "b6(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b6",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)",
+        "b5(control_flow)"
+      ],
+      "relations_out": [
+        "b7(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b9",
+      "type": "assignment",
+      "relations_in": [
+        "b8(control_flow)"
+      ],
+      "relations_out": [
+        "b10(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b10",
+      "type": "call",
+      "relations_in": [
+        "b9(control_flow)"
+      ],
+      "relations_out": [
+        "b11(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b11",
+      "type": "return",
+      "relations_in": [
+        "b1(contains)",
+        "b10(control_flow)"
+      ],
+      "relations_out": [
+        "b12(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "FLOW_MISMATCH",
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 7
+  }
+}

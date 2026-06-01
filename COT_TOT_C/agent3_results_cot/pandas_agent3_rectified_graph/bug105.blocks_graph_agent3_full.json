@@ -1,0 +1,30 @@
+{
+  "file_name": "bug105.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b6",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow edge from b6 to b1 to ensure its computation converges into the function's overall data context.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow edge from b3 to b4 as specified by the broken dependency.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b5 to b1 to connect its computation to the nearest downstream usage (the function's overall data context).",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-18: function\", type=function];\nb6 [label=\"4-4: expression_statement\", type=\"expression_statement\"];\nb7 [label=\"5-5: expression_statement\", type=\"expression_statement\"];\nb8 [label=\"6-6: expression_statement\", type=\"expression_statement\"];\nb2 [label=\"7-9: if_statement\", type=\"if_statement\"];\nb3 [label=\"8-8: expression_statement\", type=\"expression_statement\"];\nb9 [label=\"10-10: expression_statement\", type=\"expression_statement\"];\nb10 [label=\"11-11: expression_statement\", type=\"expression_statement\"];\nb4 [label=\"12-14: if_statement\", type=\"if_statement\"];\nb5 [label=\"13-13: expression_statement\", type=\"expression_statement\"];\nb11 [label=\"15-15: expression_statement\", type=\"expression_statement\"];\nb12 [label=\"16-16: expression_statement\", type=\"expression_statement\"];\nb13 [label=\"17-17: expression_statement\", type=\"expression_statement\"];\nconstruct_axes;\nget_axis_names;\nget_axis_numbers;\nunique_axes;\nraise_value_error;\nconstruct_new_axes;\ntranspose_values;\nshould_copy;\ncopy_values;\nvalidate_transpose;\nconstruct_result;\nb1 -> b6 [label=\"data_flow\"];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b2 [label=contains];\nb1 -> b9 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b4 [label=\"data_flow\"];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b13 [label=\"data_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb6 -> construct_axes [label=call];\nb6 -> b8 [label=\"data_flow\"];\nb6 -> b2 [label=\"data_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb7 -> get_axis_names [label=call];\nb8 -> b2 [label=\"control_flow\"];\nb8 -> get_axis_numbers [label=call];\nb8 -> b10 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b9 [label=\"control_flow\"];\nb2 -> unique_axes [label=call];\nb3 -> b1 [label=\"control_flow\"];\nb3 -> raise_value_error [label=call];\nb9 -> b10 [label=\"control_flow\"];\nb9 -> construct_new_axes [label=call];\nb9 -> b12 [label=\"data_flow\"];\nb10 -> b4 [label=\"control_flow\"];\nb10 -> transpose_values [label=call];\nb10 -> b5 [label=\"data_flow\"];\nb10 -> b12 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b11 [label=\"control_flow\"];\nb4 -> should_copy [label=call];\nb5 -> b11 [label=\"control_flow\"];\nb5 -> copy_values [label=call];\nb5 -> b12 [label=\"data_flow\"];\nb11 -> b12 [label=\"control_flow\"];\nb11 -> validate_transpose [label=call];\nb12 -> b1 [label=\"control_flow\"];\nb12 -> construct_result [label=call];\nb6 -> b1 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb5 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

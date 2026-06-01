@@ -1,0 +1,18 @@
+{
+  "file_name": "bug1.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow b3\u2192b4",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"8-31: function\", type=function];\nb2 [label=\"9-9: assignment\", type=assignment];\nb3 [label=\"11-11: assignment\", type=assignment];\nb4 [label=\"13-16: control\", type=control];\nb5 [label=\"14-14: assignment\", type=assignment];\nb6 [label=\"15-15: assignment\", type=assignment];\nb7 [label=\"17-17: assignment\", type=assignment];\nb8 [label=\"19-19: return\", type=return];\nb9 [label=\"19-19: call\", type=call];\nb10 [label=\"19-19: call\", type=call];\nb11 [label=\"21-21: assignment\", type=assignment];\nb12 [label=\"22-22: assignment\", type=assignment];\nb13 [label=\"23-23: assignment\", type=assignment];\nb14 [label=\"24-26: control\", type=control];\nb15 [label=\"25-25: return\", type=return];\nb16 [label=\"25-25: call\", type=call];\nb17 [label=\"27-27: call\", type=call];\nb18 [label=\"28-28: call\", type=call];\nb19 [label=\"29-29: return\", type=return];\nb20 [label=\"29-29: call\", type=call];\nb21 [label=\"30-30: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b11 [label=contains];\nb1 -> b12 [label=contains];\nb1 -> b13 [label=contains];\nb1 -> b14 [label=contains];\nb1 -> b17 [label=contains];\nb1 -> b18 [label=contains];\nb1 -> b19 [label=contains];\nb1 -> b21 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=contains];\nb4 -> b7 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=contains];\nb9 -> b10 [label=contains];\nb11 -> b12 [label=\"control_flow\"];\nb12 -> b13 [label=\"control_flow\"];\nb13 -> b14 [label=\"control_flow\"];\nb14 -> b15 [label=\"control_flow\"];\nb14 -> b17 [label=\"control_flow\"];\nb15 -> b16 [label=contains];\nb17 -> b18 [label=\"control_flow\"];\nb18 -> b19 [label=\"control_flow\"];\nb19 -> b20 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

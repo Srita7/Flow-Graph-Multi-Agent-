@@ -1,0 +1,18 @@
+{
+  "file_name": "bug106.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow edge b3->b4 with data_flow to resolve flow mismatch for if statement.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: global_include\", type=\"global_include\"];\nb2 [label=\"2-2: global_typedef\", type=\"global_typedef\"];\nb3 [label=\"3-8: function\", type=function];\nb4 [label=\"4-6: if\", type=if];\nb5 [label=\"7-7: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb3 -> b5 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

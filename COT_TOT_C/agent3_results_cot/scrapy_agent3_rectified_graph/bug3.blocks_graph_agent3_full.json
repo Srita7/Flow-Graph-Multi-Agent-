@@ -1,0 +1,18 @@
+{
+  "file_name": "bug3.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'return' node 'r1' and a data_flow edge from 'b1' to 'r1' to resolve the orphaned computation.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-12: function\", type=function];\nr1 [label=\"return\", type=return];\nb1 -> r1 [type=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 1
+  }
+}

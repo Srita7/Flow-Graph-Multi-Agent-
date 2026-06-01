@@ -1,0 +1,18 @@
+{
+  "file_name": "bug9.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b7",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Replaced control_flow edge b5->b7 with data_flow",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-8: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: call\", type=call];\nb5 [label=\"7-7: assignment\", type=assignment];\nb6 [label=\"7-7: call\", type=call];\nb7 [label=\"8-8: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b7 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=contains];\nb5 -> b7 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 0,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

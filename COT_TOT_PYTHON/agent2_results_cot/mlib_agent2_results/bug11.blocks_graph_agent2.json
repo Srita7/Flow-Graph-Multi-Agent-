@@ -1,0 +1,60 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "total_nodes": 8,
+  "avg_degree": 3.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b3",
+      "type": "statement_block",
+      "relations_in": [
+        "b2(control_flow)"
+      ],
+      "relations_out": [
+        "b1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "CIRCULAR_DEPENDENCY"
+    },
+    {
+      "node_id": "b6",
+      "type": "statement_block",
+      "relations_in": [
+        "b5(control_flow)"
+      ],
+      "relations_out": [
+        "b1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "CIRCULAR_DEPENDENCY"
+    },
+    {
+      "node_id": "b7",
+      "type": "statement_block",
+      "relations_in": [
+        "b1(contains)",
+        "b5(control_flow)"
+      ],
+      "relations_out": [
+        "b1(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "CIRCULAR_DEPENDENCY"
+    },
+    {
+      "node_id": "b8",
+      "type": "unknown",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 4,
+    "common_patterns": [
+      "CIRCULAR_DEPENDENCY",
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 4
+  }
+}

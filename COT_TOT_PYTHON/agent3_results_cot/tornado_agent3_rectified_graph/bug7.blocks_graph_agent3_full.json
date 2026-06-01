@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added program node p0 and contains edge p0->b1 to establish root and contain function.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  p0 [label=\"program\", type=program];\n  b1 [label=\"4-7: function\", type=function];\n  p0 -> b1 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b4 to b5, connecting its computation to the nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b5 to b1, indicating b5's computation is the return value of the function b1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"6-6: expression\", type=expression];\nb3 [label=\"7-7: expression\", type=expression];\nb4 [label=\"8-8: expression\", type=expression];\nb5 [label=\"9-9: expression\", type=expression];\nrange;\n\"seen_tokens.update\";\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb1 -> b5 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> range [label=call];\nb3 -> \"seen_tokens.update\" [label=call];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b1 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

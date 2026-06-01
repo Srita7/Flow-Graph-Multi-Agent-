@@ -1,0 +1,30 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b1\u2192b3 to connect declaration to function.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b2\u2192b1 to connect typedef to declaration.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b3\u2192b4 to connect function to return.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: declaration\", type=declaration];\nb2 [label=\"2-2: typedef\", type=typedef];\nb3 [label=\"3-5: function\", type=function];\nb4 [label=\"4-4: return\", type=return];\nb3 -> b4 [label=\"control_flow\"];\nb2 -> b1 [label=\"data_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb3 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 3,
+    "edge_additions": 3,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "file_name": "bug10.blocks_graph",
+  "total_nodes": 25,
+  "avg_degree": 3.1,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "if",
+      "relations_in": [
+        "b1(data_flow)"
+      ],
+      "relations_out": [
+        "b2_stmt1(control_flow_true)",
+        "b2_stmt2(contains)",
+        "b3(control_flow_false)"
+      ],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b2_stmt1",
+      "type": "call",
+      "relations_in": [
+        "b2(control_flow_true)"
+      ],
+      "relations_out": [
+        "b2_stmt2(control_flow_next)"
+      ],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b3",
+      "type": "else if",
+      "relations_in": [
+        "b1(data_flow)",
+        "b2(control_flow_false)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b4",
+      "type": "if",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 4,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "UNREACHABLE_CALL"
+    ],
+    "clean_nodes": 21
+  }
+}

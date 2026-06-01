@@ -1,0 +1,11 @@
+digraph G {
+b1 [label="4-6: function", type=function];
+b2 [label="5-5: control_flow", type="control_flow"];
+b3 [label="6-6: statement", type=statement];
+b4 [label="5-5: call", type=call];
+b1 -> b2 [label="control_flow"];
+b1 -> b3 [label="data_flow"];
+b2 -> b3 [label="control_flow"];
+b2 -> b4 [label=contains];
+b1 -> b4 [label=contains];
+}

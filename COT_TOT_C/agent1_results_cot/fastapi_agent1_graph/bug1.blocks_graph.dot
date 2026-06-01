@@ -1,0 +1,21 @@
+strict digraph {
+b1 [label="8-31: function", type=function];
+b2 [label="13-16: control_flow", type="control_flow"];
+b3 [label="14-16: block", type=block];
+b4 [label="24-26: control_flow", type="control_flow"];
+b5 [label="25-26: block", type=block];
+jsonable_encoder;
+OpenAPI;
+res_dict;
+prepare_response_content;
+ModelSubclass_create;
+b1 -> b2 [label="control_flow"];
+b1 -> b4 [label="control_flow"];
+b1 -> jsonable_encoder [label="data_flow"];
+b1 -> OpenAPI [label="data_flow"];
+b1 -> prepare_response_content [label="data_flow"];
+b1 -> ModelSubclass_create [label=call];
+b2 -> b3 [label="control_flow"];
+b4 -> b5 [label="control_flow"];
+b5 -> res_dict [label="data_flow"];
+}

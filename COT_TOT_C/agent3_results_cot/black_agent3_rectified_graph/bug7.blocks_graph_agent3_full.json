@@ -1,0 +1,18 @@
+{
+  "file_name": "bug7.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow self-loop b1->b1 to define execution flow for the orphaned function, making it a self-contained computation.",
+      "confidence": 7
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-7: function\", type=function];\nb1 -> b1 [type=control_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

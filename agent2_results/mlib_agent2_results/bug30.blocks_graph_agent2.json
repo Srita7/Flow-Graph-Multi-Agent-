@@ -1,0 +1,70 @@
+{
+  "file_name": "bug30.blocks_graph",
+  "total_nodes": 7,
+  "avg_degree": 2.2857142857142856,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [
+        "control_flow\u2192b3",
+        "data_flow\u2192b4"
+      ],
+      "fault_score": 10,
+      "fault_type": "flow_mismatch"
+    },
+    {
+      "node_id": "b3",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "incomplete_convergence"
+    },
+    {
+      "node_id": "b4",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b2(data_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "incomplete_convergence"
+    },
+    {
+      "node_id": "b5",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "incomplete_convergence"
+    },
+    {
+      "node_id": "b6",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "incomplete_convergence"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 5,
+    "common_patterns": [
+      "incomplete_convergence",
+      "flow_mismatch"
+    ],
+    "clean_nodes": 2
+  }
+}

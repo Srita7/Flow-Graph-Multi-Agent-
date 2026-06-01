@@ -1,0 +1,18 @@
+{
+  "file_name": "bug125.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b2->b4",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: declaration\", type=declaration];\nb2 [label=\"2-2: typedef\", type=typedef];\nb3 [label=\"3-5: function\", type=function];\nb4 [label=\"4-4: return\", type=return];\nb3 -> b4 [label=\"control_flow\"];\nb2 -> b4 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

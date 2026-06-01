@@ -1,0 +1,35 @@
+{
+  "file_name": "bug111.blocks_graph",
+  "total_nodes": 6,
+  "avg_degree": 3.3,
+  "faulty_nodes": [
+    {
+      "node_id": "b5",
+      "type": "statement",
+      "relations_in": [
+        "b4(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b6",
+      "type": "statement",
+      "relations_in": [
+        "b1(contains)",
+        "b4(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION"
+    ],
+    "clean_nodes": 4
+  }
+}

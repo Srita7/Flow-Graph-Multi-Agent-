@@ -1,0 +1,18 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b4->b2",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"2-12: function\", type=function];\nb6 [label=\"4-4: statement\", type=statement];\nb7 [label=\"5-5: statement\", type=statement];\nb2 [label=\"6-10: control_structure\", type=\"control_structure\"];\nb3 [label=\"8-8: statement\", type=statement];\nb4 [label=\"9-9: statement\", type=statement];\nb5 [label=\"11-11: statement\", type=statement];\nb1 -> b6 [label=contains];\nb1 -> b7 [label=contains];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b2 [label=\"control_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b2 [label=\"control_flow\"];\nb4 -> b2 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

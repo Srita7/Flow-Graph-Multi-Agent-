@@ -1,0 +1,42 @@
+{
+  "file_name": "bug11.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Changed edge b2 -> b1 from 'control_flow' to 'data_flow'.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "INCOMPLETE_CONVERGENCE",
+      "fix_description": "Added data_flow edge b3 -> b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "figure_dpi",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge figure_dpi -> set_figure_dpi.",
+      "confidence": 9
+    },
+    {
+      "node_id": "set_figure_dpi",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge set_figure_dpi -> b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "get_xy_display",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge get_xy_display -> bbox_from_bounds.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-19: function\", type=function];\nb2 [label=\"4-9: if\", type=if];\nb3 [label=\"14-16: if\", type=if];\nfigure_dpi;\nset_figure_dpi;\nget_xy_display;\nbbox_from_bounds;\nget_layout;\nget_unitless_position;\ntransform_position;\nbbox_translate;\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=\"control_flow\"];\nb1 -> get_layout [label=call];\nb1 -> get_unitless_position [label=call];\nb1 -> transform_position [label=call];\nb1 -> bbox_translate [label=call];\nb1 -> b1 [label=\"data_flow\"];\nb2 -> b1 [label=\"data_flow\"];\nb2 -> figure_dpi [label=call];\nb2 -> set_figure_dpi [label=call];\nb2 -> get_xy_display [label=call];\nb2 -> bbox_from_bounds [label=call];\nb2 -> b3 [label=\"data_flow\"];\nb2 -> b2 [label=\"data_flow\"];\nb3 -> b1 [label=\"control_flow\"];\nb3 -> set_figure_dpi [label=call];\nb3 -> b1 [label=\"data_flow\"];\nfigure_dpi -> set_figure_dpi [label=\"data_flow\"];\nset_figure_dpi -> b1 [label=\"data_flow\"];\nget_xy_display -> bbox_from_bounds [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

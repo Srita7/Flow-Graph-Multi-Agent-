@@ -1,0 +1,24 @@
+{
+  "file_name": "bug13.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Connected b1's output to b2 via data_flow and changed incoming data_flow from b2 to control_flow, integrating b1's computation.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "BROKEN_DEPENDENCY",
+      "fix_description": "Added data_flow from b1 for its condition and changed outgoing data_flow to control_flow, resolving the broken dependency and semantic mismatch.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-9: function\", type=function];\nb2 [label=\"4-6: if\", type=if];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b2 [label=\"data_flow\"];\nb2 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 1,
+    "edge_modifications": 1,
+    "nodes_added": 0
+  }
+}

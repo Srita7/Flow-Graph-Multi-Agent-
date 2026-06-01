@@ -1,0 +1,11 @@
+{
+  "file_name": "bug4.blocks_graph",
+  "rectified_nodes": [],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: statement\", type=statement];\nb3 [label=\"6-6: return_statement\", type=\"return_statement\"];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 0,
+    "edge_additions": 0,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

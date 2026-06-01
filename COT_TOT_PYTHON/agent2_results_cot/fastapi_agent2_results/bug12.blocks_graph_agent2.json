@@ -1,0 +1,11 @@
+{
+  "file_name": "bug12.blocks_graph",
+  "total_nodes": 3,
+  "avg_degree": 1.3,
+  "faulty_nodes": [],
+  "fault_summary": {
+    "total_faults": 0,
+    "common_patterns": [],
+    "clean_nodes": 3
+  }
+}

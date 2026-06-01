@@ -1,0 +1,24 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "total_nodes": 4,
+  "avg_degree": 1.5,
+  "faulty_nodes": [
+    {
+      "node_id": "b4",
+      "type": "variable_declaration",
+      "relations_in": [],
+      "relations_out": [
+        "b1(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "FLOW_MISMATCH"
+    ],
+    "clean_nodes": 3
+  }
+}

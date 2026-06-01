@@ -1,0 +1,47 @@
+{
+  "bug1.c": {
+    "levenshtein_distance": 0,
+    "cosine_similarity": 1.0,
+    "line_edit_distance": 0
+  },
+  "bug2.c": {
+    "levenshtein_distance": 85,
+    "cosine_similarity": 0.9617,
+    "line_edit_distance": 1
+  },
+  "bug3.c": {
+    "levenshtein_distance": 11,
+    "cosine_similarity": 0.9902,
+    "line_edit_distance": 1
+  },
+  "bug4.c": {
+    "levenshtein_distance": 6,
+    "cosine_similarity": 0.9901,
+    "line_edit_distance": 1
+  },
+  "bug5.c": {
+    "levenshtein_distance": 0,
+    "cosine_similarity": 1.0,
+    "line_edit_distance": 0
+  },
+  "bug6.c": {
+    "levenshtein_distance": 0,
+    "cosine_similarity": 1.0,
+    "line_edit_distance": 0
+  },
+  "bug7.c": {
+    "levenshtein_distance": 0,
+    "cosine_similarity": 1.0,
+    "line_edit_distance": 0
+  },
+  "bug8.c": {
+    "levenshtein_distance": 33,
+    "cosine_similarity": 0.9751,
+    "line_edit_distance": 11
+  },
+  "bug9.c": {
+    "levenshtein_distance": 0,
+    "cosine_similarity": 1.0,
+    "line_edit_distance": 0
+  }
+}

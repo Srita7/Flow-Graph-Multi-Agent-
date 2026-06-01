@@ -1,0 +1,24 @@
+{
+  "file_name": "bug13.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b5",
+      "fault_type": "broken_dependency",
+      "fix_description": "Added data_flow edge from b5 to b6, connecting the assignment's output to the return statement.",
+      "confidence": 10
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added data_flow edge from b5 to b6, connecting the return statement to the nearest assignment.",
+      "confidence": 10
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-9: function\", type=function];\nb2 [label=\"5-8: if_body\", type=\"if_body\"];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"7-7: assignment\", type=assignment];\nb5 [label=\"8-8: assignment\", type=assignment];\nb6 [label=\"9-9: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b6 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=contains];\nb2 -> b6 [label=\"control_flow\"];\nb3 -> b4 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

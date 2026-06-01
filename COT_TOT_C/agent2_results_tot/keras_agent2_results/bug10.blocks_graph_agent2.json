@@ -1,0 +1,155 @@
+{
+  "file_name": "bug10.blocks_graph",
+  "total_nodes": 19,
+  "avg_degree": 1.42,
+  "faulty_nodes": [
+    {
+      "node_id": "b1",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b2",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b4",
+      "type": "control_if",
+      "relations_in": [
+        "b3(control_flow)",
+        "b3(contains)"
+      ],
+      "relations_out": [
+        "b5(control_flow)",
+        "b7(control_flow)",
+        "b5(contains)",
+        "b6(contains)"
+      ],
+      "fault_score": 10,
+      "fault_type": "FLOW_MISMATCH"
+    },
+    {
+      "node_id": "b9",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b10",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b11",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b12",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b13",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b14",
+      "type": "declaration",
+      "relations_in": [],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "ORPHANED_COMPUTATION"
+    },
+    {
+      "node_id": "b15",
+      "type": "call",
+      "relations_in": [
+        "b3(contains)"
+      ],
+      "relations_out": [
+        "b16(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b16",
+      "type": "return",
+      "relations_in": [
+        "b15(control_flow)",
+        "b19(control_flow)",
+        "b3(contains)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b17",
+      "type": "call",
+      "relations_in": [
+        "b3(contains)"
+      ],
+      "relations_out": [
+        "b18(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    },
+    {
+      "node_id": "b18",
+      "type": "return",
+      "relations_in": [
+        "b17(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 10,
+      "fault_type": "DISCONNECTED_RETURN"
+    },
+    {
+      "node_id": "b19",
+      "type": "call",
+      "relations_in": [
+        "b3(contains)"
+      ],
+      "relations_out": [
+        "b16(control_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "UNREACHABLE_CALL"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 14,
+    "common_patterns": [
+      "ORPHANED_COMPUTATION",
+      "FLOW_MISMATCH",
+      "UNREACHABLE_CALL",
+      "DISCONNECTED_RETURN"
+    ],
+    "clean_nodes": 5
+  }
+}

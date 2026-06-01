@@ -1,0 +1,18 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Connected return node b3 to function b2 with data_flow edge, following 'connect nearest assignment' rule.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: directive\", type=directive];\nb2 [label=\"2-5: function\", type=function];\nb3 [label=\"4-4: return\", type=return];\nb2 -> b3 [label=contains];\nb2 -> b3 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

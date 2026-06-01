@@ -1,0 +1,26 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "total_nodes": 8,
+  "avg_degree": 5.0,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "declaration",
+      "relations_in": [
+        "b1(control_flow)"
+      ],
+      "relations_out": [
+        "b3(data_flow)"
+      ],
+      "fault_score": 10,
+      "fault_type": "BROKEN_DEPENDENCY"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 1,
+    "common_patterns": [
+      "BROKEN_DEPENDENCY"
+    ],
+    "clean_nodes": 7
+  }
+}

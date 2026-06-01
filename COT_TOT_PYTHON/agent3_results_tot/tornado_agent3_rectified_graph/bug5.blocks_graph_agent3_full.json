@@ -1,0 +1,24 @@
+{
+  "file_name": "bug5.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b4->b5 to connect the assignment's computation to its downstream usage by the return statement.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow b4->b5 to connect the return statement to its nearest assignment, providing the value to be returned.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-6: module\", type=module];\nb2 [label=\"1-3: docstring\", type=docstring];\nb3 [label=\"4-6: function\", type=function];\nb4 [label=\"5-5: assignment\", type=assignment];\nb5 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=contains];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

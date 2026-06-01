@@ -1,0 +1,18 @@
+{
+  "file_name": "bug20.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added 'contains' edge from function b2 to docstring b1.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-3: docstring\", type=docstring];\nb2 [label=\"4-12: function\", type=function];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"6-6: call\", type=call];\nb5 [label=\"7-7: call\", type=call];\nb6 [label=\"8-8: call\", type=call];\nb7 [label=\"9-10: text_block\", type=\"text_block\"];\nb8 [label=\"11-11: control\", type=control];\nb9 [label=\"12-12: return\", type=return];\nb2 -> b1 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b4 [label=contains];\nb2 -> b5 [label=contains];\nb2 -> b6 [label=contains];\nb2 -> b7 [label=contains];\nb2 -> b8 [label=contains];\nb2 -> b9 [label=contains];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb5 -> b6 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,8 @@
+digraph G {
+b1 [label="2-6: function", type=function];
+b2 [label="7-11: function", type=function];
+b3 [label="12-17: function", type=function];
+b2 -> b1 [label=call];
+b3 -> b1 [label=call];
+b2 -> b3 [label=call];
+}

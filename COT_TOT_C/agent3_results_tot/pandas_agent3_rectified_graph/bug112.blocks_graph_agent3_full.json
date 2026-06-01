@@ -1,0 +1,42 @@
+{
+  "file_name": "bug112.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b1 to b4 (function) as its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b2 to b4 (function) as its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b3 to b4 (function) as its nearest downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added control_flow edge from b3 to b4 to make the function reachable, assuming b3 is the last declaration before the function call/definition.",
+      "confidence": 8
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added data_flow edge from b4 (function) to b5 (return) to connect the return value, assuming the function produces the return value.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"1-1: declaration\", type=declaration];\nb2 [label=\"2-2: declaration\", type=declaration];\nb3 [label=\"4-4: declaration\", type=declaration];\nb4 [label=\"5-7: function\", type=function];\nb5 [label=\"6-6: return\", type=return];\nb4 -> b5 [label=\"control_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb4 -> b5 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 4,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

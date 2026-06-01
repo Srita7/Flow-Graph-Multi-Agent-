@@ -1,0 +1,24 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "disconnected_return",
+      "fix_description": "Changed edge label from control_flow to contains for b1\u2192b2 to establish structural dependency.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "disconnected_return",
+      "fix_description": "Changed edge label from data_flow to contains for b1\u2192b3 to establish structural dependency.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-5: function\", type=function];\nb2 [label=\"5-5: return\", type=return];\nb3 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=\"contains\"];\nb1 -> b3 [label=\"contains\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 0,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

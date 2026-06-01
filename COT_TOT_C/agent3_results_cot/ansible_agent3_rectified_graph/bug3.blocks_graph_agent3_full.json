@@ -1,0 +1,24 @@
+{
+  "file_name": "bug3.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b6",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains edge from b3 to b6 to make the call reachable within the if block.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added contains edge from b1 to b7 to integrate the return node into the function's structure.",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\n  b1 [label=\"3-11: function\", type=function];\n  b2 [label=\"4-4: declaration\", type=declaration];\n  b3 [label=\"5-9: if\", type=if];\n  b4 [label=\"5-5: call\", type=call];\n  b5 [label=\"6-6: call\", type=call];\n  b6 [label=\"8-8: call\", type=call];\n  b7 [label=\"10-10: return\", type=return];\n  b1 -> b2 [label=\"control_flow\"];\n  b1 -> b3 [label=contains];\n  b1 -> b5 [label=\"data_flow\"];\n  b1 -> b7 [label=contains];\n  b1 -> b7 [label=\"data_flow\"];\n  b2 -> b3 [label=\"control_flow\"];\n  b2 -> b4 [label=\"data_flow\"];\n  b3 -> b4 [label=contains];\n  b3 -> b5 [label=contains];\n  b3 -> b6 [label=\"control_flow\"];\n  b3 -> b6 [label=contains];\n  b3 -> b7 [label=\"control_flow\"];\n  b6 -> b7 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

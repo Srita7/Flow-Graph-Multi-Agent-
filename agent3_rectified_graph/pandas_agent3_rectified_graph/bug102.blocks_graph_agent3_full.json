@@ -1,0 +1,18 @@
+{
+  "file_name": "bug102.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b4",
+      "fault_type": "disconnected_return",
+      "fix_description": "Added contains b1\u2192b4 and data_flow b2\u2192b4 to connect the disconnected return node to its function and nearest assignment.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-6: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-6: return\", type=return];\nb4 [label=\"7-7: return\", type=return];\narrays_to_mgr;\nb1 -> b2 [label=contains];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb2 -> b3 [label=\"data_flow\"];\nb2 -> b4 [label=\"data_flow\"];\nb3 -> arrays_to_mgr [label=call];\n}",
+  "rectification_summary": {
+    "total_fixes": 2,
+    "edge_additions": 2,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

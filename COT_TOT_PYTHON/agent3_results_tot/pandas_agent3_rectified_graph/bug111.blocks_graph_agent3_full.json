@@ -1,0 +1,18 @@
+{
+  "file_name": "bug111.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b_call_ret_6",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added contains edge from b_func_main to b_call_ret_6 to establish reachability within the function's scope.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb_func_main [label=\"4-9: function\", type=function];\nb_call_ret_5 [label=\"5-5: call_return\", type=\"call_return\"];\nb_call_ret_6 [label=\"6-6: call_return\", type=\"call_return\"];\nb_if_7 [label=\"7-8: control_if\", type=\"control_if\"];\nb_call_ret_8 [label=\"8-8: call_return\", type=\"call_return\"];\nb_ret_9 [label=\"9-9: return\", type=return];\nb_func_main -> b_call_ret_5 [label=\"control_flow\"];\nb_func_main -> b_if_7 [label=contains];\nb_func_main -> b_ret_9 [label=contains];\nb_call_ret_5 -> b_call_ret_6 [label=contains];\nb_call_ret_5 -> b_if_7 [label=\"control_flow\"];\nb_if_7 -> b_call_ret_8 [label=\"control_flow_true\"];\nb_if_7 -> b_ret_9 [label=\"control_flow_false\"];\nb_call_ret_8 -> b_ret_9 [label=\"control_flow\"];\nb_func_main -> b_call_ret_6 [label=contains];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

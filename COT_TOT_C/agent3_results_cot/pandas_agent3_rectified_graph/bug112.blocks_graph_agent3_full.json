@@ -1,0 +1,18 @@
+{
+  "file_name": "bug112.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b1",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added a 'program' node and a 'contains' hierarchy edge from 'program' to 'b1' to establish a root and contain the function, addressing the 'Root Node: none' issue.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nprogram [label=\"program\", type=program];\nb1 [label=\"5-7: function\", type=function];\nprogram -> b1 [label=\"contains\", type=hierarchy];\n}",
+  "rectification_summary": {
+    "total_fixes": 1,
+    "edge_additions": 1,
+    "edge_modifications": 0,
+    "nodes_added": 1
+  }
+}

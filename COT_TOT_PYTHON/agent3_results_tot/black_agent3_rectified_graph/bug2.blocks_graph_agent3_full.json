@@ -1,0 +1,42 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b2->b10",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow b4->b10",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b5->b10",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b7->b10",
+      "confidence": 9
+    },
+    {
+      "node_id": "b9",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow b9->b10",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-14: function\", type=function];\nb2 [label=\"5-5: assignment\", type=assignment];\nb3 [label=\"6-10: control\", type=control];\nb4 [label=\"7-8: control\", type=control];\nb5 [label=\"8-8: assignment\", type=assignment];\nb6 [label=\"9-10: control\", type=control];\nb7 [label=\"10-10: assignment\", type=assignment];\nb8 [label=\"11-12: control\", type=control];\nb9 [label=\"12-12: expression\", type=expression];\nb10 [label=\"13-13: assignment\", type=assignment];\nb11 [label=\"14-14: return\", type=return];\nb1 -> b2 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b8 [label=contains];\nb1 -> b10 [label=contains];\nb1 -> b11 [label=contains];\nb2 -> b3 [label=\"control_flow\"];\nb3 -> b4 [label=\"control_flow\"];\nb3 -> b6 [label=contains];\nb3 -> b8 [label=\"control_flow\"];\nb4 -> b5 [label=\"control_flow\"];\nb4 -> b6 [label=\"control_flow\"];\nb5 -> b3 [label=\"control_flow\"];\nb6 -> b7 [label=\"control_flow\"];\nb7 -> b3 [label=\"control_flow\"];\nb8 -> b9 [label=\"control_flow\"];\nb8 -> b10 [label=\"control_flow\"];\nb9 -> b10 [label=\"control_flow\"];\nb10 -> b11 [label=\"control_flow\"];\nb2 -> b10 [label=\"data_flow\"];\nb4 -> b10 [label=\"control_flow\"];\nb5 -> b10 [label=\"data_flow\"];\nb7 -> b10 [label=\"data_flow\"];\nb9 -> b10 [label=\"data_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 5,
+    "edge_additions": 5,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "file_name": "bug107.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "broken_dependency",
+      "fix_description": "Added data_flow b1->b3",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "broken_dependency",
+      "fix_description": "Changed b4->b5 edge label from control_flow to data_flow",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "broken_dependency",
+      "fix_description": "Changed b3->b5 edge label from control_flow to data_flow",
+      "confidence": 9
+    },
+    {
+      "node_id": "b6",
+      "fault_type": "broken_dependency",
+      "fix_description": "Added control_flow b2->b6",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-17: function\", type=function];\nb2 [label=\"5-10: if\", type=if];\nb3 [label=\"6-6: assignment\", type=assignment];\nb4 [label=\"10-10: assignment\", type=assignment];\nb5 [label=\"11-11: assignment\", type=assignment];\nb6 [label=\"12-15: assignment\", type=assignment];\nb7 [label=\"16-16: assignment\", type=assignment];\nb8 [label=\"17-17: return\", type=return];\nb1 -> b2 [label=\"data_flow\"];\nb1 -> b5 [label=\"data_flow\"];\nb1 -> b6 [label=\"data_flow\"];\nb1 -> b7 [label=contains];\nb1 -> b8 [label=\"data_flow\"];\nb1 -> b4 [label=\"data_flow\"];\nb2 -> b3 [label=\"control_flow\"];\nb2 -> b4 [label=\"control_flow\"];\nb3 -> b5 [label=\"data_flow\"];\nb3 -> b6 [label=\"data_flow\"];\nb4 -> b5 [label=\"data_flow\"];\nb4 -> b6 [label=\"data_flow\"];\nb5 -> b6 [label=\"data_flow\"];\nb6 -> b7 [label=\"data_flow\"];\nb7 -> b8 [label=\"control_flow\"];\nb1 -> b3 [label=\"data_flow\"];\nb2 -> b6 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 2,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

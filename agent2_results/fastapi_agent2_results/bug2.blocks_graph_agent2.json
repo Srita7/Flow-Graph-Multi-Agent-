@@ -1,0 +1,40 @@
+{
+  "file_name": "bug2.blocks_graph",
+  "total_nodes": 4,
+  "avg_degree": 2.5,
+  "faulty_nodes": [
+    {
+      "node_id": "b2",
+      "type": "assignment",
+      "relations_in": [
+        "b1(contains)",
+        "b3(data_flow)"
+      ],
+      "relations_out": [
+        "contains\u2192b3",
+        "control_flow\u2192b4"
+      ],
+      "fault_score": 9,
+      "fault_type": "orphaned_computation"
+    },
+    {
+      "node_id": "b4",
+      "type": "return",
+      "relations_in": [
+        "b1(data_flow)",
+        "b2(control_flow)"
+      ],
+      "relations_out": [],
+      "fault_score": 8,
+      "fault_type": "disconnected_return"
+    }
+  ],
+  "fault_summary": {
+    "total_faults": 2,
+    "common_patterns": [
+      "orphaned_computation",
+      "disconnected_return"
+    ],
+    "clean_nodes": 2
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "file_name": "bug6.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b2",
+      "fault_type": "FLOW_MISMATCH",
+      "fix_description": "Removed outgoing 'contains' edge from return node b2 to b3, as a return node should not contain other operations.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b3",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added 'contains' edge b1->b3 to make call reachable from the function; Removed 'contains' edge b3->b4 as b4 is now directly contained by b1.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b4",
+      "fault_type": "UNREACHABLE_CALL",
+      "fix_description": "Added 'contains' edge b1->b4 to make call reachable from the function.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "DISCONNECTED_RETURN",
+      "fix_description": "Added 'data_flow' edge b4->b5 to connect the return node to the nearest value producer (call node b4).",
+      "confidence": 8
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"4-5: function\", type=function];\nb2 [label=\"5-5: return\", type=return];\nb3 [label=\"5-5: call\", type=call];\nb4 [label=\"5-5: call\", type=call];\nb5 [label=\"6-6: return\", type=return];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=\"control_flow\"];\nb1 -> b3 [label=contains];\nb1 -> b4 [label=contains];\nb4 -> b5 [label=data_flow];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 3,
+    "edge_modifications": 2,
+    "nodes_added": 0
+  }
+}

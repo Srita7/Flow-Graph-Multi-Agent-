@@ -1,0 +1,17 @@
+digraph G {
+b1 [label="4-9: function", type=function];
+b2 [label="5-8: control_if", type="control_if"];
+b3 [label="7-8: control_if", type="control_if"];
+b4 [label="8-8: assignment", type=assignment];
+b5 [label="9-9: return", type=return];
+b1 -> b2 [label="control_flow"];
+b1 -> b5 [label=contains];
+b2 -> b3 [label="control_flow_true"];
+b2 -> b5 [label="control_flow_false"];
+b3 -> b4 [label="control_flow_true"];
+b3 -> b5 [label="control_flow_false"];
+b4 -> b5 [label="control_flow"];
+b1 -> b2 [label="data_flow"];
+b1 -> b3 [label="data_flow"];
+b1 -> b4 [label="data_flow"];
+}

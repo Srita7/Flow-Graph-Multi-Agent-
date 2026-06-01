@@ -1,0 +1,36 @@
+{
+  "file_name": "bug13.blocks_graph",
+  "rectified_nodes": [
+    {
+      "node_id": "b3",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b3 (assignment) to b5 (assignment) to connect its computation result to a downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b5",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b5 (assignment) to b8 (control) to connect its computation result to a downstream usage.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b7",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added data_flow edge from b7 (call) to b5 (assignment) to connect its return value to its containing assignment node.",
+      "confidence": 9
+    },
+    {
+      "node_id": "b8",
+      "fault_type": "ORPHANED_COMPUTATION",
+      "fix_description": "Added control_flow edge from b8 (control) to b1 (function) to ensure the control flow path terminates correctly within the function.",
+      "confidence": 9
+    }
+  ],
+  "full_rectified_graph": "digraph G {\nb1 [label=\"3-9: function\", type=function];\nb2 [label=\"4-6: control\", type=control];\nb3 [label=\"5-5: assignment\", type=assignment];\nb4 [label=\"5-5: call\", type=call];\nb5 [label=\"7-7: assignment\", type=assignment];\nb6 [label=\"7-7: call\", type=call];\nb7 [label=\"7-7: call\", type=call];\nb8 [label=\"8-8: control\", type=control];\nb1 -> b2 [label=contains];\nb1 -> b5 [label=contains];\nb1 -> b8 [label=contains];\nb2 -> b3 [label=contains];\nb2 -> b5 [label=\"control_flow\"];\nb3 -> b4 [label=contains];\nb3 -> b5 [label=\"control_flow\"];\nb3 -> b5 [label=\"data_flow\"];\nb5 -> b6 [label=contains];\nb5 -> b7 [label=contains];\nb5 -> b8 [label=\"control_flow\"];\nb5 -> b8 [label=\"data_flow\"];\nb7 -> b5 [label=\"data_flow\"];\nb8 -> b1 [label=\"control_flow\"];\n}",
+  "rectification_summary": {
+    "total_fixes": 4,
+    "edge_additions": 4,
+    "edge_modifications": 0,
+    "nodes_added": 0
+  }
+}
